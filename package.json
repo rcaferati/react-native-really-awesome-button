@@ -2,18 +2,26 @@
   "name": "react-native-really-awesome-button",
   "version": "0.1.0",
   "description": "ReactNative performant component that renders an 60fps animated set of progress enabled 3D UI buttons.",
-  "main": "./src/index.js",
+  "main": "src/index.js",
+  "author": "Rafael Caferati",
+  "license": "MIT",
+  "homepage": "https://github.com/rcaferati/react-native-really-awesome-button",
   "scripts": {
-    "test": "echo \"Error: no test specified atm\" && exit 1"
+    "test": "echo \"Error: no test specified ATM\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/rcaferati/react-native-really-awesome-button.git"
-  },
+    "url": "https://github.com/rcaferati/react-native-really-awesome-button"
+ },
+ "bugs": {
+   "url": "https://github.com/rcaferati/react-native-really-awesome-button/issues"
+ },
   "keywords": [
     "button",
     "react-native",
     "animated button",
+    "awesome button",
+    "really awesome button",
     "3d button",
     "react-component",
     "ios",
@@ -21,12 +29,6 @@
   ],
   "peerDependencies": {
     "react-native": ">=0.43.0",
-    "prop-types": "^15.5.10"
+    "prop-types": ">=15.5.7"
   },
-  "author": "rcaferati",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/rcaferati/react-native-really-awesome-button/issues"
-  },
-  "homepage": "https://caferati.me/labs/awesome-button"
 }
