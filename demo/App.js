@@ -1,10 +1,10 @@
 import React from 'react';
 import { Button, StyleSheet, Text, View, Image, ScrollView } from 'react-native';
-import AwesomeButton from './src/index';
-import AwesomeButtonC137 from './src/themes/c137';
-import AwesomeButtonRick from './src/themes/rick';
-import AwesomeButtonBlue from './src/themes/blue';
-import AwesomeButtonCartman from './src/themes/cartman';
+import AwesomeButton from 'react-native-really-awesome-button';
+import AwesomeButtonC137 from 'react-native-really-awesome-button/src/themes/c137';
+import AwesomeButtonRick from 'react-native-really-awesome-button/src/themes/rick';
+import AwesomeButtonBlue from 'react-native-really-awesome-button/src/themes/blue';
+import AwesomeButtonCartman from 'react-native-really-awesome-button/src/themes/cartman';
 
 export default class Demo extends React.Component {
   constructor(props) {
@@ -17,17 +17,6 @@ export default class Demo extends React.Component {
   render() {
     return (
       <ScrollView contentContainerStyle={style.container}>
-        <AwesomeButton
-          progress
-          style={style.button}
-          onPress={(next) => {
-            setTimeout(() => {
-              next();
-            }, 1000);
-          }}
-        >
-          This is my Button
-        </AwesomeButton>
         <AwesomeButtonBlue
           style={style.button}
           progress
@@ -37,60 +26,14 @@ export default class Demo extends React.Component {
             }, 1000);
           }}
         >
-          Hello
+          Blue Primary
         </AwesomeButtonBlue>
         <AwesomeButtonBlue
           type="secondary"
           style={style.button}
         >
-          Hello
+          Blue Secondary
         </AwesomeButtonBlue>
-        <AwesomeButtonRick
-          type="secondary"
-          style={style.button}
-        >
-          Goto Next Page
-        </AwesomeButtonRick>
-        <AwesomeButtonRick
-          progress
-          type="primary"
-          onPress={(next) => {
-            setTimeout(() => {
-              next();
-            }, 1000);
-          }}
-          style={style.button}
-        >
-          <Text
-            style={{
-              color:'#2e84b1',
-              fontWeight:'bold'
-            }}
-          >
-            Rick Button Primary
-          </Text>
-        </AwesomeButtonRick>
-        <AwesomeButtonC137
-          style={style.button}
-        >
-          C137 Primary
-        </AwesomeButtonC137>
-        <AwesomeButtonC137
-          type="secondary"
-          style={style.button}
-        >
-          C137 Primary
-        </AwesomeButtonC137>
-        <AwesomeButtonC137
-          style={style.button}
-          onPress={() => {
-            this.setState({
-              placeholder: 'Placeholder'
-            })
-          }}
-        >
-          {this.state.placeholder}
-        </AwesomeButtonC137>
         <AwesomeButtonCartman
           style={style.button}
           type="primary"
@@ -101,8 +44,37 @@ export default class Demo extends React.Component {
           style={style.button}
           type="secondary"
         >
-          Cartman Primary
+          Cartman Secondary
         </AwesomeButtonCartman>
+        <AwesomeButtonRick
+          progress
+          type="primary"
+          onPress={(next) => {
+            setTimeout(() => {
+              next();
+            }, 1000);
+          }}
+          style={style.button}
+        >
+          Rick Primary
+        </AwesomeButtonRick>
+        <AwesomeButtonRick
+          type="secondary"
+          style={style.button}
+        >
+          Rick Secondary
+        </AwesomeButtonRick>
+        <AwesomeButtonC137
+          style={style.button}
+        >
+          C137 Primary
+        </AwesomeButtonC137>
+        <AwesomeButtonC137
+          type="secondary"
+          style={style.button}
+        >
+          C137 Secondary
+        </AwesomeButtonC137>
       </ScrollView>
     );
   }
@@ -116,6 +88,7 @@ const style = StyleSheet.create({
     backgroundColor: '#2F2F2F',
   },
   button: {
-    marginTop: 20.
+    marginTop: 12,
+    marginBottom: 12,
   }
 });
