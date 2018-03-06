@@ -19,7 +19,7 @@ const BUTTONS = {
   secondary: {
     backgroundColor: "#FAFAFA",
     backgroundDarker: "#67cbc3",
-    textColor: '#535100',
+    textColor: '#349890',
     borderWidth: 2,
     borderColor: "#b3e5e1",
     ... COMMON,

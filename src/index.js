@@ -23,8 +23,10 @@ export default class Button extends React.Component {
     backgroundDarker: PropTypes.string,
     backgroundProgress: PropTypes.string,
     textColor: PropTypes.string,
+    textSize: PropTypes.number,
     textLineHeight: PropTypes.number,
     activityColor: PropTypes.string,
+    style: View.propTypes.style,
     disabled: PropTypes.bool,
     progress: PropTypes.bool,
   };
@@ -35,13 +37,14 @@ export default class Button extends React.Component {
     height: 60,
     width: 200,
     activityColor: '#FFFFFF',
-    borderRadius: 6,
+    borderRadius: 4,
     borderWidth: 0,
     borderColor: null,
     backgroundColor: '#c0c0c0',
     backgroundDarker: '#9f9f9f',
     backgroundProgress: 'rgba(0, 0, 0, 0.15)',
     textColor: '#FFFFFF',
+    textSize: 16,
     textLineHeight: 20,
   };
 
