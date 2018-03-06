@@ -26,7 +26,7 @@ export default class Demo extends React.Component {
             }, 1000);
           }}
         >
-          Blue Primary
+          Blue Progress
         </AwesomeButtonBlue>
         <AwesomeButtonBlue
           type="secondary"
@@ -56,7 +56,7 @@ export default class Demo extends React.Component {
           }}
           style={style.button}
         >
-          Rick Primary
+          Rick Progress
         </AwesomeButtonRick>
         <AwesomeButtonRick
           type="secondary"
@@ -85,7 +85,7 @@ const style = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: '#2F2F2F',
+    backgroundColor: '#FAFAFA',
   },
   button: {
     marginTop: 12,

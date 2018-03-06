@@ -1,6 +1,10 @@
 import { StyleSheet } from 'react-native';
 
 export function getStyles(styleProps) {
+  const dimensionsDiff = {
+    width: styleProps.width,
+    height: styleProps.height - styleProps.raiseLevel,
+  }
   return StyleSheet.create({
     container: {
       height: styleProps.height,
@@ -22,18 +26,19 @@ export function getStyles(styleProps) {
     bottom: {
       borderRadius: styleProps.borderRadius,
       backgroundColor: styleProps.backgroundDarker,
-      width: styleProps.width,
-      height: styleProps.height - styleProps.raiseLevel,
+      ...dimensionsDiff,
     },
     progress: {
       backgroundColor: styleProps.backgroundProgress,
-      width: styleProps.width,
-      height: styleProps.height - styleProps.raiseLevel,
+      ...dimensionsDiff,
     },
     content: {
-      width: styleProps.width,
-      height: styleProps.height - styleProps.raiseLevel,
+      ...dimensionsDiff,
       borderRadius: styleProps.borderRadius,
+    },
+    activeBackground: {
+      ...dimensionsDiff,
+      backgroundColor: styleProps.backgroundActive,
     },
     text: {
       borderColor: styleProps.borderColor,
@@ -88,6 +93,11 @@ export const styles = StyleSheet.create({
     left: 0,
   },
   content: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+  },
+  activeBackground: {
     position: 'absolute',
     top: 0,
     left: 0,

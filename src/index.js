@@ -21,6 +21,7 @@ export default class Button extends React.Component {
     borderColor: PropTypes.string,
     backgroundColor: PropTypes.string,
     backgroundDarker: PropTypes.string,
+    backgroundActive: PropTypes.string,
     backgroundProgress: PropTypes.string,
     textColor: PropTypes.string,
     textSize: PropTypes.number,
@@ -42,6 +43,7 @@ export default class Button extends React.Component {
     borderColor: null,
     backgroundColor: '#c0c0c0',
     backgroundDarker: '#9f9f9f',
+    backgroundActive: 'rgba(0, 0, 0, 0.075)',
     backgroundProgress: 'rgba(0, 0, 0, 0.15)',
     textColor: '#FFFFFF',
     textSize: 16,
@@ -53,10 +55,11 @@ export default class Button extends React.Component {
     this.loadingOpacity = new Animated.Value(1);
     this.textOpacity = new Animated.Value(1);
     this.activityOpacity = new Animated.Value(0);
-    this.animating = false;
-    this.timeout = null;
+    this.animatedActive = new Animated.Value(0);
     this.animatedValue = new Animated.Value(0);
     this.animatedLoading = new Animated.Value(0);
+    this.animating = false;
+    this.timeout = null;
     this.state = {
       activity: false,
     };
@@ -74,7 +77,19 @@ export default class Button extends React.Component {
     ).start(callback);
   }
 
-  animateOpacityOut({ variable, value, delay = 0, callback = null}) {
+  animateActive(value, callback) {
+    Animated.timing(
+      this.animatedActive,
+      {
+        toValue: value,
+        duration: 100,
+        easing: Easing.easeOut,
+        useNativeDriver: true,
+      }
+    ).start(callback);
+  }
+
+  animateOpacity({ variable, value, delay = 0, callback = null}) {
     Animated.timing(
       variable,
       {
@@ -133,6 +148,7 @@ export default class Button extends React.Component {
       return false;
     }
     this.animateButton(1);
+    this.animateActive(1);
   }
 
   pressOut = () => {
@@ -165,7 +181,7 @@ export default class Button extends React.Component {
         activity: true,
       }, () => {
         this.animateLoadingStart();
-        this.animateOpacityOut({
+        this.animateOpacity({
           variable: this.loadingOpacity,
           value: 1,
         });
@@ -185,7 +201,7 @@ export default class Button extends React.Component {
       this.animateLoadingEnd(() => {
         this.animateElastic(this.textOpacity, 1);
         this.animateElastic(this.activityOpacity, 0);
-        this.animateOpacityOut({
+        this.animateOpacity({
           variable: this.loadingOpacity,
           value: 0,
           delay: 100,
@@ -200,6 +216,7 @@ export default class Button extends React.Component {
   }
 
   release = (callback) => {
+    this.animateActive(0);
     this.animateButton(0, callback);
   }
 
@@ -270,6 +287,9 @@ export default class Button extends React.Component {
           },
         ],
       },
+      animatedActive: {
+        opacity: this.animatedActive,
+      },
       animatedActivity: {
         opacity: this.activityOpacity,
         transform: [{
@@ -334,6 +354,11 @@ export default class Button extends React.Component {
                 dynamicStyles.text,
               ]}>
                 <Animated.View style={[
+                  styles.activeBackground,
+                  dynamicStyles.activeBackground,
+                  animatedValues.animatedActive,
+                ]} />
+                <Animated.View style={[
                   styles.progress,
                   dynamicStyles.progress,
                   animatedValues.animatedProgress,
@@ -359,106 +384,3 @@ export default class Button extends React.Component {
     );
   }
 }
-
-// function getStyles(styleProps) {
-//   return StyleSheet.create({
-//     container: {
-//       height: styleProps.height,
-//       width: styleProps.width,
-//     },
-//     container__text: {
-//       color: styleProps.textColor,
-//     },
-//     container__placeholder: {
-//       width: styleProps.width * 0.5,
-//       height: styleProps.textLineHeight,
-//     },
-//     shadow: {
-//       bottom: -styleProps.raiseLevel/2,
-//       width: styleProps.width - 4,
-//       height: styleProps.height - styleProps.raiseLevel,
-//       borderRadius: styleProps.borderRadius,
-//     },
-//     bottom: {
-//       borderRadius: styleProps.borderRadius,
-//       backgroundColor: styleProps.backgroundDarker,
-//       width: styleProps.width,
-//       height: styleProps.height - styleProps.raiseLevel,
-//     },
-//     progress: {
-//       backgroundColor: styleProps.backgroundProgress,
-//       width: styleProps.width,
-//       height: styleProps.height - styleProps.raiseLevel,
-//     },
-//     content: {
-//       width: styleProps.width,
-//       height: styleProps.height - styleProps.raiseLevel,
-//       borderRadius: styleProps.borderRadius,
-//     },
-//     text: {
-//       borderColor: styleProps.borderColor,
-//       borderWidth: styleProps.borderWidth,
-//       borderRadius: styleProps.borderRadius,
-//       backgroundColor: styleProps.backgroundColor,
-//     },
-//   });
-// }
-//
-// const styles = StyleSheet.create({
-//   container: {
-//     backgroundColor: 'transparent',
-//     position: 'relative',
-//   },
-//   container__text: {
-//     fontWeight: 'bold',
-//     zIndex: 10,
-//     textAlign: 'center',
-//   },
-//   container__view: {
-//     flexDirection: 'row',
-//     flex: 1,
-//     alignItems: 'center',
-//     justifyContent: 'center',
-//   },
-//   container__placeholder: {
-//     backgroundColor: 'rgba(0, 0, 0, 0.35)',
-//   },
-//   container__activity: {
-//     position: 'absolute',
-//     zIndex: 5,
-//   },
-//   button: {
-//     flex: 1,
-//     alignItems: 'center',
-//   },
-//   shadow: {
-//     backgroundColor: 'rgba(0, 0, 0, 0.15)',
-//     position: 'absolute',
-//     left: 2,
-//   },
-//   bottom: {
-//     position: 'absolute',
-//     bottom: 0,
-//     left: 0,
-//   },
-//   progress: {
-//     zIndex: 1,
-//     position: 'absolute',
-//     top: 0,
-//     left: 0,
-//   },
-//   content: {
-//     position: 'absolute',
-//     top: 0,
-//     left: 0,
-//   },
-//   text: {
-//     flex: 1,
-//     alignItems: 'center',
-//     justifyContent: 'center',
-//     zIndex: 3,
-//     overflow: 'hidden',
-//     paddingLeft: 12,
-//     paddingRight: 12,
-//   },
-// });
