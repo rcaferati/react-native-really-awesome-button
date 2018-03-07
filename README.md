@@ -1,4 +1,4 @@
-# &lt;AwesomeButton /&gt;
+# ReactNavite &lt;AwesomeButton /&gt;
 
 [![Travis](https://img.shields.io/travis/rcaferati/react-native-really-awesome-button/master.svg)](https://travis-ci.org/rcaferati/react-native-really-awesome-button) ![NPM](https://img.shields.io/npm/v/react-native-really-awesome-button.svg)
 
@@ -42,6 +42,32 @@ yarn add react-native-really-awesome-button
      >
        Label
      </AwesomeButton>
+    );
+  }
+```
+
+### Custom Children
+```jsx
+  import AwesomeButton from 'react-native-really-awesome-button';
+
+  function Button() {
+    return (
+     <AwesomeButton>
+       <Image source="require('send-icon.png)" />
+       <Text>Send it</Text>
+     </AwesomeButton>
+    );
+  }
+```
+
+### Importing a specific theme
+```jsx
+  import AwesomeButtonRick from 'react-native-really-awesome-button/src/themes/rick';
+
+  function Button() {
+    return (
+     <AwesomeButtonRick type="primary">Rick's Primary Button</AwesomeButtonRick>
+     <AwesomeButtonRick type="secondary">Rick's Secondary Button</AwesomeButtonRick>
     );
   }
 ```
