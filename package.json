@@ -7,7 +7,7 @@
   "license": "MIT",
   "homepage": "https://github.com/rcaferati/react-native-really-awesome-button",
   "scripts": {
-    "test": "echo \"Error: no test specified ATM\" && exit 1"
+    "test": "echo \"No test specified ATM\""
   },
   "repository": {
     "type": "git",
