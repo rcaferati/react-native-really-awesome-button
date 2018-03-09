@@ -16,7 +16,7 @@ const BUTTONS = {
     backgroundProgress: "#57a9d4",
     borderWidth: 0.5,
     borderColor: "#FFE11D",
-    ... COMMON,
+    ...COMMON,
   },
   secondary: {
     backgroundColor: "#EE3253",
@@ -24,11 +24,12 @@ const BUTTONS = {
     textColor: '#FFE11D',
     borderWidth: 0.5,
     borderColor: "#FFE11D",
-    ... COMMON,
+    ...COMMON,
   },
   disabled: {
-    backgroundColor: "#302E3C",
-    backgroundDarker: "#67cbc3",
+    backgroundColor: "#DFDFDF",
+    backgroundDarker: "#CACACA",
+    textColor: '#B6B6B6',
     ... COMMON,
   },
   primaryFlat: {
