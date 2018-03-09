@@ -23,7 +23,7 @@ yarn add react-native-really-awesome-button
 
   function Button() {
     return (
-      <AwesomeButton>Label</AwesomeButton>
+      <AwesomeButton>Text</AwesomeButton>
     );
   }
 ```
@@ -40,7 +40,7 @@ yarn add react-native-really-awesome-button
          next();
        }}
      >
-       Label
+       Text
      </AwesomeButton>
     );
   }
