@@ -4,7 +4,6 @@ import AwesomeButton from '../index';
 const COMMON = {
   borderRadius: 4,
   height: 55,
-  activityColor: "#b3e5e1",
   raiseLevel: 5,
 };
 
@@ -14,35 +13,57 @@ const BUTTONS = {
     backgroundDarker: "#125a9a",
     textColor: '#FFF',
     backgroundProgress: "#125a9a",
+    activityColor: "#b3e5e1",
     ... COMMON,
+  },
+  primaryFlat: {
+    backgroundColor: 'rgba(0, 0, 0, 0)',
+    backgroundDarker: 'rgba(0, 0, 0, 0)',
+    backgroundShadow: 'rgba(0, 0, 0, 0)',
+    raiseLevel: 0,
+    borderRadius: 0,
   },
   secondary: {
     backgroundColor: "#e9f0f5",
-    backgroundDarker: "#165fa4",
+    backgroundDarker: "#0e71c8",
+    backgroundActive: "#e1eef7",
+    backgroundProgress: "#c8e3f5",
+    backgroundPlaceholder: "#1e88e5",
     textColor: '#1e88e5',
-    borderWidth: 2,
+    borderWidth: 1,
     borderColor: "#1e88e5",
+    activityColor: "#1e88e5",
     ... COMMON,
   },
   disabled: {
-    backgroundColor: "#FAFAFA",
-    backgroundDarker: "#67cbc3",
+    backgroundColor: "#DFDFDF",
+    backgroundDarker: "#CACACA",
+    textColor: '#B6B6B6',
     ... COMMON,
   },
-  placeholder: {
-    backgroundColor: "#FAFAFA",
-    backgroundDarker: "#67cbc3",
-    ... COMMON,
-  }
 }
 
-export default class C137 extends React.Component {
-  render() {
-    return (
-      <AwesomeButton
-        {...this.props}
-        {...BUTTONS[this.props.type || 'primary']}
-      />
-    );
-  }
+const SIZE = {
+  small: {
+    width: 120,
+    height: 42,
+    textSize: 12,
+  },
+  large: {
+    width: 250,
+    height: 60,
+    textSize: 16,
+  },
+}
+
+export default function theme(props) {
+  const styles = props.disabled ? BUTTONS.disabled : BUTTONS[props.type || 'primary'];
+  const size = props.size ? SIZE[props.size] : {};
+  return (
+    <AwesomeButton
+      {...styles}
+      {...size}
+      {...props}
+    />
+  );
 }

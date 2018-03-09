@@ -7,7 +7,8 @@ import {
   Text,
   View,
   Animated,
-  Easing
+  Easing,
+  ViewPropTypes,
 } from 'react-native';
 import { styles, getStyles } from './styles';
 
@@ -23,17 +24,22 @@ export default class Button extends React.Component {
     backgroundDarker: PropTypes.string,
     backgroundActive: PropTypes.string,
     backgroundProgress: PropTypes.string,
+    backgroundShadow: PropTypes.string,
+    backgroundPlaceholder: PropTypes.string,
+    horizontalPadding: PropTypes.number,
     textColor: PropTypes.string,
     textSize: PropTypes.number,
     textLineHeight: PropTypes.number,
     activityColor: PropTypes.string,
-    style: View.propTypes.style,
+    style: ViewPropTypes.style,
     disabled: PropTypes.bool,
     progress: PropTypes.bool,
+    stretch: PropTypes.bool,
   };
 
   static defaultProps = {
     progress: false,
+    stretch: false,
     raiseLevel: 4,
     height: 60,
     width: 200,
@@ -43,10 +49,13 @@ export default class Button extends React.Component {
     borderColor: null,
     backgroundColor: '#c0c0c0',
     backgroundDarker: '#9f9f9f',
+    backgroundShadow: 'rgba(0, 0, 0, 0.15)',
     backgroundActive: 'rgba(0, 0, 0, 0.075)',
     backgroundProgress: 'rgba(0, 0, 0, 0.15)',
+    backgroundPlaceholder: 'rgba(0, 0, 0, 0.15)',
+    horizontalPadding: 12,
     textColor: '#FFFFFF',
-    textSize: 16,
+    textSize: 14,
     textLineHeight: 20,
   };
 
@@ -62,6 +71,7 @@ export default class Button extends React.Component {
     this.timeout = null;
     this.state = {
       activity: false,
+      width: null,
     };
   }
 
@@ -220,6 +230,14 @@ export default class Button extends React.Component {
     this.animateButton(0, callback);
   }
 
+  textLayout = (event) => {
+    if (this.props.width === null) {
+      this.setState({
+        width: event.nativeEvent.layout.width,
+      });
+    }
+  }
+
   renderContent(dynamicStyles) {
     const animatedStyles = {
       opacity: this.textOpacity,
@@ -266,6 +284,7 @@ export default class Button extends React.Component {
   }
 
   getAnimatedValues() {
+    const width = this.props.width || this.state.width || 0;
     return {
       animatedShadow: {
         transform: [
@@ -302,7 +321,7 @@ export default class Button extends React.Component {
           {
             translateX: this.animatedLoading.interpolate({
               inputRange: [0, 1],
-              outputRange: [-this.props.width, 0],
+              outputRange: [-width, 0],
             }),
           },
         ],
@@ -312,7 +331,7 @@ export default class Button extends React.Component {
 
   render() {
     const animatedValues = this.getAnimatedValues();
-    const dynamicStyles = getStyles(this.props);
+    const dynamicStyles = getStyles(this.props, this.state);
 
     return (
       <TouchableWithoutFeedback
@@ -335,50 +354,48 @@ export default class Button extends React.Component {
             ]}
           />
           <View style={[
-            styles.button,
-            dynamicStyles.button
-          ]}>
-            <View style={[
-              styles.bottom,
-              dynamicStyles.bottom
-            ]} />
-            <Animated.View
+            styles.bottom,
+            dynamicStyles.bottom
+          ]} />
+          <Animated.View
+            style={[
+              styles.content,
+              dynamicStyles.content,
+              animatedValues.animatedContent,
+            ]}
+          >
+            <View
               style={[
-                styles.content,
-                dynamicStyles.content,
-                animatedValues.animatedContent,
-              ]}
-            >
-              <View style={[
                 styles.text,
                 dynamicStyles.text,
-              ]}>
-                <Animated.View style={[
-                  styles.activeBackground,
-                  dynamicStyles.activeBackground,
-                  animatedValues.animatedActive,
-                ]} />
-                <Animated.View style={[
-                  styles.progress,
-                  dynamicStyles.progress,
-                  animatedValues.animatedProgress,
-                ]} />
-                { this.state.activity && (
-                  <Animated.View
-                    style={[
-                      styles.container__activity,
-                      animatedValues.animatedActivity,
-                    ]}
-                  >
-                    <ActivityIndicator
-                      color={this.props.activityColor}
-                    />
-                  </Animated.View>
-                )}
-                { this.renderContent(dynamicStyles) }
-              </View>
-            </Animated.View>
-          </View>
+              ]}
+              onLayout={this.textLayout}
+            >
+              <Animated.View style={[
+                styles.activeBackground,
+                dynamicStyles.activeBackground,
+                animatedValues.animatedActive,
+              ]} />
+              <Animated.View style={[
+                styles.progress,
+                dynamicStyles.progress,
+                animatedValues.animatedProgress,
+              ]} />
+              { this.state.activity && (
+                <Animated.View
+                  style={[
+                    styles.container__activity,
+                    animatedValues.animatedActivity,
+                  ]}
+                >
+                  <ActivityIndicator
+                    color={this.props.activityColor}
+                  />
+                </Animated.View>
+              )}
+              { this.renderContent(dynamicStyles) }
+            </View>
+          </Animated.View>
         </View>
       </TouchableWithoutFeedback>
     );

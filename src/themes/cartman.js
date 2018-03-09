@@ -31,20 +31,36 @@ const BUTTONS = {
     backgroundDarker: "#67cbc3",
     ... COMMON,
   },
-  placeholder: {
-    backgroundColor: "#32458e",
-    backgroundDarker: "#67cbc3",
-    ... COMMON,
-  }
+  primaryFlat: {
+    backgroundColor: 'rgba(0, 0, 0, 0)',
+    backgroundDarker: 'rgba(0, 0, 0, 0)',
+    backgroundShadow: 'rgba(0, 0, 0, 0)',
+    raiseLevel: 0,
+    borderRadius: 0,
+  },
 }
 
-export default class C137 extends React.Component {
-  render() {
-    return (
-      <AwesomeButton
-        {...this.props}
-        {...BUTTONS[this.props.type || 'primary']}
-      />
-    );
-  }
+const SIZE = {
+  small: {
+    width: 120,
+    height: 42,
+    textSize: 12,
+  },
+  large: {
+    width: 250,
+    height: 60,
+    textSize: 16,
+  },
+}
+
+export default function theme(props) {
+  const styles = props.disabled ? BUTTONS.disabled : BUTTONS[props.type || 'primary'];
+  const size = props.size ? SIZE[props.size] : {};
+  return (
+    <AwesomeButton
+      {...styles}
+      {...size}
+      {...props}
+    />
+  );
 }

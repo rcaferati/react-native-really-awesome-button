@@ -1,27 +1,31 @@
 import { StyleSheet } from 'react-native';
 
-export function getStyles(styleProps) {
+export function getStyles(styleProps, state) {
+  const width = styleProps.width || state.width || null;
   const dimensionsDiff = {
-    width: styleProps.width,
+    width,
     height: styleProps.height - styleProps.raiseLevel,
   }
   return StyleSheet.create({
     container: {
       height: styleProps.height,
-      width: styleProps.width,
+      width,
     },
     container__text: {
       color: styleProps.textColor,
+      fontSize: styleProps.textSize,
     },
     container__placeholder: {
-      width: styleProps.width * 0.5,
+      width: width * 0.5,
       height: styleProps.textLineHeight,
+      backgroundColor: styleProps.backgroundPlaceholder,
     },
     shadow: {
       bottom: -styleProps.raiseLevel/2,
-      width: styleProps.width - 4,
+      width: width - 4,
       height: styleProps.height - styleProps.raiseLevel,
       borderRadius: styleProps.borderRadius,
+      backgroundColor: styleProps.backgroundShadow,
     },
     bottom: {
       borderRadius: styleProps.borderRadius,
@@ -45,6 +49,8 @@ export function getStyles(styleProps) {
       borderWidth: styleProps.borderWidth,
       borderRadius: styleProps.borderRadius,
       backgroundColor: styleProps.backgroundColor,
+      paddingLeft: styleProps.horizontalPadding,
+      paddingRight: styleProps.horizontalPadding,
     },
   });
 }
@@ -65,19 +71,11 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  container__placeholder: {
-    backgroundColor: 'rgba(0, 0, 0, 0.35)',
-  },
   container__activity: {
     position: 'absolute',
     zIndex: 5,
   },
-  button: {
-    flex: 1,
-    alignItems: 'center',
-  },
   shadow: {
-    backgroundColor: 'rgba(0, 0, 0, 0.15)',
     position: 'absolute',
     left: 2,
   },
@@ -108,7 +106,5 @@ export const styles = StyleSheet.create({
     justifyContent: 'center',
     zIndex: 3,
     overflow: 'hidden',
-    paddingLeft: 12,
-    paddingRight: 12,
   },
 });
