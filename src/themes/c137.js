@@ -5,30 +5,39 @@ const COMMON = {
   borderRadius: 25,
   height: 55,
   activityColor: "#b3e5e1",
-  backgroundProgress: "#b3e5e1",
   raiseLevel: 4,
 };
 
 const BUTTONS = {
   primary: {
+    ... COMMON,
     backgroundColor: "#475371",
     backgroundDarker: "#262d3d",
+    backgroundProgress: "#262d3d",
     textColor: '#e4e7ee',
-    ... COMMON,
+    activityColor: "#e4e7ee",
   },
   secondary: {
+    ... COMMON,
     backgroundColor: "#fefc6b",
     backgroundDarker: "#d2ce02",
+    backgroundProgress: "#d2ce02",
     textColor: '#535100',
+    activityColor: "#535100",
+  },
+  anchor: {
     ... COMMON,
+    backgroundColor: "#f3c8ad",
+    backgroundDarker: "#734922",
+    backgroundProgress: "#d2ce02",
+    textColor: '#734922',
+    activityColor: "#535100",
   },
   disabled: {
-    backgroundColor: "#edc9b1",
-    backgroundDarker: "#755637",
-    borderWidth: 1,
-    borderColor: "#bd8f61",
-    textColor: '#deaf90',
-    ...COMMON,
+    ... COMMON,
+    backgroundColor: "#DFDFDF",
+    backgroundDarker: "#CACACA",
+    textColor: '#B6B6B6',
   },
   primaryFlat: {
     backgroundColor: 'rgba(0, 0, 0, 0)',

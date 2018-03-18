@@ -4,33 +4,41 @@ import AwesomeButton from '../index';
 const COMMON = {
   borderRadius: 8,
   height: 53,
-  activityColor: "#b3e5e1",
+  activityColor: "#FFE11D",
   raiseLevel: 6,
 };
 
 const BUTTONS = {
   primary: {
+    ...COMMON,
     backgroundColor: "#00B8C4",
     backgroundDarker: "#ccba3f",
     textColor: '#FFE11D',
-    backgroundProgress: "#57a9d4",
-    borderWidth: 0.5,
+    borderWidth: 1,
     borderColor: "#FFE11D",
-    ...COMMON,
   },
   secondary: {
+    ...COMMON,
     backgroundColor: "#EE3253",
     backgroundDarker: "#ccba3f",
     textColor: '#FFE11D',
-    borderWidth: 0.5,
+    borderWidth: 1,
     borderColor: "#FFE11D",
+  },
+  anchor: {
     ...COMMON,
+    backgroundColor: "#302E3C",
+    backgroundDarker: "#844D38",
+    textColor: '#a25f45',
+    backgroundProgress: "#57a9d4",
+    borderWidth: 1,
+    borderColor: "#844D38",
   },
   disabled: {
+    ... COMMON,
     backgroundColor: "#DFDFDF",
     backgroundDarker: "#CACACA",
     textColor: '#B6B6B6',
-    ... COMMON,
   },
   primaryFlat: {
     backgroundColor: 'rgba(0, 0, 0, 0)',

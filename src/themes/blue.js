@@ -9,21 +9,15 @@ const COMMON = {
 
 const BUTTONS = {
   primary: {
+    ... COMMON,
     backgroundColor: "#1775c8",
     backgroundDarker: "#125a9a",
-    textColor: '#FFF',
     backgroundProgress: "#125a9a",
+    textColor: '#FFF',
     activityColor: "#b3e5e1",
-    ... COMMON,
-  },
-  primaryFlat: {
-    backgroundColor: 'rgba(0, 0, 0, 0)',
-    backgroundDarker: 'rgba(0, 0, 0, 0)',
-    backgroundShadow: 'rgba(0, 0, 0, 0)',
-    raiseLevel: 0,
-    borderRadius: 0,
   },
   secondary: {
+    ... COMMON,
     backgroundColor: "#e9f0f5",
     backgroundDarker: "#0e71c8",
     backgroundActive: "#e1eef7",
@@ -33,13 +27,27 @@ const BUTTONS = {
     borderWidth: 1,
     borderColor: "#1e88e5",
     activityColor: "#1e88e5",
+  },
+  anchor: {
     ... COMMON,
+    backgroundColor: "#0e4f88",
+    backgroundDarker: "#09365e",
+    backgroundProgress: "#09365e",
+    textColor: '#FFF',
+    activityColor: "#FFF",
   },
   disabled: {
+    ... COMMON,
     backgroundColor: "#DFDFDF",
     backgroundDarker: "#CACACA",
     textColor: '#B6B6B6',
-    ... COMMON,
+  },
+  primaryFlat: {
+    backgroundColor: 'rgba(0, 0, 0, 0)',
+    backgroundDarker: 'rgba(0, 0, 0, 0)',
+    backgroundShadow: 'rgba(0, 0, 0, 0)',
+    raiseLevel: 0,
+    borderRadius: 0,
   },
 }
 

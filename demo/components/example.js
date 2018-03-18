@@ -1,103 +1,84 @@
 import React from 'react';
 import { StyleSheet, Button, View } from 'react-native';
-import AwesomeButton from 'react-native-really-awesome-button/src/themes/blue';
 import Container from './container';
 import Section from './section';
 
-export default function example() {
+export default function example({ButtonComponent}) {
   return (
     <Container>
       <Section title="Common">
-        <AwesomeButton
+        <ButtonComponent
           style={styles.button}
           type="primary"
         >
           Primary
-        </AwesomeButton>
-        <AwesomeButton
+        </ButtonComponent>
+        <ButtonComponent
           style={styles.button}
           type="secondary"
         >
           Secondary
-        </AwesomeButton>
-        <AwesomeButton
+        </ButtonComponent>
+        <ButtonComponent
+          style={styles.button}
+          type="anchor"
+        >
+          Anchor
+        </ButtonComponent>
+        <ButtonComponent
           disabled
           style={styles.button}
           type="primary"
         >
           Disabled
-        </AwesomeButton>
+        </ButtonComponent>
       </Section>
       <Section title="Progress">
-        <AwesomeButton
+        <ButtonComponent
           progress
           onPress={(next) => setTimeout(() => { next() }, 1000)}
           style={styles.button}
           type="primary"
         >
           Progress
-        </AwesomeButton>
-        <AwesomeButton
+        </ButtonComponent>
+        <ButtonComponent
           progress
           onPress={(next) => setTimeout(() => { next() }, 1000)}
           style={styles.button}
           type="secondary"
         >
           Progress
-        </AwesomeButton>
+        </ButtonComponent>
       </Section>
       <Section title="Empty Placeholder">
-        <AwesomeButton
+        <ButtonComponent
           style={styles.button}
           type="primary"
         />
-        <AwesomeButton
+        <ButtonComponent
           style={styles.button}
           type="secondary"
         />
       </Section>
       <Section title="Sizes">
-        <AwesomeButton
+        <ButtonComponent
           style={styles.button}
           size="small"
           type="primary"
         >
           Primary Small
-        </AwesomeButton>
-        <AwesomeButton
+        </ButtonComponent>
+        <ButtonComponent
           style={styles.button}
           type="secondary"
           size="large"
         >
           Secondary Large
-        </AwesomeButton>
+        </ButtonComponent>
       </Section>
     </Container>
   );
-}
-
-example.navigationOptions = ({ navigation }) => {
-  return {
-    title: 'Blue Theme',
-    headerStyle: {
-      backgroundColor: '#1775c8',
-    },
-    headerTintColor: '#FFF',
-    headerTitleStyle: {
-      fontWeight: 'bold',
-    },
-    headerRight: (
-        <AwesomeButton
-          size="small"
-          type="primaryFlat"
-          width={80}
-          onPress={() => navigation.navigate('Example2')}
-          color="#fff"
-        >
-          Next
-        </AwesomeButton>
-      ),
-  };
 }
 
 const styles = StyleSheet.create({
