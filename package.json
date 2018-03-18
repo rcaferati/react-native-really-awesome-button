@@ -1,6 +1,6 @@
 {
   "name": "react-native-really-awesome-button",
-  "version": "0.3.1",
+  "version": "0.4.0",
   "description": "ReactNative performant component that renders an 60fps animated set of progress enabled 3D UI buttons.",
   "main": "src/index.js",
   "author": "Rafael Caferati",
