@@ -6,7 +6,7 @@
 
 Run the <a target="_blank" title="Live Demo" href="https://expo.io/@rcaferati/react-native-really-awesome-button">live demo</a> @ expo.io
 
-<img width="225" src='https://raw.githubusercontent.com/rcaferati/react-native-really-awesome-button/master/demo/demo-button-blue.gif?raw=true' /><img width="225" src='https://raw.githubusercontent.com/rcaferati/react-native-really-awesome-button/master/demo/demo-button-rick.gif?raw=true' />
+<img width="225" src='https://raw.githubusercontent.com/rcaferati/react-native-really-awesome-button/master/demo/demo-button-blue.gif?raw=true' /><img width="225" src='https://raw.githubusercontent.com/rcaferati/react-native-really-awesome-button/master/demo/demo-button-rick.gif?raw=true' /><img width="225" src='https://raw.githubusercontent.com/rcaferati/react-native-really-awesome-button/master/demo/demo-button-cartman.gif?raw=true' />
 
 ### Installation
 ```
