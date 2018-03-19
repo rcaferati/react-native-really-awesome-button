@@ -4,6 +4,8 @@
 
 `react-native-really-awesome-button` is a performant, extendable, production ready ReactNative component that renders an animated set of 3D UI buttons.
 
+Run the <a target="_blank" title="Live Demo" href="https://expo.io/@rcaferati/react-native-really-awesome-button">live demo</a> @ expo.io
+
 <img width="225" src='https://raw.githubusercontent.com/rcaferati/react-native-really-awesome-button/master/demo/ios-button-gif.gif?raw=true' />
 
 ### Installation
