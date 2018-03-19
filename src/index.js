@@ -35,6 +35,8 @@ export default class Button extends React.Component {
     disabled: PropTypes.bool,
     progress: PropTypes.bool,
     stretch: PropTypes.bool,
+    friction: PropTypes.number,
+    springAnimation: PropTypes.bool
   };
 
   static defaultProps = {
@@ -57,6 +59,8 @@ export default class Button extends React.Component {
     textColor: '#FFFFFF',
     textSize: 14,
     textLineHeight: 20,
+    friction: 1,
+    springAnimation: false
   };
 
   constructor(props) {
@@ -67,6 +71,7 @@ export default class Button extends React.Component {
     this.animatedActive = new Animated.Value(0);
     this.animatedValue = new Animated.Value(0);
     this.animatedLoading = new Animated.Value(0);
+    this.buttonScale = new Animated.Value(1)
     this.animating = false;
     this.timeout = null;
     this.state = {
@@ -157,6 +162,7 @@ export default class Button extends React.Component {
     ) {
       return false;
     }
+    this.props.springAnimation ? this.compress() : null
     this.animateButton(1);
     this.animateActive(1);
   }
@@ -169,6 +175,7 @@ export default class Button extends React.Component {
     ) {
       return false;
     }
+    this.props.springAnimation ? this.uncompress() : null
     this.timeout = setTimeout(() => {
       this.release();
     }, 100);
@@ -223,6 +230,26 @@ export default class Button extends React.Component {
         });
       });
     }
+  }
+
+  compress = () => {
+    Animated.timing(
+       this.buttonScale,
+       {
+        toValue: 0.95,
+        duration: 200
+       }
+    ).start()
+  }
+
+  uncompress = () => {
+    Animated.spring(
+       this.buttonScale,
+       {
+        toValue: 1,
+        friction: this.props.friction
+       }
+    ).start()
   }
 
   release = (callback) => {
@@ -326,6 +353,13 @@ export default class Button extends React.Component {
           },
         ],
       },
+      physicalCompression: {
+        transform: [
+          {
+            scale: this.buttonScale
+          }
+        ]
+      }
     };
   }
 
@@ -339,11 +373,12 @@ export default class Button extends React.Component {
         onPressOut={this.pressOut}
         onPress={this.press}
       >
-        <View style={
+        <Animated.View style={
           [
             styles.container,
             dynamicStyles.container,
             this.props.style,
+            animatedValues.physicalCompression
           ]}
         >
           <Animated.View
@@ -361,7 +396,7 @@ export default class Button extends React.Component {
             style={[
               styles.content,
               dynamicStyles.content,
-              animatedValues.animatedContent,
+              animatedValues.animatedContent
             ]}
           >
             <View
@@ -396,7 +431,7 @@ export default class Button extends React.Component {
               { this.renderContent(dynamicStyles) }
             </View>
           </Animated.View>
-        </View>
+        </Animated.View>
       </TouchableWithoutFeedback>
     );
   }
