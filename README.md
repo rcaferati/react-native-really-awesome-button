@@ -93,7 +93,9 @@ yarn add react-native-really-awesome-button
 | textLineHeight        | `number`      | `20`        | Button default label text line-height |
 | activityColor         | `string`      | `#FFFFFF`   | Progress button error label text |
 | progress              | `bool`        | `"Success"` | Enable progress animation |
+| springAnimation       | `bool`        | `false`     | Enable spring animation |
 | disabled              | `bool`        | `true`      | Button disabled state: cancels animation and onPress func |
+
 
 
 ## Author
