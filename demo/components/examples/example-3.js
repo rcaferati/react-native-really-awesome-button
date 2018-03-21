@@ -41,6 +41,6 @@ example.navigationOptions = ({ navigation }) => {
       </AwesomeButton>
     ),
   };
-}
+};
 
 export default example;

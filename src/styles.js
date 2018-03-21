@@ -1,11 +1,12 @@
 import { StyleSheet } from 'react-native';
+import { memoize } from './helpers';
 
-export function getStyles(styleProps, state) {
+export const getStyles = memoize((styleProps, state) => {
   const width = styleProps.width || state.width || null;
   const dimensionsDiff = {
     width,
     height: styleProps.height - styleProps.raiseLevel,
-  }
+  };
   return StyleSheet.create({
     container: {
       height: styleProps.height,
@@ -21,7 +22,7 @@ export function getStyles(styleProps, state) {
       backgroundColor: styleProps.backgroundPlaceholder,
     },
     shadow: {
-      bottom: -styleProps.raiseLevel/2,
+      bottom: -styleProps.raiseLevel / 2,
       width: width - 4,
       height: styleProps.height - styleProps.raiseLevel,
       borderRadius: styleProps.borderRadius,
@@ -53,7 +54,7 @@ export function getStyles(styleProps, state) {
       paddingRight: styleProps.horizontalPadding,
     },
   });
-}
+});
 
 export const styles = StyleSheet.create({
   container: {

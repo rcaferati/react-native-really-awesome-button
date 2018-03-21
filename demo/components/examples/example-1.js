@@ -19,17 +19,17 @@ example.navigationOptions = ({ navigation }) => {
       fontWeight: 'bold',
     },
     headerRight: (
-        <AwesomeButton
-          size="small"
-          type="primaryFlat"
-          width={80}
-          onPress={() => navigation.navigate('Example2')}
-          color="#fff"
-        >
-          Next
-        </AwesomeButton>
-      ),
+      <AwesomeButton
+        size="small"
+        type="primaryFlat"
+        width={80}
+        onPress={() => navigation.navigate('Example2')}
+        color="#fff"
+      >
+        Next
+      </AwesomeButton>
+    ),
   };
-}
+};
 
 export default example;

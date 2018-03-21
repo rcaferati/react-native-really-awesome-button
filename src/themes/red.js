@@ -1,39 +1,40 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import AwesomeButton from '../index';
 
 const COMMON = {
   borderRadius: 4,
   height: 55,
-  activityColor: "#FFFFFF",
+  activityColor: '#FFFFFF',
   raiseLevel: 5,
 };
 
 const BUTTONS = {
   primary: {
-    ... COMMON,
-    backgroundColor: "#E82F3A",
-    backgroundDarker: "#a41b1b",
-    backgroundProgress: "#a41b1b",
+    ...COMMON,
+    backgroundColor: '#E82F3A',
+    backgroundDarker: '#a41b1b',
+    backgroundProgress: '#a41b1b',
     textColor: '#FFFFFF',
   },
   secondary: {
-    ... COMMON,
-    backgroundColor: "#404C60",
-    backgroundDarker: "#242f41",
-    backgroundProgress: "#242f41",
+    ...COMMON,
+    backgroundColor: '#404C60',
+    backgroundDarker: '#242f41',
+    backgroundProgress: '#242f41',
     textColor: '#FFFFFF',
   },
   anchor: {
-    ... COMMON,
-    backgroundColor: "#af2831",
-    backgroundDarker: "#8b1e25",
-    backgroundProgress: "#8b1e25",
+    ...COMMON,
+    backgroundColor: '#af2831',
+    backgroundDarker: '#8b1e25',
+    backgroundProgress: '#8b1e25',
     textColor: '#FFFFFF',
   },
   disabled: {
-    ... COMMON,
-    backgroundColor: "#DFDFDF",
-    backgroundDarker: "#CACACA",
+    ...COMMON,
+    backgroundColor: '#DFDFDF',
+    backgroundDarker: '#CACACA',
     textColor: '#B6B6B6',
   },
   primaryFlat: {
@@ -43,7 +44,7 @@ const BUTTONS = {
     raiseLevel: 0,
     borderRadius: 0,
   },
-}
+};
 
 const SIZE = {
   small: {
@@ -56,16 +57,35 @@ const SIZE = {
     height: 60,
     textSize: 16,
   },
-}
+};
 
-export default function theme(props) {
-  const styles = props.disabled ? BUTTONS.disabled : BUTTONS[props.type || 'primary'];
-  const size = props.size ? SIZE[props.size] : {};
+function theme(props) {
+  const {
+    disabled,
+    type,
+    size,
+  } = props;
+  const styles = disabled ? BUTTONS.disabled : BUTTONS[type];
+  const sizeObj = size ? SIZE[size] : {};
   return (
     <AwesomeButton
       {...styles}
-      {...size}
+      {...sizeObj}
       {...props}
     />
   );
 }
+
+theme.propTypes = {
+  type: PropTypes.string,
+  disabled: PropTypes.bool,
+  size: PropTypes.string,
+};
+
+theme.defaultProps = {
+  type: 'primary',
+  disabled: false,
+  size: null,
+};
+
+export default theme;

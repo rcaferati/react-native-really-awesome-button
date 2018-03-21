@@ -5,7 +5,13 @@
   "devDependencies": {
     "jest-expo": "25.0.0",
     "react-native-scripts": "1.11.1",
-    "react-test-renderer": "16.2.0"
+    "react-test-renderer": "16.2.0",
+    "eslint": "^4.6.1",
+    "eslint-config-airbnb": "^15.1.0",
+    "eslint-plugin-import": "^2.7.0",
+    "eslint-plugin-jsx-a11y": "^5.1.1",
+    "eslint-plugin-react": "^7.3.0",
+    "babel-eslint": "^8.0.0"
   },
   "main": "./node_modules/react-native-scripts/build/bin/crna-entry.js",
   "scripts": {

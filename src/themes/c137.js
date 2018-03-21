@@ -1,42 +1,43 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import AwesomeButton from '../index';
 
 const COMMON = {
   borderRadius: 25,
   height: 55,
-  activityColor: "#b3e5e1",
+  activityColor: '#b3e5e1',
   raiseLevel: 4,
 };
 
 const BUTTONS = {
   primary: {
-    ... COMMON,
-    backgroundColor: "#475371",
-    backgroundDarker: "#262d3d",
-    backgroundProgress: "#262d3d",
+    ...COMMON,
+    backgroundColor: '#475371',
+    backgroundDarker: '#262d3d',
+    backgroundProgress: '#262d3d',
     textColor: '#e4e7ee',
-    activityColor: "#e4e7ee",
+    activityColor: '#e4e7ee',
   },
   secondary: {
-    ... COMMON,
-    backgroundColor: "#fefc6b",
-    backgroundDarker: "#d2ce02",
-    backgroundProgress: "#d2ce02",
+    ...COMMON,
+    backgroundColor: '#fefc6b',
+    backgroundDarker: '#d2ce02',
+    backgroundProgress: '#d2ce02',
     textColor: '#535100',
-    activityColor: "#535100",
+    activityColor: '#535100',
   },
   anchor: {
-    ... COMMON,
-    backgroundColor: "#f3c8ad",
-    backgroundDarker: "#734922",
-    backgroundProgress: "#d2ce02",
+    ...COMMON,
+    backgroundColor: '#f3c8ad',
+    backgroundDarker: '#734922',
+    backgroundProgress: '#d2ce02',
     textColor: '#734922',
-    activityColor: "#535100",
+    activityColor: '#535100',
   },
   disabled: {
-    ... COMMON,
-    backgroundColor: "#DFDFDF",
-    backgroundDarker: "#CACACA",
+    ...COMMON,
+    backgroundColor: '#DFDFDF',
+    backgroundDarker: '#CACACA',
     textColor: '#B6B6B6',
   },
   primaryFlat: {
@@ -46,7 +47,7 @@ const BUTTONS = {
     raiseLevel: 0,
     borderRadius: 0,
   },
-}
+};
 
 const SIZE = {
   small: {
@@ -59,16 +60,35 @@ const SIZE = {
     height: 60,
     textSize: 16,
   },
-}
+};
 
-export default function theme(props) {
-  const styles = props.disabled ? BUTTONS.disabled : BUTTONS[props.type || 'primary'];
-  const size = props.size ? SIZE[props.size] : {};
+function theme(props) {
+  const {
+    disabled,
+    type,
+    size,
+  } = props;
+  const styles = disabled ? BUTTONS.disabled : BUTTONS[type];
+  const sizeObj = size ? SIZE[size] : {};
   return (
     <AwesomeButton
       {...styles}
-      {...size}
+      {...sizeObj}
       {...props}
     />
   );
 }
+
+theme.propTypes = {
+  type: PropTypes.string,
+  disabled: PropTypes.bool,
+  size: PropTypes.string,
+};
+
+theme.defaultProps = {
+  type: 'primary',
+  disabled: false,
+  size: null,
+};
+
+export default theme;

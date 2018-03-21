@@ -78,22 +78,27 @@ yarn add react-native-really-awesome-button
 
 | Attributes            | Type          | Default     | Description |
 | :---------            | :--:          | :-----:     | :----------- |
-| onPress               | `Func`        | `null`      | Button onPress function |
-| style                 | `Style`       | `null`      | Button container custom styles |
-| raiseLevel            | `number`      | `4`         | Buttom 3D raise level |
-| height                | `number`      | `50`        | Button height |
-| width                 | `number`      | `200`       | Button width |
+| activityColor         | `string`      | `#FFFFFF`   | Progress button error label text |
+| backgroundActive      | `string`      | `#C0C0C0`   | Button active background-color |
+| backgroundColor       | `string`      | `#C0C0C0`   | Button main background-color |
+| backgroundPlaceholder | `string`      | `#C0C0C0`   | Button placeholder background-color |
+| backgroundProgress    | `string`      | `#C0C0C0`   | Button progress bar background-color |
+| backgroundShadow      | `string`      | `#C0C0C0`   | Button progress bar background-color |
+| backgroundDarker      | `string`      | `#9F9F9F`   | Button front face background-color |
+| borderColor           | `string`      | `null`      | Button border-color |
 | borderRadius          | `number`      | `4`         | Button border-radius |
 | borderWidth           | `number`      | `0`         | Button border-width |
-| borderColor           | `string`      | `null`      | Button border-color |
-| backgroundColor       | `string`      | `#C0C0C0`   | Button main background-color |
-| backgroundDarker      | `string`      | `#9F9F9F`   | Button frontal darker background-color |
-| textColor             | `string`      | `#FFFFFF`   | Button default label text color |
-| textSize              | `number`      | `16`        | Button default label text font-size |
-| textLineHeight        | `number`      | `20`        | Button default label text line-height |
-| activityColor         | `string`      | `#FFFFFF`   | Progress button error label text |
-| progress              | `bool`        | `false`     | Enable progress animation |
 | disabled              | `bool`        | `true`      | Button disabled state: cancels animation and onPress func |
+| height                | `number`      | `50`        | Button height |
+| onPress               | `Func`        | `null`      | Button onPress function |
+| progress              | `bool`        | `false`     | Enable progress animation |
+| raiseLevel            | `number`      | `4`         | Button 3D raise level |
+| springRelease         | `bool`        | `true`      | Button uses spring on the release animation |
+| style                 | `Style`       | `null`      | Button container custom styles |
+| textColor             | `string`      | `#FFFFFF`   | Button default label text color |
+| textLineHeight        | `number`      | `20`        | Button default label text line-height |
+| textSize              | `number`      | `16`        | Button default label text font-size |
+| width                 | `number`      | `200`       | Button width |
 
 
 ## Author
