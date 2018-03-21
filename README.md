@@ -6,7 +6,7 @@
 
 Run the <a target="_blank" title="Live Demo" href="https://expo.io/@rcaferati/react-native-really-awesome-button">live demo</a> @ expo.io
 
-<img width="225" src='https://raw.githubusercontent.com/rcaferati/react-native-really-awesome-button/master/demo/demo-button-blue.gif?raw=true' /><img width="225" src='https://raw.githubusercontent.com/rcaferati/react-native-really-awesome-button/master/demo/demo-button-rick.gif?raw=true' /><img width="225" src='https://raw.githubusercontent.com/rcaferati/react-native-really-awesome-button/master/demo/demo-button-cartman.gif?raw=true' />
+<img width="225" src='https://raw.githubusercontent.com/rcaferati/react-native-really-awesome-button/master/demo/demo-button-blue-new.gif?raw=true' /><img width="225" src='https://raw.githubusercontent.com/rcaferati/react-native-really-awesome-button/master/demo/demo-button-rick.gif?raw=true' /><img width="225" src='https://raw.githubusercontent.com/rcaferati/react-native-really-awesome-button/master/demo/demo-button-cartman.gif?raw=true' />
 
 ### Installation
 ```
@@ -92,7 +92,7 @@ yarn add react-native-really-awesome-button
 | textSize              | `number`      | `16`        | Button default label text font-size |
 | textLineHeight        | `number`      | `20`        | Button default label text line-height |
 | activityColor         | `string`      | `#FFFFFF`   | Progress button error label text |
-| progress              | `bool`        | `"Success"` | Enable progress animation |
+| progress              | `bool`        | `false`     | Enable progress animation |
 | disabled              | `bool`        | `true`      | Button disabled state: cancels animation and onPress func |
 
 
