@@ -72,11 +72,11 @@ function theme(props) {
     size,
   } = props;
   const styles = disabled ? BUTTONS.disabled : BUTTONS[type];
-  const realSize = size ? SIZE[size] : {};
+  const sizeObj = size ? SIZE[size] : {};
   return (
     <AwesomeButton
       {...styles}
-      {...realSize}
+      {...sizeObj}
       {...props}
     />
   );
