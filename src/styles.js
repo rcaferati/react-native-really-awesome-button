@@ -1,60 +1,95 @@
 import { StyleSheet } from 'react-native';
 import { memoize } from './helpers';
 
-export const getStyles = memoize((styleProps, state) => {
-  const width = styleProps.width || state.width || null;
+const memoized = memoize((props) => {
   const dimensionsDiff = {
-    width,
-    height: styleProps.height - styleProps.raiseLevel,
+    width: props.width,
+    height: props.height - props.raiseLevel,
   };
   return StyleSheet.create({
     container: {
-      height: styleProps.height,
-      width,
+      height: props.height,
+      width: props.width,
     },
     container__text: {
-      color: styleProps.textColor,
-      fontSize: styleProps.textSize,
+      color: props.textColor,
+      fontSize: props.textSize,
     },
     container__placeholder: {
-      width: width * 0.5,
-      height: styleProps.textLineHeight,
-      backgroundColor: styleProps.backgroundPlaceholder,
+      width: props.width * 0.5,
+      height: props.textLineHeight,
+      backgroundColor: props.backgroundPlaceholder,
     },
     shadow: {
-      bottom: -styleProps.raiseLevel / 2,
-      width: width - 4,
-      height: styleProps.height - styleProps.raiseLevel,
-      borderRadius: styleProps.borderRadius,
-      backgroundColor: styleProps.backgroundShadow,
+      bottom: -props.raiseLevel / 2,
+      width: props.width - 4,
+      height: props.height - props.raiseLevel,
+      borderRadius: props.borderRadius,
+      backgroundColor: props.backgroundShadow,
     },
     bottom: {
-      borderRadius: styleProps.borderRadius,
-      backgroundColor: styleProps.backgroundDarker,
+      borderRadius: props.borderRadius,
+      backgroundColor: props.backgroundDarker,
       ...dimensionsDiff,
     },
     progress: {
-      backgroundColor: styleProps.backgroundProgress,
+      backgroundColor: props.backgroundProgress,
       ...dimensionsDiff,
     },
     content: {
       ...dimensionsDiff,
-      borderRadius: styleProps.borderRadius,
+      borderRadius: props.borderRadius,
     },
     activeBackground: {
       ...dimensionsDiff,
-      backgroundColor: styleProps.backgroundActive,
+      backgroundColor: props.backgroundActive,
     },
     text: {
-      borderColor: styleProps.borderColor,
-      borderWidth: styleProps.borderWidth,
-      borderRadius: styleProps.borderRadius,
-      backgroundColor: styleProps.backgroundColor,
-      paddingLeft: styleProps.horizontalPadding,
-      paddingRight: styleProps.horizontalPadding,
+      borderColor: props.borderColor,
+      borderWidth: props.borderWidth,
+      borderRadius: props.borderRadius,
+      backgroundColor: props.backgroundColor,
+      paddingLeft: props.horizontalPadding,
+      paddingRight: props.horizontalPadding,
     },
   });
 });
+
+export const getStyles = (styleProps, state) => {
+  const {
+    backgroundActive,
+    backgroundColor,
+    backgroundDarker,
+    backgroundPlaceholder,
+    backgroundProgress,
+    borderColor,
+    borderRadius,
+    borderWidth,
+    height,
+    horizontalPadding,
+    raiseLevel,
+    textColor,
+    textLineHeight,
+    textSize,
+  } = styleProps;
+  return memoized({
+    backgroundActive,
+    backgroundColor,
+    backgroundDarker,
+    backgroundPlaceholder,
+    backgroundProgress,
+    borderColor,
+    borderRadius,
+    borderWidth,
+    height,
+    horizontalPadding,
+    raiseLevel,
+    textColor,
+    textLineHeight,
+    textSize,
+    width: styleProps.width || state.width || null,
+  });
+};
 
 export const styles = StyleSheet.create({
   container: {
