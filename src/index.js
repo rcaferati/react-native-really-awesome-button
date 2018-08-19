@@ -301,6 +301,7 @@ export default class Button extends React.Component {
     if (!children) {
       return (
         <Animated.View
+          testID="aws-btn-content-placeholder"
           style={[
             styles.container__placeholder,
             dynamicStyles.container__placeholder,
@@ -312,6 +313,7 @@ export default class Button extends React.Component {
     if (typeof children === 'string') {
       return (
         <Animated.Text
+          testID="aws-btn-content-text"
           style={[
             styles.container__text,
             dynamicStyles.container__text,
@@ -324,6 +326,7 @@ export default class Button extends React.Component {
     }
     return (
       <Animated.View
+        testID="aws-btn-content-view"
         style={[
           styles.container__view,
           dynamicStyles.container__view,
@@ -353,6 +356,7 @@ export default class Button extends React.Component {
           ]}
         >
           <Animated.View
+            testID="aws-btn-shadow"
             style={[
               styles.shadow,
               dynamicStyles.shadow,
@@ -360,12 +364,14 @@ export default class Button extends React.Component {
             ]}
           />
           <View
+            testID="aws-btn-bottom"
             style={[
               styles.bottom,
               dynamicStyles.bottom,
             ]}
           />
           <Animated.View
+            testID="aws-btn-content"
             style={[
               styles.content,
               dynamicStyles.content,
@@ -373,6 +379,7 @@ export default class Button extends React.Component {
             ]}
           >
             <View
+              testID="aws-btn-text"
               style={[
                 styles.text,
                 dynamicStyles.text,
@@ -380,6 +387,7 @@ export default class Button extends React.Component {
               onLayout={this.textLayout}
             >
               <Animated.View
+                testID="aws-btn-active-background"
                 style={[
                   styles.activeBackground,
                   dynamicStyles.activeBackground,
@@ -387,6 +395,7 @@ export default class Button extends React.Component {
                 ]}
               />
               <Animated.View
+                testID="aws-btn-progress"
                 style={[
                   styles.progress,
                   dynamicStyles.progress,
@@ -395,6 +404,7 @@ export default class Button extends React.Component {
               />
               { this.state.activity && (
                 <Animated.View
+                  testID="aws-btn-activity-indicator"
                   style={[
                     styles.container__activity,
                     animatedValues.animatedActivity,

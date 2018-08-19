@@ -7,7 +7,7 @@
   "license": "MIT",
   "homepage": "https://github.com/rcaferati/react-native-really-awesome-button",
   "scripts": {
-    "test": "echo \"No test specified ATM\""
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -30,5 +30,19 @@
   "peerDependencies": {
     "react-native": ">=0.43.0",
     "prop-types": ">=15.5.7"
+  },
+  "devDependencies": {
+    "babel-jest": "23.4.2",
+    "babel-preset-react-native": "4.0.0",
+    "jest": "23.5.0",
+    "react": "16.3.1",
+    "react-native": "0.55.4",
+    "react-test-renderer": "16.3.1"
+  },
+  "jest": {
+    "preset": "react-native",
+    "testPathIgnorePatterns": [
+      "/demo/"
+    ]
   }
 }
