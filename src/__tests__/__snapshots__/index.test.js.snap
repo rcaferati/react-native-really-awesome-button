@@ -3,6 +3,7 @@
 exports[`AwesomeButton should render 1`] = `
 <View
   accessible={true}
+  onLayout={[Function]}
   onResponderGrant={[Function]}
   onResponderMove={[Function]}
   onResponderRelease={[Function]}
@@ -22,6 +23,7 @@ exports[`AwesomeButton should render 1`] = `
       null,
     ]
   }
+  testID="aws-btn-content-view"
 >
   <View
     style={
@@ -159,6 +161,7 @@ exports[`AwesomeButton should render 1`] = `
 exports[`AwesomeButton should render a default text children 1`] = `
 <View
   accessible={true}
+  onLayout={[Function]}
   onResponderGrant={[Function]}
   onResponderMove={[Function]}
   onResponderRelease={[Function]}
@@ -178,6 +181,7 @@ exports[`AwesomeButton should render a default text children 1`] = `
       null,
     ]
   }
+  testID="aws-btn-content-view"
 >
   <View
     style={
