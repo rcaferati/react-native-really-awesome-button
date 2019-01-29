@@ -1,18 +1,14 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from "react";
+import PropTypes from "prop-types";
 import {
   ActivityIndicator,
   TouchableWithoutFeedback,
   View,
   Animated,
-  ViewPropTypes,
-} from 'react-native';
-import {
-  animateTiming,
-  animateElastic,
-  animateSpring,
-} from './helpers';
-import { styles, getStyles } from './styles';
+  ViewPropTypes
+} from "react-native";
+import { animateTiming, animateElastic, animateSpring } from "./helpers";
+import { styles, getStyles } from "./styles";
 import {
   ANIMATED_TIMING_LOADING,
   ANIMATED_TIMING_OFF,
@@ -29,8 +25,8 @@ import {
   DEFAULT_RAISE_LEVEL,
   DEFAULT_TEXT_COLOR,
   DEFAULT_TEXT_SIZE,
-  DEFAULT_WIDTH,
-} from './constants';
+  DEFAULT_WIDTH
+} from "./constants";
 
 export default class Button extends React.Component {
   static propTypes = {
@@ -52,11 +48,12 @@ export default class Button extends React.Component {
     progress: PropTypes.bool,
     raiseLevel: PropTypes.number,
     springRelease: PropTypes.bool,
+    stretch: PropTypes.bool,
     style: ViewPropTypes.style,
     textColor: PropTypes.string,
     textLineHeight: PropTypes.number,
     textSize: PropTypes.number,
-    width: PropTypes.number,
+    width: PropTypes.number
   };
 
   static defaultProps = {
@@ -78,11 +75,12 @@ export default class Button extends React.Component {
     progress: false,
     raiseLevel: DEFAULT_RAISE_LEVEL,
     springRelease: true,
+    stretch: false,
     style: null,
     textColor: DEFAULT_TEXT_COLOR,
     textLineHeight: DEFAULT_LINE_HEIGHT,
     textSize: DEFAULT_TEXT_SIZE,
-    width: DEFAULT_WIDTH,
+    width: DEFAULT_WIDTH
   };
 
   constructor(props) {
@@ -97,41 +95,44 @@ export default class Button extends React.Component {
     this.timeout = null;
     this.state = {
       activity: false,
-      width: null,
+      width: null
     };
   }
 
   getAnimatedValues() {
     const width = this.props.width || this.state.width || 0;
+
     return {
       animatedShadow: {
         transform: [
           {
             translateY: this.animatedValue.interpolate({
               inputRange: [0, 1],
-              outputRange: [0, -this.props.raiseLevel / 2],
-            }),
-          },
-        ],
+              outputRange: [0, -this.props.raiseLevel / 2]
+            })
+          }
+        ]
       },
       animatedContent: {
         transform: [
           {
             translateY: this.animatedValue.interpolate({
               inputRange: [0, 1],
-              outputRange: [0, this.props.raiseLevel],
-            }),
-          },
-        ],
+              outputRange: [0, this.props.raiseLevel]
+            })
+          }
+        ]
       },
       animatedActive: {
-        opacity: this.animatedActive,
+        opacity: this.animatedActive
       },
       animatedActivity: {
         opacity: this.activityOpacity,
-        transform: [{
-          scale: this.activityOpacity,
-        }],
+        transform: [
+          {
+            scale: this.activityOpacity
+          }
+        ]
       },
       animatedProgress: {
         opacity: this.loadingOpacity,
@@ -139,11 +140,11 @@ export default class Button extends React.Component {
           {
             translateX: this.animatedLoading.interpolate({
               inputRange: [0, 1],
-              outputRange: [-width, 0],
-            }),
-          },
-        ],
-      },
+              outputRange: [-width, 0]
+            })
+          }
+        ]
+      }
     };
   }
 
@@ -158,14 +159,14 @@ export default class Button extends React.Component {
     animateTiming({
       variable: this.animatedValue,
       toValue: 1,
-      duration: ANIMATED_TIMING_OFF,
+      duration: ANIMATED_TIMING_OFF
     });
     animateTiming({
       variable: this.animatedActive,
       toValue: 1,
-      duration: ANIMATED_TIMING_OFF,
+      duration: ANIMATED_TIMING_OFF
     });
-  }
+  };
 
   pressOut = () => {
     if (
@@ -178,7 +179,7 @@ export default class Button extends React.Component {
     this.timeout = setTimeout(() => {
       this.release();
     }, 100);
-  }
+  };
 
   press = () => {
     if (
@@ -193,30 +194,33 @@ export default class Button extends React.Component {
     }
     if (this.props.progress === true) {
       this.animating = true;
-      this.setState({
-        activity: true,
-      }, () => {
-        this.animateLoadingStart();
-        animateTiming({
-          variable: this.loadingOpacity,
-          toValue: 1,
-        });
-        animateElastic({
-          variable: this.textOpacity,
-          toValue: 0,
-        });
-        animateElastic({
-          variable: this.activityOpacity,
-          toValue: 1,
-        });
-      });
+      this.setState(
+        {
+          activity: true
+        },
+        () => {
+          this.animateLoadingStart();
+          animateTiming({
+            variable: this.loadingOpacity,
+            toValue: 1
+          });
+          animateElastic({
+            variable: this.textOpacity,
+            toValue: 0
+          });
+          animateElastic({
+            variable: this.activityOpacity,
+            toValue: 1
+          });
+        }
+      );
     } else {
       this.release();
     }
     if (this.props.onPress) {
       this.props.onPress(this.end);
     }
-  }
+  };
 
   end = () => {
     if (this.props.progress) {
@@ -226,11 +230,11 @@ export default class Button extends React.Component {
         callback: () => {
           animateElastic({
             variable: this.textOpacity,
-            toValue: 1,
+            toValue: 1
           });
           animateElastic({
             variable: this.activityOpacity,
-            toValue: 0,
+            toValue: 0
           });
           animateTiming({
             variable: this.loadingOpacity,
@@ -240,36 +244,36 @@ export default class Button extends React.Component {
               this.release(() => {
                 this.animating = false;
               });
-            },
+            }
           });
-        },
+        }
       });
     }
-  }
+  };
 
   release(callback) {
     if (this.props.springRelease === true) {
       animateSpring({
         variable: this.animatedActive,
-        toValue: 0,
+        toValue: 0
       });
       animateSpring({
         variable: this.animatedValue,
         toValue: 0,
-        callback,
+        callback
       });
       return;
     }
     animateTiming({
       variable: this.animatedActive,
       toValue: 0,
-      duration: ANIMATED_TIMING_OFF,
+      duration: ANIMATED_TIMING_OFF
     });
     animateTiming({
       variable: this.animatedValue,
       toValue: 0,
       duration: ANIMATED_TIMING_OFF,
-      callback,
+      callback
     });
   }
 
@@ -278,46 +282,54 @@ export default class Button extends React.Component {
     animateTiming({
       variable: this.animatedLoading,
       toValue: 1,
-      duration: ANIMATED_TIMING_LOADING,
+      duration: ANIMATED_TIMING_LOADING
     });
   }
 
-  textLayout = (event) => {
-    if (this.props.width === null) {
+  textLayout = event => {
+    if (this.props.width === null && !this.props.stretch == true) {
       this.setState({
-        width: event.nativeEvent.layout.width,
+        width: event.nativeEvent.layout.width
       });
     }
-  }
+  };
+
+  containerLayout = event => {
+    if (this.props.stretch === true) {
+      this.setState({
+        width: event.nativeEvent.layout.width
+      });
+    }
+  };
 
   renderContent(dynamicStyles) {
     const animatedStyles = {
       opacity: this.textOpacity,
-      transform: [{
-        scale: this.textOpacity,
-      }],
+      transform: [
+        {
+          scale: this.textOpacity
+        }
+      ]
     };
     const { children } = this.props;
     if (!children) {
       return (
         <Animated.View
-          testID="aws-btn-content-placeholder"
           style={[
             styles.container__placeholder,
             dynamicStyles.container__placeholder,
-            animatedStyles,
+            animatedStyles
           ]}
         />
       );
     }
-    if (typeof children === 'string') {
+    if (typeof children === "string") {
       return (
         <Animated.Text
-          testID="aws-btn-content-text"
           style={[
             styles.container__text,
             dynamicStyles.container__text,
-            animatedStyles,
+            animatedStyles
           ]}
         >
           {children}
@@ -326,11 +338,10 @@ export default class Button extends React.Component {
     }
     return (
       <Animated.View
-        testID="aws-btn-content-view"
         style={[
           styles.container__view,
           dynamicStyles.container__view,
-          animatedStyles,
+          animatedStyles
         ]}
       >
         {children}
@@ -346,76 +357,56 @@ export default class Button extends React.Component {
       <TouchableWithoutFeedback
         onPressIn={this.pressIn}
         onPressOut={this.pressOut}
+        onLayout={this.containerLayout}
         onPress={this.press}
       >
-        <View style={
-          [
-            styles.container,
-            dynamicStyles.container,
-            this.props.style,
-          ]}
+        <View
+          style={[styles.container, dynamicStyles.container, this.props.style]}
         >
           <Animated.View
-            testID="aws-btn-shadow"
             style={[
               styles.shadow,
               dynamicStyles.shadow,
-              animatedValues.animatedShadow,
+              animatedValues.animatedShadow
             ]}
           />
-          <View
-            testID="aws-btn-bottom"
-            style={[
-              styles.bottom,
-              dynamicStyles.bottom,
-            ]}
-          />
+          <View style={[styles.bottom, dynamicStyles.bottom]} />
           <Animated.View
-            testID="aws-btn-content"
             style={[
               styles.content,
               dynamicStyles.content,
-              animatedValues.animatedContent,
+              animatedValues.animatedContent
             ]}
           >
             <View
-              testID="aws-btn-text"
-              style={[
-                styles.text,
-                dynamicStyles.text,
-              ]}
+              style={[styles.text, dynamicStyles.text]}
               onLayout={this.textLayout}
             >
               <Animated.View
-                testID="aws-btn-active-background"
                 style={[
                   styles.activeBackground,
                   dynamicStyles.activeBackground,
-                  animatedValues.animatedActive,
+                  animatedValues.animatedActive
                 ]}
               />
               <Animated.View
-                testID="aws-btn-progress"
                 style={[
                   styles.progress,
                   dynamicStyles.progress,
-                  animatedValues.animatedProgress,
+                  animatedValues.animatedProgress
                 ]}
               />
-              { this.state.activity && (
+              {this.state.activity && (
                 <Animated.View
-                  testID="aws-btn-activity-indicator"
                   style={[
                     styles.container__activity,
-                    animatedValues.animatedActivity,
+                    animatedValues.animatedActivity
                   ]}
                 >
-                  <ActivityIndicator
-                    color={this.props.activityColor}
-                  />
+                  <ActivityIndicator color={this.props.activityColor} />
                 </Animated.View>
               )}
-              { this.renderContent(dynamicStyles) }
+              {this.renderContent(dynamicStyles)}
             </View>
           </Animated.View>
         </View>
