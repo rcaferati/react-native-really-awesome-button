@@ -33,7 +33,8 @@ const memoized = memoize(
       container__text: {
         color: textColor,
         fontSize: textSize,
-        fontFamily: textFontFamily
+        fontFamily: textFontFamily,
+        paddingHorizontal: horizontalPadding
       },
       container__placeholder: {
         width: width * 0.5,
@@ -68,8 +69,7 @@ const memoized = memoize(
         borderColor,
         borderWidth,
         borderRadius,
-        backgroundColor,
-        paddingHorizontal: horizontalPadding
+        backgroundColor
       }
     });
   }

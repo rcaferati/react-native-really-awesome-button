@@ -5,6 +5,7 @@ import {
   TouchableWithoutFeedback,
   View,
   Animated,
+  ImageBackground,
   ViewPropTypes
 } from "react-native";
 import { animateTiming, animateElastic, animateSpring } from "./helpers";
@@ -33,6 +34,7 @@ export default class Button extends React.Component {
     activityColor: PropTypes.string,
     backgroundActive: PropTypes.string,
     backgroundColor: PropTypes.string,
+    backgroundImage: PropTypes.string,
     backgroundDarker: PropTypes.string,
     backgroundPlaceholder: PropTypes.string,
     backgroundProgress: PropTypes.string,
@@ -41,6 +43,7 @@ export default class Button extends React.Component {
     borderRadius: PropTypes.number,
     borderWidth: PropTypes.number,
     children: PropTypes.node,
+    ExtraContent: PropTypes.node,
     disabled: PropTypes.bool,
     height: PropTypes.number,
     horizontalPadding: PropTypes.number,
@@ -62,6 +65,7 @@ export default class Button extends React.Component {
     backgroundActive: DEFAULT_BACKGROUND_ACTIVE,
     backgroundColor: DEFAULT_BACKGROUND_COLOR,
     backgroundDarker: DEFAULT_BACKGROUND_DARKER,
+    backgroundImage: null,
     backgroundPlaceholder: DEFAULT_BACKGROUND_SHADOW,
     backgroundProgress: DEFAULT_BACKGROUND_SHADOW,
     backgroundShadow: DEFAULT_BACKGROUND_SHADOW,
@@ -356,6 +360,7 @@ export default class Button extends React.Component {
   render() {
     const animatedValues = this.getAnimatedValues();
     const dynamicStyles = getStyles(this.props, this.state);
+    const { ExtraContent, style, activityColor } = this.props;
 
     return (
       <TouchableWithoutFeedback
@@ -365,9 +370,7 @@ export default class Button extends React.Component {
         onLayout={this.containerLayout}
         onPress={this.press}
       >
-        <View
-          style={[styles.container, dynamicStyles.container, this.props.style]}
-        >
+        <View style={[styles.container, dynamicStyles.container, style]}>
           <Animated.View
             testID="aws-btn-shadow"
             style={[
@@ -393,6 +396,7 @@ export default class Button extends React.Component {
               style={[styles.text, dynamicStyles.text]}
               onLayout={this.textLayout}
             >
+              {ExtraContent}
               <Animated.View
                 testID="aws-btn-active-background"
                 style={[
@@ -417,7 +421,7 @@ export default class Button extends React.Component {
                     animatedValues.animatedActivity
                   ]}
                 >
-                  <ActivityIndicator color={this.props.activityColor} />
+                  <ActivityIndicator color={activityColor} />
                 </Animated.View>
               )}
               {this.renderContent(dynamicStyles)}

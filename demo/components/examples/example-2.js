@@ -1,29 +1,27 @@
-import React from 'react';
-import AwesomeButton from 'react-native-really-awesome-button/src/themes/red';
-import { Example } from '../index';
+import React from "react";
+import AwesomeButton from "react-native-really-awesome-button/src/themes/red";
+import { Example } from "../index";
 
 function example() {
-  return (
-    <Example ButtonComponent={AwesomeButton} />
-  );
+  return <Example ButtonComponent={AwesomeButton} />;
 }
 
 example.navigationOptions = ({ navigation }) => {
   return {
-    title: 'Red Theme',
+    title: "Red Theme",
     headerStyle: {
-      backgroundColor: '#E82F3A',
+      backgroundColor: "#E82F3A"
     },
-    headerTintColor: '#FFF',
+    headerTintColor: "#FFF",
     headerTitleStyle: {
-      fontWeight: 'bold',
+      fontWeight: "bold"
     },
     headerRight: (
       <AwesomeButton
         size="small"
         type="primaryFlat"
         width={80}
-        onPress={() => navigation.navigate('Example3')}
+        onPress={() => navigation.navigate("Example3")}
         textColor="#FFF"
       >
         Next
@@ -39,7 +37,7 @@ example.navigationOptions = ({ navigation }) => {
       >
         Back
       </AwesomeButton>
-    ),
+    )
   };
 };
 

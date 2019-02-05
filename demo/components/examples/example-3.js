@@ -1,22 +1,20 @@
-import React from 'react';
-import AwesomeButton from 'react-native-really-awesome-button/src/themes/cartman';
-import { Example } from '../index';
+import React from "react";
+import AwesomeButton from "react-native-really-awesome-button/src/themes/cartman";
+import { Example } from "../index";
 
 function example() {
-  return (
-    <Example ButtonComponent={AwesomeButton} />
-  );
+  return <Example ButtonComponent={AwesomeButton} />;
 }
 
 example.navigationOptions = ({ navigation }) => {
   return {
-    title: 'Cartman Theme',
+    title: "Cartman Theme",
     headerStyle: {
-      backgroundColor: '#EE3253',
+      backgroundColor: "#EE3253"
     },
-    headerTintColor: '#FFE11D',
+    headerTintColor: "#FFE11D",
     headerTitleStyle: {
-      fontWeight: 'bold',
+      fontWeight: "bold"
     },
     headerRight: (
       <AwesomeButton
@@ -24,7 +22,7 @@ example.navigationOptions = ({ navigation }) => {
         type="primaryFlat"
         textColor="#FFE11D"
         width={80}
-        onPress={() => navigation.navigate('Example4')}
+        onPress={() => navigation.navigate("Example4")}
       >
         Next
       </AwesomeButton>
@@ -39,7 +37,7 @@ example.navigationOptions = ({ navigation }) => {
       >
         Back
       </AwesomeButton>
-    ),
+    )
   };
 };
 
