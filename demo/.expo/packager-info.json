@@ -1,8 +1,8 @@
 {
   "devToolsPort": 19002,
   "expoServerPort": 19000,
-  "packagerPort": 19001,
-  "packagerPid": 10092,
+  "packagerPort": null,
+  "packagerPid": null,
   "expoServerNgrokUrl": "https://in-qqr.rcaferati.demo.exp.direct",
   "packagerNgrokUrl": "https://packager.in-qqr.rcaferati.demo.exp.direct",
   "ngrokPid": 10117
