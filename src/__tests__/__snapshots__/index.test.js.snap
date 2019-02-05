@@ -94,8 +94,6 @@ exports[`AwesomeButton should render 1`] = `
             "borderColor": null,
             "borderRadius": 4,
             "borderWidth": 0,
-            "paddingLeft": 12,
-            "paddingRight": 12,
           },
         ]
       }
@@ -250,8 +248,6 @@ exports[`AwesomeButton should render a default text children 1`] = `
             "borderColor": null,
             "borderRadius": 4,
             "borderWidth": 0,
-            "paddingLeft": 12,
-            "paddingRight": 12,
           },
         ]
       }
@@ -301,6 +297,8 @@ exports[`AwesomeButton should render a default text children 1`] = `
             "fontSize": 14,
             "fontWeight": "bold",
             "opacity": 1,
+            "paddingLeft": 12,
+            "paddingRight": 12,
             "textAlign": "center",
             "transform": Array [
               Object {
