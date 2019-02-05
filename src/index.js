@@ -286,22 +286,6 @@ export default class Button extends React.Component {
     });
   }
 
-  textLayout = event => {
-    if (this.props.width === null && !this.props.stretch == true) {
-      this.setState({
-        width: event.nativeEvent.layout.width
-      });
-    }
-  };
-
-  containerLayout = event => {
-    if (this.props.stretch === true) {
-      this.setState({
-        width: event.nativeEvent.layout.width
-      });
-    }
-  };
-
   renderContent(dynamicStyles) {
     const animatedStyles = {
       opacity: this.textOpacity,
@@ -360,7 +344,6 @@ export default class Button extends React.Component {
         testID="aws-btn-content-view"
         onPressIn={this.pressIn}
         onPressOut={this.pressOut}
-        onLayout={this.containerLayout}
         onPress={this.press}
       >
         <View
@@ -383,13 +366,15 @@ export default class Button extends React.Component {
             style={[
               styles.content,
               dynamicStyles.content,
-              animatedValues.animatedContent
+              animatedValues.animatedContent,
+              this.props.stretch && {
+                width: "100%"
+              }
             ]}
           >
             <View
               testID="aws-btn-text"
               style={[styles.text, dynamicStyles.text]}
-              onLayout={this.textLayout}
             >
               <Animated.View
                 testID="aws-btn-active-background"
