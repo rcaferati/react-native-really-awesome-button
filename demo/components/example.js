@@ -3,6 +3,7 @@ import { StyleSheet, View, Text } from "react-native";
 import Container from "./container";
 import Section from "./section";
 import { AntDesign } from "@expo/vector-icons";
+import { LinearGradient } from "expo";
 
 export default function example({ ButtonComponent }) {
   return (
@@ -123,6 +124,29 @@ export default function example({ ButtonComponent }) {
           width={null}
         >
           Anchor Large Auto
+        </ButtonComponent>
+      </Section>
+      <Section title="Linear Gradient Overwright">
+        <ButtonComponent
+          backgroundDarker="#09163b"
+          ExtraContent={
+            <LinearGradient
+              colors={["#4c669f", "#3b5998", "#192f6a"]}
+              style={{
+                position: "absolute",
+                top: 0,
+                left: 0,
+                height: "100%",
+                width: "100%",
+                backgroundColor: "red"
+              }}
+            />
+          }
+          style={styles.button}
+          type="primary"
+          size="medium"
+        >
+          Gradient Overwright
         </ButtonComponent>
       </Section>
     </Container>
