@@ -1,57 +1,57 @@
-import { StyleSheet } from 'react-native';
-import { memoize } from './helpers';
+import { StyleSheet } from "react-native";
+import { memoize } from "./helpers";
 
-const memoized = memoize((props) => {
+const memoized = memoize(props => {
   const dimensionsDiff = {
     width: props.width,
-    height: props.height - props.raiseLevel,
+    height: props.height - props.raiseLevel
   };
   return StyleSheet.create({
     container: {
       height: props.height,
-      width: props.width,
+      width: props.width
     },
     container__text: {
       color: props.textColor,
       fontSize: props.textSize,
+      paddingLeft: props.horizontalPadding,
+      paddingRight: props.horizontalPadding
     },
     container__placeholder: {
       width: props.width * 0.5,
       height: props.textLineHeight,
-      backgroundColor: props.backgroundPlaceholder,
+      backgroundColor: props.backgroundPlaceholder
     },
     shadow: {
       bottom: -props.raiseLevel / 2,
       width: props.width - 4,
       height: props.height - props.raiseLevel,
       borderRadius: props.borderRadius,
-      backgroundColor: props.backgroundShadow,
+      backgroundColor: props.backgroundShadow
     },
     bottom: {
       borderRadius: props.borderRadius,
       backgroundColor: props.backgroundDarker,
-      ...dimensionsDiff,
+      ...dimensionsDiff
     },
     progress: {
       backgroundColor: props.backgroundProgress,
-      ...dimensionsDiff,
+      ...dimensionsDiff
     },
     content: {
       ...dimensionsDiff,
-      borderRadius: props.borderRadius,
+      borderRadius: props.borderRadius
     },
     activeBackground: {
       ...dimensionsDiff,
-      backgroundColor: props.backgroundActive,
+      backgroundColor: props.backgroundActive
     },
     text: {
       borderColor: props.borderColor,
       borderWidth: props.borderWidth,
       borderRadius: props.borderRadius,
-      backgroundColor: props.backgroundColor,
-      paddingLeft: props.horizontalPadding,
-      paddingRight: props.horizontalPadding,
-    },
+      backgroundColor: props.backgroundColor
+    }
   });
 });
 
@@ -71,7 +71,7 @@ export const getStyles = (styleProps, state) => {
     raiseLevel,
     textColor,
     textLineHeight,
-    textSize,
+    textSize
   } = styleProps;
   return memoized({
     backgroundActive,
@@ -89,60 +89,60 @@ export const getStyles = (styleProps, state) => {
     textColor,
     textLineHeight,
     textSize,
-    width: styleProps.width || state.width || null,
+    width: styleProps.width || state.width || null
   });
 };
 
 export const styles = StyleSheet.create({
   container: {
-    backgroundColor: 'transparent',
-    position: 'relative',
+    backgroundColor: "transparent",
+    position: "relative"
   },
   container__text: {
-    fontWeight: 'bold',
+    fontWeight: "bold",
     zIndex: 10,
-    textAlign: 'center',
+    textAlign: "center"
   },
   container__view: {
-    flexDirection: 'row',
+    flexDirection: "row",
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: "center",
+    justifyContent: "center"
   },
   container__activity: {
-    position: 'absolute',
-    zIndex: 5,
+    position: "absolute",
+    zIndex: 5
   },
   shadow: {
-    position: 'absolute',
-    left: 2,
+    position: "absolute",
+    left: 2
   },
   bottom: {
-    position: 'absolute',
+    position: "absolute",
     bottom: 0,
-    left: 0,
+    left: 0
   },
   progress: {
     zIndex: 1,
-    position: 'absolute',
+    position: "absolute",
     top: 0,
-    left: 0,
+    left: 0
   },
   content: {
-    position: 'absolute',
+    position: "absolute",
     top: 0,
-    left: 0,
+    left: 0
   },
   activeBackground: {
-    position: 'absolute',
+    position: "absolute",
     top: 0,
-    left: 0,
+    left: 0
   },
   text: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: "center",
+    justifyContent: "center",
     zIndex: 3,
-    overflow: 'hidden',
-  },
+    overflow: "hidden"
+  }
 });

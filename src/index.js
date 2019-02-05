@@ -381,7 +381,10 @@ export default class Button extends React.Component {
                 style={[
                   styles.activeBackground,
                   dynamicStyles.activeBackground,
-                  animatedValues.animatedActive
+                  animatedValues.animatedActive,
+                  this.props.stretch && {
+                    width: "100%"
+                  }
                 ]}
               />
               <Animated.View
