@@ -1,6 +1,13 @@
 import React from "react";
 import { createStackNavigator } from "react-navigation";
-import { Example1, Example2, Example3, Example4, Example5 } from "./index";
+import {
+  Example1,
+  Example2,
+  Example3,
+  Example4,
+  Example5,
+  Example6
+} from "./index";
 
 const RootStack = createStackNavigator(
   {
@@ -18,6 +25,9 @@ const RootStack = createStackNavigator(
     },
     Example5: {
       screen: Example5
+    },
+    Example6: {
+      screen: Example6
     }
   },
   {

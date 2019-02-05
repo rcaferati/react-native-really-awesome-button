@@ -1,14 +1,16 @@
 import React from "react";
 import PropTypes from "prop-types";
 import AwesomeButton from "../index";
+import SocialTypes from "./social";
 
 const COMMON = {
   borderRadius: 8,
-  height: 53,
+  height: 55,
   activityColor: "#FFE11D",
-  raiseLevel: 6,
-  width: 200
+  raiseLevel: 8
 };
+
+const SOCIAL_TYPES = SocialTypes(COMMON);
 
 const BUTTONS = {
   primary: {
@@ -48,7 +50,8 @@ const BUTTONS = {
     backgroundShadow: "rgba(0, 0, 0, 0)",
     raiseLevel: 0,
     borderRadius: 0
-  }
+  },
+  ...SOCIAL_TYPES
 };
 
 const SIZE = {
@@ -56,6 +59,10 @@ const SIZE = {
     width: 120,
     height: 42,
     textSize: 12
+  },
+  medium: {
+    width: 200,
+    height: 55
   },
   large: {
     width: 250,

@@ -1,5 +1,6 @@
 import React from "react";
-import AwesomeButton from "react-native-really-awesome-button/src/themes/cartman";
+// import AwesomeButton from "react-native-really-awesome-button/src/themes/cartman";
+import AwesomeButton from "../../src/themes/cartman";
 import { Example } from "../index";
 
 function example() {

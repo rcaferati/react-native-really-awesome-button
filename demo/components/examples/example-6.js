@@ -1,6 +1,7 @@
 import React from "react";
-import AwesomeButton from "react-native-really-awesome-button/src/themes/blue";
-import { Example } from "../index";
+// import AwesomeButton from "react-native-really-awesome-button/src/themes/bruce";
+import AwesomeButton from "../../src/themes/bruce";
+import Example from "../example";
 
 function example() {
   return <Example ButtonComponent={AwesomeButton} />;
@@ -8,23 +9,23 @@ function example() {
 
 example.navigationOptions = ({ navigation }) => {
   return {
-    title: "Blue Theme",
+    title: "Bruce Theme",
     headerStyle: {
-      backgroundColor: "#1775c8"
+      backgroundColor: "#2f2f2f"
     },
     headerTintColor: "#FFF",
     headerTitleStyle: {
       fontWeight: "bold"
     },
-    headerRight: (
+    headerLeft: (
       <AwesomeButton
         size="small"
-        type="primaryFlat"
+        type="flat"
+        textColor="#FFF"
         width={80}
-        onPress={() => navigation.navigate("Example2")}
-        color="#fff"
+        onPress={() => navigation.goBack()}
       >
-        Next
+        Back
       </AwesomeButton>
     )
   };

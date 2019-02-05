@@ -11,13 +11,18 @@ export default function example({ ButtonComponent }) {
         <ButtonComponent style={styles.button} type="primary" size="medium">
           Primary
         </ButtonComponent>
-        <ButtonComponent style={styles.button} type="secondary">
+        <ButtonComponent style={styles.button} type="secondary" size="medium">
           Secondary
         </ButtonComponent>
-        <ButtonComponent style={styles.button} type="anchor">
+        <ButtonComponent style={styles.button} type="anchor" size="medium">
           Anchor
         </ButtonComponent>
-        <ButtonComponent disabled style={styles.button} type="primary">
+        <ButtonComponent
+          disabled
+          style={styles.button}
+          type="primary"
+          size="medium"
+        >
           Disabled
         </ButtonComponent>
       </Section>
@@ -31,6 +36,7 @@ export default function example({ ButtonComponent }) {
           }
           style={styles.button}
           type="primary"
+          size="medium"
         >
           Progress
         </ButtonComponent>
@@ -43,16 +49,43 @@ export default function example({ ButtonComponent }) {
           }
           style={styles.button}
           type="secondary"
+          size="medium"
         >
           Progress
         </ButtonComponent>
       </Section>
       <Section title="Empty Placeholder">
-        <ButtonComponent style={styles.button} type="primary" />
-        <ButtonComponent style={styles.button} type="secondary" />
+        <ButtonComponent style={styles.button} type="primary" size="medium" />
+        <ButtonComponent style={styles.button} type="secondary" size="medium" />
+      </Section>
+      <Section title="Flat Buttons">
+        <ButtonComponent
+          raiseLevel={0}
+          style={styles.button}
+          type="primary"
+          size="medium"
+        >
+          Primary
+        </ButtonComponent>
+        <ButtonComponent
+          raiseLevel={0}
+          style={styles.button}
+          type="secondary"
+          size="medium"
+        >
+          Secondary
+        </ButtonComponent>
+        <ButtonComponent
+          raiseLevel={0}
+          style={styles.button}
+          type="anchor"
+          size="medium"
+        >
+          Anchor
+        </ButtonComponent>
       </Section>
       <Section title="Icons">
-        <ButtonComponent style={styles.button} type="twitter">
+        <ButtonComponent style={styles.button} type="twitter" size="medium">
           <AntDesign
             style={[styles.iconLeft, { marginTop: 1 }]}
             name="twitter"
@@ -61,7 +94,7 @@ export default function example({ ButtonComponent }) {
           />
           <Text style={styles.text}>Button Icon</Text>
         </ButtonComponent>
-        <ButtonComponent style={styles.button} type="facebook">
+        <ButtonComponent style={styles.button} type="facebook" size="medium">
           <AntDesign
             style={[styles.iconLeft, { marginTop: 1 }]}
             name="facebook-square"
@@ -71,15 +104,25 @@ export default function example({ ButtonComponent }) {
           <Text style={styles.text}>Button Icon</Text>
         </ButtonComponent>
       </Section>
-      <Section title="Sizes">
-        <ButtonComponent width={null} style={styles.button} type="secondary">
-          Secondary Auto
+      <Section title="Auto Sizes">
+        <ButtonComponent width={null} style={styles.button} type="primary">
+          Primary Auto
         </ButtonComponent>
-        <ButtonComponent style={styles.button} size="small" type="primary">
-          Primary Small
+        <ButtonComponent
+          style={styles.button}
+          type="primary"
+          size="small"
+          width={null}
+        >
+          Secondary Small Auto
         </ButtonComponent>
-        <ButtonComponent style={styles.button} type="secondary" size="large">
-          Secondary Large
+        <ButtonComponent
+          style={styles.button}
+          type="anchor"
+          size="large"
+          width={null}
+        >
+          Anchor Large Auto
         </ButtonComponent>
       </Section>
     </Container>

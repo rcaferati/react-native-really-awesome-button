@@ -16,6 +16,6 @@ export const DEFAULT_ACTIVITY_COLOR = "#FFFFFF";
 export const DEFAULT_BACKGROUND_COLOR = "#c0c0c0";
 export const DEFAULT_BACKGROUND_DARKER = "#9f9f9f";
 export const DEFAULT_BACKGROUND_SHADOW = "rgba(0, 0, 0, 0.15)";
-export const DEFAULT_BACKGROUND_ACTIVE = "rgba(0, 0, 0, 0.075)";
+export const DEFAULT_BACKGROUND_ACTIVE = "rgba(0, 0, 0, 0.15)";
 export const DEFAULT_LINE_HEIGHT = 20;
 export const DEFAULT_TEXT_SIZE = 14;
