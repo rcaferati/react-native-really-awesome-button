@@ -4,10 +4,9 @@ import AwesomeButton from "../index";
 import SocialTypes from "./social";
 
 const COMMON = {
-  borderRadius: 25,
+  borderRadius: 8,
   height: 55,
-  activityColor: "#b3e5e1",
-  raiseLevel: 6
+  raiseLevel: 10
 };
 
 const SOCIAL_TYPES = SocialTypes(COMMON);
@@ -15,35 +14,39 @@ const SOCIAL_TYPES = SocialTypes(COMMON);
 const BUTTONS = {
   primary: {
     ...COMMON,
-    backgroundColor: "#475371",
-    backgroundDarker: "#262d3d",
-    backgroundProgress: "#262d3d",
-    textColor: "#e4e7ee",
-    activityColor: "#e4e7ee"
+    backgroundColor: "#2f2f2f",
+    backgroundDarker: "#1a1a1a",
+    backgroundProgress: "#1f1f1f",
+    textColor: "#FFF",
+    activityColor: "#FFF"
   },
   secondary: {
     ...COMMON,
-    backgroundColor: "#fefc6b",
-    backgroundDarker: "#d2ce02",
-    backgroundProgress: "#d2ce02",
-    textColor: "#535100",
-    activityColor: "#535100"
+    backgroundColor: "#efefef",
+    backgroundDarker: "#1a1a1a",
+    backgroundActive: "#cacaca",
+    backgroundProgress: "#afafaf",
+    backgroundPlaceholder: "#4f4f4f",
+    textColor: "#2f2f2f",
+    borderWidth: 1,
+    borderColor: "#1a1a1a",
+    activityColor: "#1a1a1a"
   },
   anchor: {
     ...COMMON,
-    backgroundColor: "#f3c8ad",
-    backgroundDarker: "#734922",
-    backgroundProgress: "#d2ce02",
-    textColor: "#734922",
-    activityColor: "#535100"
+    backgroundColor: "#4f4f4f",
+    backgroundDarker: "#3a3a3a",
+    backgroundProgress: "#404040",
+    textColor: "#FFF",
+    activityColor: "#FFF"
   },
   disabled: {
     ...COMMON,
-    backgroundColor: "#DFDFDF",
-    backgroundDarker: "#CACACA",
-    textColor: "#B6B6B6"
+    backgroundColor: "#999999",
+    backgroundDarker: "#777777",
+    textColor: "#BBBBBB"
   },
-  primaryFlat: {
+  flat: {
     backgroundColor: "rgba(0, 0, 0, 0)",
     backgroundDarker: "rgba(0, 0, 0, 0)",
     backgroundShadow: "rgba(0, 0, 0, 0)",

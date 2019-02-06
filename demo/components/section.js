@@ -1,10 +1,5 @@
-import React from 'react';
-import {
-  StyleSheet,
-  View,
-  Text,
-  ScrollView,
-} from 'react-native';
+import React from "react";
+import { StyleSheet, View, Text, ScrollView } from "react-native";
 
 export default function container({ title, children }) {
   return (
@@ -17,12 +12,14 @@ export default function container({ title, children }) {
 
 const style = StyleSheet.create({
   text: {
-    fontWeight: 'bold',
+    fontWeight: "bold",
     marginBottom: 4,
-    textAlign: 'center',
+    textAlign: "center"
   },
   container: {
-    marginBottom: 12,
-    alignItems: 'center',
-  },
+    marginBottom: 20,
+    alignItems: "center",
+    width: "100%",
+    paddingHorizontal: 20
+  }
 });

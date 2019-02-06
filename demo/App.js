@@ -1,14 +1,5 @@
-import React from 'react';
-import {
-  StyleSheet,
-  View,
-  ScrollView,
-} from 'react-native';
-import { RootStack } from './components';
+import React from "react";
+import { RootStack } from "./components";
+import { createAppContainer } from "react-navigation";
 
-
-export default class Demo extends React.Component {
-  render() {
-    return <RootStack />;
-  }
-}
+export default createAppContainer(RootStack);

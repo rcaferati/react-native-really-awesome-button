@@ -1,14 +1,11 @@
-import {
-  Animated,
-  Easing,
-} from 'react-native';
+import { Animated, Easing } from "react-native";
 import {
   ANIMATED_SPRING_TENSION,
   ANIMATED_SPRING_FRICTION,
   ANIMATED_ELASTIC_DURATION,
   ANIMATED_ELASTIC_BOUNCINESS,
-  ANIMATED_TIMING_IN,
-} from './constants';
+  ANIMATED_TIMING_IN
+} from "./constants";
 
 export function memoize(fn) {
   memoize.cache = {};
@@ -29,18 +26,15 @@ export function animateTiming({
   duration = ANIMATED_TIMING_IN,
   delay = 0,
   easing = Easing.easeOut,
-  callback = null,
+  callback = null
 }) {
-  Animated.timing(
-    variable,
-    {
-      toValue,
-      duration,
-      easing,
-      delay,
-      useNativeDriver: true,
-    },
-  ).start(callback);
+  Animated.timing(variable, {
+    toValue,
+    duration,
+    easing,
+    delay,
+    useNativeDriver: true
+  }).start(callback);
 }
 
 export function animateSpring({
@@ -49,24 +43,21 @@ export function animateSpring({
   delay = 0,
   tension = ANIMATED_SPRING_TENSION,
   friction = ANIMATED_SPRING_FRICTION,
-  callback = null,
+  callback = null
 }) {
-  Animated.spring(
-    variable,
-    {
-      toValue,
-      tension,
-      friction,
-      delay,
-      useNativeDriver: true,
-    },
-  ).start(callback);
+  Animated.spring(variable, {
+    toValue,
+    tension,
+    friction,
+    delay,
+    useNativeDriver: true
+  }).start(callback);
 }
 
 export function animateElastic(params) {
   animateTiming({
     duration: ANIMATED_ELASTIC_DURATION,
     easing: Easing.elastic(ANIMATED_ELASTIC_BOUNCINESS),
-    ...params,
+    ...params
   });
 }

@@ -1,59 +1,78 @@
 import { StyleSheet } from "react-native";
 import { memoize } from "./helpers";
 
-const memoized = memoize(props => {
-  const dimensionsDiff = {
-    width: props.width,
-    height: props.height - props.raiseLevel
-  };
-  return StyleSheet.create({
-    container: {
-      height: props.height,
-      width: props.width
-    },
-    container__text: {
-      color: props.textColor,
-      fontSize: props.textSize,
-      paddingLeft: props.horizontalPadding,
-      paddingRight: props.horizontalPadding
-    },
-    container__placeholder: {
-      width: props.width * 0.5,
-      height: props.textLineHeight,
-      backgroundColor: props.backgroundPlaceholder
-    },
-    shadow: {
-      bottom: -props.raiseLevel / 2,
-      width: props.width - 4,
-      height: props.height - props.raiseLevel,
-      borderRadius: props.borderRadius,
-      backgroundColor: props.backgroundShadow
-    },
-    bottom: {
-      borderRadius: props.borderRadius,
-      backgroundColor: props.backgroundDarker,
-      ...dimensionsDiff
-    },
-    progress: {
-      backgroundColor: props.backgroundProgress,
-      ...dimensionsDiff
-    },
-    content: {
-      ...dimensionsDiff,
-      borderRadius: props.borderRadius
-    },
-    activeBackground: {
-      ...dimensionsDiff,
-      backgroundColor: props.backgroundActive
-    },
-    text: {
-      borderColor: props.borderColor,
-      borderWidth: props.borderWidth,
-      borderRadius: props.borderRadius,
-      backgroundColor: props.backgroundColor
-    }
-  });
-});
+const memoized = memoize(
+  ({
+    backgroundActive,
+    backgroundColor,
+    backgroundDarker,
+    backgroundShadow,
+    backgroundPlaceholder,
+    backgroundProgress,
+    borderColor,
+    borderRadius,
+    borderWidth,
+    height,
+    horizontalPadding,
+    raiseLevel,
+    textColor,
+    textLineHeight,
+    textSize,
+    textFontFamily,
+    width
+  }) => {
+    const dimensionsDiff = {
+      width,
+      height: height - raiseLevel
+    };
+
+    return StyleSheet.create({
+      container: {
+        height,
+        width
+      },
+      container__text: {
+        color: textColor,
+        fontSize: textSize,
+        fontFamily: textFontFamily,
+        paddingHorizontal: horizontalPadding
+      },
+      container__placeholder: {
+        height: textLineHeight,
+        backgroundColor: backgroundPlaceholder
+      },
+      shadow: {
+        bottom: -raiseLevel / 2,
+        height: height - raiseLevel,
+        borderRadius,
+        backgroundColor: backgroundShadow
+      },
+      bottom: {
+        borderRadius,
+        backgroundColor: backgroundDarker,
+        ...dimensionsDiff
+      },
+      progress: {
+        ...dimensionsDiff,
+        backgroundColor: backgroundProgress
+      },
+      content: {
+        ...dimensionsDiff,
+        borderRadius
+      },
+      activeBackground: {
+        ...dimensionsDiff,
+        backgroundColor: backgroundActive
+      },
+      text: {
+        borderColor,
+        borderWidth,
+        borderRadius,
+        backgroundColor
+      }
+    });
+  }
+);
 
 export const getStyles = (styleProps, state) => {
   const {
@@ -71,8 +90,14 @@ export const getStyles = (styleProps, state) => {
     raiseLevel,
     textColor,
     textLineHeight,
-    textSize
+    textSize,
+    textFontFamily
   } = styleProps;
+
+  const width = styleProps.stretch
+    ? "100%"
+    : styleProps.width || state.width || null;
+
   return memoized({
     backgroundActive,
     backgroundColor,
@@ -89,14 +114,15 @@ export const getStyles = (styleProps, state) => {
     textColor,
     textLineHeight,
     textSize,
-    width: styleProps.width || state.width || null
+    textFontFamily,
+    width
   });
 };
 
 export const styles = StyleSheet.create({
   container: {
     backgroundColor: "transparent",
-    position: "relative"
+    zIndex: 10
   },
   container__text: {
     fontWeight: "bold",
@@ -109,13 +135,17 @@ export const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center"
   },
+  container__placeholder: {
+    width: "55%"
+  },
   container__activity: {
     position: "absolute",
     zIndex: 5
   },
   shadow: {
+    width: "98%",
     position: "absolute",
-    left: 2
+    left: "1%"
   },
   bottom: {
     position: "absolute",

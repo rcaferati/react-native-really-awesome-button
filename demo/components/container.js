@@ -1,9 +1,5 @@
-import React from 'react';
-import {
-  StyleSheet,
-  View,
-  ScrollView,
-} from 'react-native';
+import React from "react";
+import { StyleSheet, View, ScrollView } from "react-native";
 
 export default function container({ children }) {
   return (
@@ -17,14 +13,12 @@ export default function container({ children }) {
 
 const style = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: '#FAFAFA',
+    flex: 1
   },
   scrollView: {
     paddingTop: 30,
     paddingBottom: 50,
-    alignItems: 'center',
-    flexDirection: 'column',
-    backgroundColor: '#FAFAFA'
-  },
+    alignItems: "center",
+    flexDirection: "column"
+  }
 });

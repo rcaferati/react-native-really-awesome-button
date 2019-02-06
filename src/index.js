@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 import PropTypes from "prop-types";
 import {
   ActivityIndicator,
@@ -33,6 +33,7 @@ export default class Button extends React.Component {
     activityColor: PropTypes.string,
     backgroundActive: PropTypes.string,
     backgroundColor: PropTypes.string,
+    backgroundImage: PropTypes.string,
     backgroundDarker: PropTypes.string,
     backgroundPlaceholder: PropTypes.string,
     backgroundProgress: PropTypes.string,
@@ -41,6 +42,7 @@ export default class Button extends React.Component {
     borderRadius: PropTypes.number,
     borderWidth: PropTypes.number,
     children: PropTypes.node,
+    ExtraContent: PropTypes.node,
     disabled: PropTypes.bool,
     height: PropTypes.number,
     horizontalPadding: PropTypes.number,
@@ -53,6 +55,7 @@ export default class Button extends React.Component {
     textColor: PropTypes.string,
     textLineHeight: PropTypes.number,
     textSize: PropTypes.number,
+    textFamily: PropTypes.string,
     width: PropTypes.number
   };
 
@@ -61,6 +64,7 @@ export default class Button extends React.Component {
     backgroundActive: DEFAULT_BACKGROUND_ACTIVE,
     backgroundColor: DEFAULT_BACKGROUND_COLOR,
     backgroundDarker: DEFAULT_BACKGROUND_DARKER,
+    backgroundImage: null,
     backgroundPlaceholder: DEFAULT_BACKGROUND_SHADOW,
     backgroundProgress: DEFAULT_BACKGROUND_SHADOW,
     backgroundShadow: DEFAULT_BACKGROUND_SHADOW,
@@ -80,6 +84,7 @@ export default class Button extends React.Component {
     textColor: DEFAULT_TEXT_COLOR,
     textLineHeight: DEFAULT_LINE_HEIGHT,
     textSize: DEFAULT_TEXT_SIZE,
+    textFontFamily: null,
     width: DEFAULT_WIDTH
   };
 
@@ -93,16 +98,22 @@ export default class Button extends React.Component {
     this.animatedLoading = new Animated.Value(0);
     this.animating = false;
     this.timeout = null;
+    this.containerWidth = null;
+
     this.state = {
+      containerOpacity: props.width === null ? 0 : 1,
       activity: false,
       width: null
     };
   }
 
   getAnimatedValues() {
-    const width = this.props.width || this.state.width || 0;
+    let width = this.containerWidth ? -this.containerWidth : 0;
 
     return {
+      animatedContainer: {
+        opacity: this.animatedOpacity
+      },
       animatedShadow: {
         transform: [
           {
@@ -140,7 +151,7 @@ export default class Button extends React.Component {
           {
             translateX: this.animatedLoading.interpolate({
               inputRange: [0, 1],
-              outputRange: [-width, 0]
+              outputRange: [width, 0]
             })
           }
         ]
@@ -286,6 +297,16 @@ export default class Button extends React.Component {
     });
   }
 
+  textLayout = event => {
+    this.containerWidth = event.nativeEvent.layout.width;
+    if (this.props.width === null && !this.props.stretch == true) {
+      this.setState({
+        width: event.nativeEvent.layout.width,
+        containerOpacity: 1
+      });
+    }
+  };
+
   renderContent(dynamicStyles) {
     const animatedStyles = {
       opacity: this.textOpacity,
@@ -338,6 +359,7 @@ export default class Button extends React.Component {
   render() {
     const animatedValues = this.getAnimatedValues();
     const dynamicStyles = getStyles(this.props, this.state);
+    const { ExtraContent, style, activityColor } = this.props;
 
     return (
       <TouchableWithoutFeedback
@@ -347,7 +369,14 @@ export default class Button extends React.Component {
         onPress={this.press}
       >
         <View
-          style={[styles.container, dynamicStyles.container, this.props.style]}
+          style={[
+            styles.container,
+            dynamicStyles.container,
+            {
+              opacity: this.state.containerOpacity
+            },
+            style
+          ]}
         >
           <Animated.View
             testID="aws-btn-shadow"
@@ -366,45 +395,43 @@ export default class Button extends React.Component {
             style={[
               styles.content,
               dynamicStyles.content,
-              animatedValues.animatedContent,
-              this.props.stretch && {
-                width: "100%"
-              }
+              animatedValues.animatedContent
             ]}
           >
             <View
               testID="aws-btn-text"
               style={[styles.text, dynamicStyles.text]}
+              onLayout={this.textLayout}
             >
+              {ExtraContent}
               <Animated.View
                 testID="aws-btn-active-background"
                 style={[
                   styles.activeBackground,
                   dynamicStyles.activeBackground,
-                  animatedValues.animatedActive,
-                  this.props.stretch && {
-                    width: "100%"
-                  }
+                  animatedValues.animatedActive
                 ]}
               />
-              <Animated.View
-                testID="aws-btn-progress"
-                style={[
-                  styles.progress,
-                  dynamicStyles.progress,
-                  animatedValues.animatedProgress
-                ]}
-              />
-              {this.state.activity && (
-                <Animated.View
-                  testID="aws-btn-activity-indicator"
-                  style={[
-                    styles.container__activity,
-                    animatedValues.animatedActivity
-                  ]}
-                >
-                  <ActivityIndicator color={this.props.activityColor} />
-                </Animated.View>
+              {this.state.activity === true && (
+                <Fragment>
+                  <Animated.View
+                    testID="aws-btn-progress"
+                    style={[
+                      styles.progress,
+                      dynamicStyles.progress,
+                      animatedValues.animatedProgress
+                    ]}
+                  />
+                  <Animated.View
+                    testID="aws-btn-activity-indicator"
+                    style={[
+                      styles.container__activity,
+                      animatedValues.animatedActivity
+                    ]}
+                  >
+                    <ActivityIndicator color={activityColor} />
+                  </Animated.View>
+                </Fragment>
               )}
               {this.renderContent(dynamicStyles)}
             </View>
