@@ -105,48 +105,50 @@ export default function example({ ButtonComponent }) {
           <Text style={styles.text}>Button Icon</Text>
         </ButtonComponent>
       </Section>
-      <Section title="Auto Sizes">
+      <Section title="With auto and stretch">
         <ButtonComponent width={null} style={styles.button} type="primary">
           Primary Auto
         </ButtonComponent>
         <ButtonComponent
           style={styles.button}
+          width={null}
           type="primary"
           size="small"
-          width={null}
         >
           Secondary Small Auto
         </ButtonComponent>
-        <ButtonComponent
-          style={styles.button}
-          type="anchor"
-          size="large"
-          width={null}
-        >
+        <ButtonComponent style={styles.button} type="anchor" size="large">
           Anchor Large Auto
         </ButtonComponent>
-      </Section>
-      <Section title="Linear Gradient Overwright">
         <ButtonComponent
-          backgroundDarker="#09163b"
+          style={styles.button}
+          type="primary"
+          size="large"
+          stretch
+          progress
+          onPress={next =>
+            setTimeout(() => {
+              next();
+            }, 1000)
+          }
+        >
+          Primary Large Stretch
+        </ButtonComponent>
+      </Section>
+      <Section title="Linear Gradient Overwrite">
+        <ButtonComponent
+          backgroundDarker="#4f4f4f"
           ExtraContent={
             <LinearGradient
-              colors={["#4c669f", "#3b5998", "#192f6a"]}
-              style={{
-                position: "absolute",
-                top: 0,
-                left: 0,
-                height: "100%",
-                width: "100%",
-                backgroundColor: "red"
-              }}
+              colors={["#cfcfcf", "#ababab", "#6f6f6f"]}
+              style={styles.gradient}
             />
           }
           style={styles.button}
           type="primary"
           size="medium"
         >
-          Gradient Overwright
+          Gradient Overwrite
         </ButtonComponent>
       </Section>
     </Container>
@@ -162,5 +164,12 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     color: "white"
   },
-  iconLeft: { marginRight: 5 }
+  iconLeft: { marginRight: 5 },
+  gradient: {
+    position: "absolute",
+    top: 0,
+    left: 0,
+    height: "100%",
+    width: "100%"
+  }
 });

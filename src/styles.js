@@ -25,6 +25,7 @@ const memoized = memoize(
       width,
       height: height - raiseLevel
     };
+
     return StyleSheet.create({
       container: {
         height,
@@ -37,13 +38,11 @@ const memoized = memoize(
         paddingHorizontal: horizontalPadding
       },
       container__placeholder: {
-        width: width * 0.5,
         height: textLineHeight,
         backgroundColor: backgroundPlaceholder
       },
       shadow: {
         bottom: -raiseLevel / 2,
-        width: width - 4,
         height: height - raiseLevel,
         borderRadius,
         backgroundColor: backgroundShadow
@@ -54,8 +53,8 @@ const memoized = memoize(
         ...dimensionsDiff
       },
       progress: {
-        backgroundColor: backgroundProgress,
-        ...dimensionsDiff
+        ...dimensionsDiff,
+        backgroundColor: backgroundProgress
       },
       content: {
         ...dimensionsDiff,
@@ -94,6 +93,11 @@ export const getStyles = (styleProps, state) => {
     textSize,
     textFontFamily
   } = styleProps;
+
+  const width = styleProps.stretch
+    ? "100%"
+    : styleProps.width || state.width || null;
+
   return memoized({
     backgroundActive,
     backgroundColor,
@@ -111,14 +115,14 @@ export const getStyles = (styleProps, state) => {
     textLineHeight,
     textSize,
     textFontFamily,
-    width: styleProps.width || state.width || null
+    width
   });
 };
 
 export const styles = StyleSheet.create({
   container: {
     backgroundColor: "transparent",
-    position: "relative"
+    zIndex: 10
   },
   container__text: {
     fontWeight: "bold",
@@ -131,13 +135,17 @@ export const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center"
   },
+  container__placeholder: {
+    width: "55%"
+  },
   container__activity: {
     position: "absolute",
     zIndex: 5
   },
   shadow: {
+    width: "98%",
     position: "absolute",
-    left: 2
+    left: "1%"
   },
   bottom: {
     position: "absolute",

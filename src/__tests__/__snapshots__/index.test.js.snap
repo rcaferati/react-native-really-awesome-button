@@ -3,7 +3,6 @@
 exports[`AwesomeButton should render 1`] = `
 <View
   accessible={true}
-  onLayout={[Function]}
   onResponderGrant={[Function]}
   onResponderMove={[Function]}
   onResponderRelease={[Function]}
@@ -14,11 +13,14 @@ exports[`AwesomeButton should render 1`] = `
     Array [
       Object {
         "backgroundColor": "transparent",
-        "position": "relative",
+        "zIndex": 10,
       },
       Object {
         "height": 60,
         "width": null,
+      },
+      Object {
+        "opacity": 0,
       },
       null,
     ]
@@ -32,14 +34,14 @@ exports[`AwesomeButton should render 1`] = `
         "borderRadius": 4,
         "bottom": -2,
         "height": 56,
-        "left": 2,
+        "left": "1%",
         "position": "absolute",
         "transform": Array [
           Object {
             "translateY": 0,
           },
         ],
-        "width": -4,
+        "width": "98%",
       }
     }
     testID="aws-btn-shadow"
@@ -114,26 +116,6 @@ exports[`AwesomeButton should render 1`] = `
           }
         }
         testID="aws-btn-active-background"
-      />
-      <View
-        style={
-          Object {
-            "backgroundColor": "rgba(0, 0, 0, 0.15)",
-            "height": 56,
-            "left": 0,
-            "opacity": 1,
-            "position": "absolute",
-            "top": 0,
-            "transform": Array [
-              Object {
-                "translateX": -0,
-              },
-            ],
-            "width": null,
-            "zIndex": 1,
-          }
-        }
-        testID="aws-btn-progress"
       />
       <View
         style={
@@ -146,7 +128,7 @@ exports[`AwesomeButton should render 1`] = `
                 "scale": 1,
               },
             ],
-            "width": 0,
+            "width": "55%",
           }
         }
         testID="aws-btn-content-placeholder"
@@ -159,7 +141,6 @@ exports[`AwesomeButton should render 1`] = `
 exports[`AwesomeButton should render a default text children 1`] = `
 <View
   accessible={true}
-  onLayout={[Function]}
   onResponderGrant={[Function]}
   onResponderMove={[Function]}
   onResponderRelease={[Function]}
@@ -170,11 +151,14 @@ exports[`AwesomeButton should render a default text children 1`] = `
     Array [
       Object {
         "backgroundColor": "transparent",
-        "position": "relative",
+        "zIndex": 10,
       },
       Object {
         "height": 60,
         "width": null,
+      },
+      Object {
+        "opacity": 0,
       },
       null,
     ]
@@ -188,14 +172,14 @@ exports[`AwesomeButton should render a default text children 1`] = `
         "borderRadius": 4,
         "bottom": -2,
         "height": 56,
-        "left": 2,
+        "left": "1%",
         "position": "absolute",
         "transform": Array [
           Object {
             "translateY": 0,
           },
         ],
-        "width": -4,
+        "width": "98%",
       }
     }
     testID="aws-btn-shadow"
@@ -270,26 +254,6 @@ exports[`AwesomeButton should render a default text children 1`] = `
           }
         }
         testID="aws-btn-active-background"
-      />
-      <View
-        style={
-          Object {
-            "backgroundColor": "rgba(0, 0, 0, 0.15)",
-            "height": 56,
-            "left": 0,
-            "opacity": 1,
-            "position": "absolute",
-            "top": 0,
-            "transform": Array [
-              Object {
-                "translateX": -0,
-              },
-            ],
-            "width": null,
-            "zIndex": 1,
-          }
-        }
-        testID="aws-btn-progress"
       />
       <Text
         accessible={true}

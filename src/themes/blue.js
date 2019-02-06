@@ -15,7 +15,7 @@ const BUTTONS = {
   primary: {
     ...COMMON,
     backgroundColor: "#1775c8",
-    backgroundDarker: "#0e4f88",
+    backgroundDarker: "#125a9a",
     backgroundProgress: "#125a9a",
     textColor: "#FFF",
     activityColor: "#b3e5e1"

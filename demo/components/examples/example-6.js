@@ -1,6 +1,6 @@
 import React from "react";
-// import AwesomeButton from "react-native-really-awesome-button/src/themes/bruce";
-import AwesomeButton from "../../src/themes/bruce";
+import AwesomeButton from "react-native-really-awesome-button/src/themes/bruce";
+// import AwesomeButton from "../../src/themes/bruce";
 import Example from "../example";
 
 function example() {

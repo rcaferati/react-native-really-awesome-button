@@ -1,11 +1,10 @@
-import React from "react";
+import React, { Fragment } from "react";
 import PropTypes from "prop-types";
 import {
   ActivityIndicator,
   TouchableWithoutFeedback,
   View,
   Animated,
-  ImageBackground,
   ViewPropTypes
 } from "react-native";
 import { animateTiming, animateElastic, animateSpring } from "./helpers";
@@ -99,16 +98,22 @@ export default class Button extends React.Component {
     this.animatedLoading = new Animated.Value(0);
     this.animating = false;
     this.timeout = null;
+    this.containerWidth = null;
+
     this.state = {
+      containerOpacity: props.width === null ? 0 : 1,
       activity: false,
       width: null
     };
   }
 
   getAnimatedValues() {
-    const width = this.props.width || this.state.width || 0;
+    let width = this.containerWidth ? -this.containerWidth : 0;
 
     return {
+      animatedContainer: {
+        opacity: this.animatedOpacity
+      },
       animatedShadow: {
         transform: [
           {
@@ -146,7 +151,7 @@ export default class Button extends React.Component {
           {
             translateX: this.animatedLoading.interpolate({
               inputRange: [0, 1],
-              outputRange: [-width, 0]
+              outputRange: [width, 0]
             })
           }
         ]
@@ -293,17 +298,11 @@ export default class Button extends React.Component {
   }
 
   textLayout = event => {
+    this.containerWidth = event.nativeEvent.layout.width;
     if (this.props.width === null && !this.props.stretch == true) {
       this.setState({
-        width: event.nativeEvent.layout.width
-      });
-    }
-  };
-
-  containerLayout = event => {
-    if (this.props.stretch === true) {
-      this.setState({
-        width: event.nativeEvent.layout.width
+        width: event.nativeEvent.layout.width,
+        containerOpacity: 1
       });
     }
   };
@@ -367,10 +366,18 @@ export default class Button extends React.Component {
         testID="aws-btn-content-view"
         onPressIn={this.pressIn}
         onPressOut={this.pressOut}
-        onLayout={this.containerLayout}
         onPress={this.press}
       >
-        <View style={[styles.container, dynamicStyles.container, style]}>
+        <View
+          style={[
+            styles.container,
+            dynamicStyles.container,
+            {
+              opacity: this.state.containerOpacity
+            },
+            style
+          ]}
+        >
           <Animated.View
             testID="aws-btn-shadow"
             style={[
@@ -405,24 +412,26 @@ export default class Button extends React.Component {
                   animatedValues.animatedActive
                 ]}
               />
-              <Animated.View
-                testID="aws-btn-progress"
-                style={[
-                  styles.progress,
-                  dynamicStyles.progress,
-                  animatedValues.animatedProgress
-                ]}
-              />
-              {this.state.activity && (
-                <Animated.View
-                  testID="aws-btn-activity-indicator"
-                  style={[
-                    styles.container__activity,
-                    animatedValues.animatedActivity
-                  ]}
-                >
-                  <ActivityIndicator color={activityColor} />
-                </Animated.View>
+              {this.state.activity === true && (
+                <Fragment>
+                  <Animated.View
+                    testID="aws-btn-progress"
+                    style={[
+                      styles.progress,
+                      dynamicStyles.progress,
+                      animatedValues.animatedProgress
+                    ]}
+                  />
+                  <Animated.View
+                    testID="aws-btn-activity-indicator"
+                    style={[
+                      styles.container__activity,
+                      animatedValues.animatedActivity
+                    ]}
+                  >
+                    <ActivityIndicator color={activityColor} />
+                  </Animated.View>
+                </Fragment>
               )}
               {this.renderContent(dynamicStyles)}
             </View>
