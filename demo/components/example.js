@@ -105,6 +105,22 @@ export default function example({ ButtonComponent }) {
           <Text style={styles.text}>Button Icon</Text>
         </ButtonComponent>
       </Section>
+      <Section title="Linear Gradient Overwrite">
+        <ButtonComponent
+          backgroundDarker="#EAAC1E"
+          ExtraContent={
+            <LinearGradient
+              colors={["#4C63D2", "#BC3081", "#F47133", "#FED576"]}
+              style={styles.gradient}
+            />
+          }
+          style={styles.button}
+          type="primary"
+          size="medium"
+        >
+          Gradient Overwrite
+        </ButtonComponent>
+      </Section>
       <Section title="With auto and stretch">
         <ButtonComponent width={null} style={styles.button} type="primary">
           Primary Auto
@@ -125,30 +141,8 @@ export default function example({ ButtonComponent }) {
           type="primary"
           size="large"
           stretch
-          progress
-          onPress={next =>
-            setTimeout(() => {
-              next();
-            }, 1000)
-          }
         >
           Primary Large Stretch
-        </ButtonComponent>
-      </Section>
-      <Section title="Linear Gradient Overwrite">
-        <ButtonComponent
-          backgroundDarker="#4f4f4f"
-          ExtraContent={
-            <LinearGradient
-              colors={["#cfcfcf", "#ababab", "#6f6f6f"]}
-              style={styles.gradient}
-            />
-          }
-          style={styles.button}
-          type="primary"
-          size="medium"
-        >
-          Gradient Overwrite
         </ButtonComponent>
       </Section>
     </Container>

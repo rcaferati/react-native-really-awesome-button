@@ -101,7 +101,7 @@ export default class Button extends React.Component {
     this.containerWidth = null;
 
     this.state = {
-      containerOpacity: props.width === null ? 0 : 1,
+      containerOpacity: props.width === null && !props.stretch == true ? 0 : 1,
       activity: false,
       width: null
     };

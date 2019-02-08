@@ -1,10 +1,13 @@
 {
   "expo": {
-    "name": "RNRAB",
-    "slug": "rnrab-demo",
+    "name": "React Native Awesome Button 3D Component",
+    "slug": "react-native-really-awesome-button",
     "privacy": "public",
     "sdkVersion": "32.0.0",
-    "platforms": ["ios", "android"],
+    "platforms": [
+      "ios",
+      "android"
+    ],
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
@@ -16,9 +19,13 @@
     "updates": {
       "fallbackToCacheTimeout": 0
     },
-    "assetBundlePatterns": ["**/*"],
+    "assetBundlePatterns": [
+      "**/*"
+    ],
     "ios": {
       "supportsTablet": false
-    }
+    },
+    "description": "React Native 60fps 3D UI component. Extendable, production ready component that renders an animated set of 3D UI buttons. Source @ https://github.com/rcaferati/react-native-really-awesome-button Author @ https://caferati.me",
+    "githubUrl": "https://github.com/rcaferati/react-native-really-awesome-button"
   }
 }

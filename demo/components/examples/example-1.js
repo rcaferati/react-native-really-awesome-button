@@ -1,7 +1,7 @@
 import React from "react";
 import { Text } from "react-native";
-import AwesomeButton from "react-native-really-awesome-button/src/themes/blue";
-// import AwesomeButton from "../../src/themes/blue";
+// import AwesomeButton from "react-native-really-awesome-button/src/themes/blue";
+import AwesomeButton from "../../src/themes/blue";
 import Example from "../example";
 
 function example() {
