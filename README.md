@@ -84,27 +84,27 @@ function Button() {
 
 | Attributes            |     Type      |  Default  | Description                                               |
 | :-------------------- | :-----------: | :-------: | :-------------------------------------------------------- |
-| activityColor         |   `string`    | `#FFFFFF` | Progress button error label text                          |
-| backgroundActive      |   `string`    | `#C0C0C0` | Button active background-color                            |
-| backgroundColor       |   `string`    | `#C0C0C0` | Button main background-color                              |
-| backgroundPlaceholder |   `string`    | `#C0C0C0` | Button placeholder background-color                       |
-| backgroundProgress    |   `string`    | `#C0C0C0` | Button progress bar background-color                      |
-| backgroundShadow      |   `string`    | `#C0C0C0` | Button progress bar background-color                      |
-| backgroundDarker      |   `string`    | `#9F9F9F` | Button front face background-color                        |
-| borderColor           |   `string`    |  `null`   | Button border-color                                       |
-| borderRadius          |   `number`    |    `4`    | Button border-radius                                      |
-| borderWidth           |   `number`    |    `0`    | Button border-width                                       |
-| disabled              |   `bool`      |  `true`   | Button disabled state: cancels animation and onPress func |
-| height                |   `number`    |   `50`    | Button height                                             |
-| onPress               |   `Func`      |  `null`   | Button onPress function                                   |
-| progress              |   `bool`      |  `false`  | Enable progress animation                                 |
-| raiseLevel            |   `number`    |    `4`    | Button 3D raise level                                     |
-| springRelease         |   `bool`      |  `true`   | Button uses spring on the release animation               |
-| style                 |   `Style`     | `null`    | Button container custom styles                            |
-| textColor             |   `string`    | `#FFFFFF` | Button default label text color                           |
-| textLineHeight        |   `number`    |   `20`    | Button default label text line-height                     |
-| textSize              |   `number`    |   `16`    | Button default label text font-size                       |
-| width                 |   `number`    |  `null`   | Setting width to `null` mirrors an `auto` behaviour       |
+| activityColor         | `String`      | `#FFFFFF` | Progress button error label text                          |
+| backgroundActive      | `String`      | `#C0C0C0` | Button active background-color                            |
+| backgroundColor       | `String`      | `#C0C0C0` | Button main background-color                              |
+| backgroundPlaceholder | `String`      | `#C0C0C0` | Button placeholder background-color                       |
+| backgroundProgress    | `String`      | `#C0C0C0` | Button progress bar background-color                      |
+| backgroundShadow      | `String`      | `#C0C0C0` | Button progress bar background-color                      |
+| backgroundDarker      | `String`      | `#9F9F9F` | Button front face background-color                        |
+| borderColor           | `String`      | `null `   | Button border-color                                       |
+| borderRadius          | `Number`      | `4`       | Button border-radius                                      |
+| borderWidth           | `Number`      | `0`       | Button border-width                                       |
+| disabled              | `Boolean`     | `true`    | Button disabled state: cancels animation and onPress func |
+| height                | `Number`      | `50`      | Button height                                             |
+| onPress               | `Func`        | `null`    | Button onPress function                                   |
+| progress              | `Boolean`     | `false`   | Enable progress animation                                 |
+| raiseLevel            | `Number`      | `4`       | Button 3D raise level                                     |
+| springRelease         | `Boolean`     | `true`    | Button uses spring on the release animation               |
+| style                 | `Style`       | `null`    | Button container custom styles                            |
+| textColor             | `String`      | `#FFFFFF` | Button default label text color                           |
+| textLineHeight        | `Number`      | `20`      | Button default label text line-height                     |
+| textSize              | `Number`      | `16`      | Button default label text font-size                       |
+| width                 | `Number`      | `null`    | Setting width to `null` mirrors an `auto` behaviour       |
 
 ## Author
 
