@@ -94,13 +94,13 @@ function Button() {
 | borderColor           |   `string`    |  `null`   | Button border-color                                       |
 | borderRadius          |   `number`    |    `4`    | Button border-radius                                      |
 | borderWidth           |   `number`    |    `0`    | Button border-width                                       |
-| disabled              |    `bool`     |  `true`   | Button disabled state: cancels animation and onPress func |
+| disabled              |   `bool`      |  `true`   | Button disabled state: cancels animation and onPress func |
 | height                |   `number`    |   `50`    | Button height                                             |
-| onPress               | `Func`        |  `null`   | Button onPress function                                   |
-| progress              | `bool`        |  `false`  | Enable progress animation                                 |
+| onPress               |   `Func`      |  `null`   | Button onPress function                                   |
+| progress              |   `bool`      |  `false`  | Enable progress animation                                 |
 | raiseLevel            |   `number`    |    `4`    | Button 3D raise level                                     |
-| springRelease         |    `bool`     |  `true`   | Button uses spring on the release animation               |
-| style                 | `Style`       | `null`    | Button container custom styles                            |
+| springRelease         |   `bool`      |  `true`   | Button uses spring on the release animation               |
+| style                 |   `Style`     | `null`    | Button container custom styles                            |
 | textColor             |   `string`    | `#FFFFFF` | Button default label text color                           |
 | textLineHeight        |   `number`    |   `20`    | Button default label text line-height                     |
 | textSize              |   `number`    |   `16`    | Button default label text font-size                       |
