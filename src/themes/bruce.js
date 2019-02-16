@@ -64,7 +64,7 @@ const SIZE = {
   },
   medium: {
     width: 200,
-    height: 55
+    height: 60
   },
   large: {
     width: 250,
