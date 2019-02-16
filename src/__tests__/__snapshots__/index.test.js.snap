@@ -10,20 +10,14 @@ exports[`AwesomeButton should render 1`] = `
   onResponderTerminationRequest={[Function]}
   onStartShouldSetResponder={[Function]}
   style={
-    Array [
-      Object {
-        "backgroundColor": "transparent",
-        "zIndex": 10,
-      },
-      Object {
-        "height": 60,
-        "width": null,
-      },
-      Object {
-        "opacity": 0,
-      },
-      null,
-    ]
+    Object {
+      "backgroundColor": "transparent",
+      "height": 60,
+      "opacity": 0,
+      "paddingBottom": 0,
+      "width": null,
+      "zIndex": 10,
+    }
   }
   testID="aws-btn-content-view"
 >
@@ -98,6 +92,7 @@ exports[`AwesomeButton should render 1`] = `
             "borderColor": null,
             "borderRadius": 4,
             "borderWidth": 0,
+            "paddingHorizontal": 12,
           },
         ]
       }
@@ -148,20 +143,14 @@ exports[`AwesomeButton should render a default text children 1`] = `
   onResponderTerminationRequest={[Function]}
   onStartShouldSetResponder={[Function]}
   style={
-    Array [
-      Object {
-        "backgroundColor": "transparent",
-        "zIndex": 10,
-      },
-      Object {
-        "height": 60,
-        "width": null,
-      },
-      Object {
-        "opacity": 0,
-      },
-      null,
-    ]
+    Object {
+      "backgroundColor": "transparent",
+      "height": 60,
+      "opacity": 0,
+      "paddingBottom": 0,
+      "width": null,
+      "zIndex": 10,
+    }
   }
   testID="aws-btn-content-view"
 >
@@ -236,6 +225,7 @@ exports[`AwesomeButton should render a default text children 1`] = `
             "borderColor": null,
             "borderRadius": 4,
             "borderWidth": 0,
+            "paddingHorizontal": 12,
           },
         ]
       }
@@ -266,7 +256,8 @@ exports[`AwesomeButton should render a default text children 1`] = `
             "fontSize": 14,
             "fontWeight": "bold",
             "opacity": 1,
-            "paddingHorizontal": 12,
+            "paddingBottom": 0,
+            "paddingTop": 0,
             "textAlign": "center",
             "transform": Array [
               Object {

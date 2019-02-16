@@ -1,6 +1,5 @@
 import React from "react";
 import renderer from "react-test-renderer";
-import { View, TouchableWithoutFeedback } from "react-native";
 import AwesomeButton from "../index";
 
 const DEFAULT_TEXT = "Default";
@@ -28,16 +27,6 @@ describe("AwesomeButton", () => {
 
     expect(element.props.children).toEqual(DEFAULT_TEXT);
     expect(component.toJSON()).toMatchSnapshot();
-  });
-
-  it("should render a with default props dimensions", () => {
-    const component = renderer.create(
-      <AwesomeButton>{DEFAULT_TEXT}</AwesomeButton>
-    );
-    const { height, width } = component.root.props;
-
-    expect(component.root.findByType(View).props.style[1].height).toBe(height);
-    expect(component.root.findByType(View).props.style[1].width).toBe(width);
   });
 
   it("should render the button shadow element", () => {

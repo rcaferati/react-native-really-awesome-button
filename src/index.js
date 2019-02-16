@@ -402,6 +402,7 @@ export default class Button extends React.Component {
         onPress={this.press}
       >
         <Animated.View
+          testID="aws-btn-content-2"
           style={[
             styles.container,
             dynamicStyles.container,
