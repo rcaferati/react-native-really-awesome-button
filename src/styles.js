@@ -6,36 +6,45 @@ const memoized = memoize(
     backgroundActive,
     backgroundColor,
     backgroundDarker,
-    backgroundShadow,
     backgroundPlaceholder,
     backgroundProgress,
+    backgroundShadow,
     borderColor,
     borderRadius,
     borderWidth,
     height,
-    horizontalPadding,
+    paddingBottom,
+    paddingHorizontal,
+    paddingTop,
     raiseLevel,
+    stateWidth,
+    stretch,
     textColor,
+    textFontFamily,
     textLineHeight,
     textSize,
-    textFontFamily,
     width
   }) => {
+    const calcHeight = height + paddingBottom + paddingTop;
+    const calcWidth = stretch ? "100%" : width || stateWidth || null;
+
     const dimensionsDiff = {
-      width,
-      height: height - raiseLevel
+      width: calcWidth,
+      height: calcHeight - raiseLevel
     };
 
     return StyleSheet.create({
       container: {
-        height,
-        width
+        height: calcHeight,
+        width: calcWidth,
+        paddingBottom
       },
       container__text: {
         color: textColor,
         fontSize: textSize,
         fontFamily: textFontFamily,
-        paddingHorizontal: horizontalPadding
+        paddingBottom,
+        paddingTop
       },
       container__placeholder: {
         height: textLineHeight,
@@ -68,53 +77,57 @@ const memoized = memoize(
         borderColor,
         borderWidth,
         borderRadius,
-        backgroundColor
+        backgroundColor,
+        paddingHorizontal
       }
     });
   }
 );
 
-export const getStyles = (styleProps, state) => {
-  const {
-    backgroundActive,
-    backgroundColor,
-    backgroundDarker,
-    backgroundShadow,
-    backgroundPlaceholder,
-    backgroundProgress,
-    borderColor,
-    borderRadius,
-    borderWidth,
-    height,
-    horizontalPadding,
-    raiseLevel,
-    textColor,
-    textLineHeight,
-    textSize,
-    textFontFamily
-  } = styleProps;
-
-  const width = styleProps.stretch
-    ? "100%"
-    : styleProps.width || state.width || null;
-
+export const getStyles = ({
+  backgroundActive,
+  backgroundColor,
+  backgroundDarker,
+  backgroundPlaceholder,
+  backgroundProgress,
+  backgroundShadow,
+  borderColor,
+  borderRadius,
+  borderWidth,
+  height,
+  paddingBottom,
+  paddingHorizontal,
+  paddingTop,
+  raiseLevel,
+  stateWidth,
+  stretch,
+  textColor,
+  textFontFamily,
+  textLineHeight,
+  textSize,
+  width
+}) => {
   return memoized({
     backgroundActive,
     backgroundColor,
     backgroundDarker,
-    backgroundShadow,
     backgroundPlaceholder,
     backgroundProgress,
+    backgroundShadow,
     borderColor,
     borderRadius,
     borderWidth,
     height,
-    horizontalPadding,
+    paddingBottom,
+    paddingHorizontal,
+    paddingTop,
     raiseLevel,
+    stateWidth,
+    stretch,
     textColor,
+    textFontFamily,
     textLineHeight,
     textSize,
-    textFontFamily,
     width
   });
 };

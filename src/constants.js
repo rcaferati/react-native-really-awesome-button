@@ -6,6 +6,7 @@ export const ANIMATED_TIMING_OFF = 100;
 export const ANIMATED_TIMING_IN = 200;
 export const ANIMATED_TIMING_LOADING = 3000;
 export const DEFAULT_RAISE_LEVEL = 4;
+export const DEFAULT_ACTIVE_OPACITY = 1;
 export const DEFAULT_HEIGHT = 60;
 export const DEFAULT_WIDTH = null;
 export const DEFAULT_BORDER_RADIUS = 4;

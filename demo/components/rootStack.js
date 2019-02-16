@@ -1,35 +1,96 @@
 import React from "react";
-import { createStackNavigator } from "react-navigation";
-import Example1 from "./examples/example-1";
-import Example2 from "./examples/example-2";
-import Example3 from "./examples/example-3";
-import Example4 from "./examples/example-4";
-import Example5 from "./examples/example-5";
-import Example6 from "./examples/example-6";
+import {
+  createStackNavigator,
+  createBottomTabNavigator
+} from "react-navigation";
+import Theme1 from "./scenes/theme-1";
+import Theme2 from "./scenes/theme-2";
+import Theme3 from "./scenes/theme-3";
+import Theme4 from "./scenes/theme-4";
+import Theme5 from "./scenes/theme-5";
+import Theme6 from "./scenes/theme-6";
+import Social from "./scenes/social";
+import Progress from "./scenes/progress";
+import {
+  AntDesign,
+  FontAwesome,
+  MaterialCommunityIcons
+} from "@expo/vector-icons";
 
-const RootStack = createStackNavigator(
+const ThemeStack = createStackNavigator(
   {
-    Example1: {
-      screen: Example1
+    Theme1: {
+      screen: Theme1
     },
-    Example2: {
-      screen: Example2
+    Theme2: {
+      screen: Theme2
     },
-    Example3: {
-      screen: Example3
+    Theme3: {
+      screen: Theme3
     },
-    Example4: {
-      screen: Example4
+    Theme4: {
+      screen: Theme4
     },
-    Example5: {
-      screen: Example5
+    Theme5: {
+      screen: Theme5
     },
-    Example6: {
-      screen: Example6
+    Theme6: {
+      screen: Theme6
     }
   },
   {
-    initialRouteName: "Example1"
+    initialRouteName: "Theme1"
+  }
+);
+
+const SocialStack = createStackNavigator(
+  {
+    SocialHome: {
+      screen: Social
+    }
+  },
+  {
+    initialRouteName: "SocialHome"
+  }
+);
+
+const ProgressStack = createStackNavigator(
+  {
+    ProgressHome: {
+      screen: Progress
+    }
+  },
+  {
+    initialRouteName: "ProgressHome"
+  }
+);
+
+const RootStack = createBottomTabNavigator(
+  {
+    Themes: ThemeStack,
+    Social: SocialStack,
+    Progress: ProgressStack
+  },
+  {
+    defaultNavigationOptions: ({ navigation }) => ({
+      tabBarIcon: ({ focused, horizontal, tintColor }) => {
+        const { routeName } = navigation.state;
+        let IconComponent = FontAwesome;
+        let iconName = "paint-brush";
+        if (routeName === "Social") {
+          iconName = `sharealt`;
+          IconComponent = AntDesign;
+        } else if (routeName === "Progress") {
+          iconName = "progress-check";
+          IconComponent = MaterialCommunityIcons;
+        }
+        return <IconComponent name={iconName} size={20} color={tintColor} />;
+      }
+    }),
+    tabBarOptions: {
+      activeTintColor: "tomato",
+      inactiveTintColor: "gray"
+    }
   }
 );
 

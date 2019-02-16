@@ -1,6 +1,6 @@
 import React from "react";
-import AwesomeButton from "react-native-really-awesome-button/src/themes/rick";
-// import AwesomeButton from "../../src/themes/rick";
+import AwesomeButton from "react-native-really-awesome-button/src/themes/c137";
+// import AwesomeButton from "../../src/themes/c137";
 import Example from "../example";
 
 function example() {
@@ -9,11 +9,11 @@ function example() {
 
 example.navigationOptions = ({ navigation }) => {
   return {
-    title: "Rick Theme",
+    title: "C-137 Theme",
     headerStyle: {
-      backgroundColor: "#aad3ea"
+      backgroundColor: "#fffa82"
     },
-    headerTintColor: "#2e84b1",
+    headerTintColor: "#535015",
     headerTitleStyle: {
       fontWeight: "bold"
     },
@@ -21,9 +21,11 @@ example.navigationOptions = ({ navigation }) => {
       <AwesomeButton
         size="small"
         type="primaryFlat"
-        textColor="#2e84b1"
+        textColor="#535015"
+        backgroundActive="rgba(0,0,0,0)"
+        activeOpacity={0.75}
         width={80}
-        onPress={() => navigation.navigate("Example5")}
+        onPress={() => navigation.navigate("Theme6")}
       >
         Next
       </AwesomeButton>
@@ -32,7 +34,9 @@ example.navigationOptions = ({ navigation }) => {
       <AwesomeButton
         size="small"
         type="primaryFlat"
-        textColor="#2e84b1"
+        backgroundActive="rgba(0,0,0,0)"
+        activeOpacity={0.75}
+        textColor="#535015"
         width={80}
         onPress={() => navigation.goBack()}
       >
