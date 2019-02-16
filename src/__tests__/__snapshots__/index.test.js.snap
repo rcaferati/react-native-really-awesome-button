@@ -14,7 +14,6 @@ exports[`AwesomeButton should render 1`] = `
       "backgroundColor": "transparent",
       "height": 60,
       "opacity": 0,
-      "paddingBottom": 0,
       "width": null,
       "zIndex": 10,
     }
@@ -92,7 +91,6 @@ exports[`AwesomeButton should render 1`] = `
             "borderColor": null,
             "borderRadius": 4,
             "borderWidth": 0,
-            "paddingHorizontal": 12,
           },
         ]
       }
@@ -147,7 +145,6 @@ exports[`AwesomeButton should render a default text children 1`] = `
       "backgroundColor": "transparent",
       "height": 60,
       "opacity": 0,
-      "paddingBottom": 0,
       "width": null,
       "zIndex": 10,
     }
@@ -225,7 +222,6 @@ exports[`AwesomeButton should render a default text children 1`] = `
             "borderColor": null,
             "borderRadius": 4,
             "borderWidth": 0,
-            "paddingHorizontal": 12,
           },
         ]
       }
@@ -257,6 +253,7 @@ exports[`AwesomeButton should render a default text children 1`] = `
             "fontWeight": "bold",
             "opacity": 1,
             "paddingBottom": 0,
+            "paddingHorizontal": 12,
             "paddingTop": 0,
             "textAlign": "center",
             "transform": Array [

@@ -36,15 +36,15 @@ const memoized = memoize(
     return StyleSheet.create({
       container: {
         height: calcHeight,
-        width: calcWidth,
-        paddingBottom
+        width: calcWidth
       },
       container__text: {
         color: textColor,
         fontSize: textSize,
         fontFamily: textFontFamily,
         paddingBottom,
-        paddingTop
+        paddingTop,
+        paddingHorizontal
       },
       container__placeholder: {
         height: textLineHeight,
@@ -77,8 +77,7 @@ const memoized = memoize(
         borderColor,
         borderWidth,
         borderRadius,
-        backgroundColor,
-        paddingHorizontal
+        backgroundColor
       }
     });
   }
