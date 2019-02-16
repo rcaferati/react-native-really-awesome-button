@@ -160,10 +160,6 @@ const styles = StyleSheet.create({
   },
   iconLeft: { marginRight: 5 },
   gradient: {
-    position: "absolute",
-    top: 0,
-    left: 0,
-    height: "100%",
-    width: "100%"
+    ...StyleSheet.absoluteFillObject
   }
 });

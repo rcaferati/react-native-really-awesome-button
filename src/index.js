@@ -13,6 +13,7 @@ import {
   ANIMATED_TIMING_LOADING,
   ANIMATED_TIMING_OFF,
   DEFAULT_ACTIVITY_COLOR,
+  DEFAULT_ACTIVE_OPACITY,
   DEFAULT_BACKGROUND_ACTIVE,
   DEFAULT_BACKGROUND_COLOR,
   DEFAULT_BACKGROUND_DARKER,
@@ -45,9 +46,10 @@ export default class Button extends React.Component {
     ExtraContent: PropTypes.node,
     disabled: PropTypes.bool,
     height: PropTypes.number,
-    horizontalPadding: PropTypes.number,
+    paddingHorizontal: PropTypes.number,
     onPress: PropTypes.func,
     progress: PropTypes.bool,
+    paddingBottom: PropTypes.number,
     raiseLevel: PropTypes.number,
     springRelease: PropTypes.bool,
     stretch: PropTypes.bool,
@@ -61,6 +63,7 @@ export default class Button extends React.Component {
 
   static defaultProps = {
     activityColor: DEFAULT_ACTIVITY_COLOR,
+    activeOpacity: DEFAULT_ACTIVE_OPACITY,
     backgroundActive: DEFAULT_BACKGROUND_ACTIVE,
     backgroundColor: DEFAULT_BACKGROUND_COLOR,
     backgroundDarker: DEFAULT_BACKGROUND_DARKER,
@@ -74,9 +77,12 @@ export default class Button extends React.Component {
     children: null,
     disabled: false,
     height: DEFAULT_HEIGHT,
-    horizontalPadding: DEFAULT_HORIZONTAL_PADDING,
+    paddingHorizontal: DEFAULT_HORIZONTAL_PADDING,
     onPress: null,
     progress: false,
+    paddingBottom: 0,
+    paddingTop: 0,
+    progressLoadingTime: ANIMATED_TIMING_LOADING,
     raiseLevel: DEFAULT_RAISE_LEVEL,
     springRelease: true,
     stretch: false,
@@ -96,19 +102,22 @@ export default class Button extends React.Component {
     this.animatedActive = new Animated.Value(0);
     this.animatedValue = new Animated.Value(0);
     this.animatedLoading = new Animated.Value(0);
+    this.animatedOpacity = new Animated.Value(
+      props.width === null && !props.stretch == true ? 0 : 1
+    );
+    this.layouted = null;
     this.animating = false;
     this.timeout = null;
     this.containerWidth = null;
 
     this.state = {
-      containerOpacity: props.width === null && !props.stretch == true ? 0 : 1,
       activity: false,
       width: null
     };
   }
 
   getAnimatedValues() {
-    let width = this.containerWidth ? -this.containerWidth : 0;
+    let width = this.containerWidth ? this.containerWidth * -1 : 0;
 
     return {
       animatedContainer: {
@@ -175,6 +184,11 @@ export default class Button extends React.Component {
     animateTiming({
       variable: this.animatedActive,
       toValue: 1,
+      duration: ANIMATED_TIMING_OFF
+    });
+    animateTiming({
+      variable: this.animatedOpacity,
+      toValue: this.props.progress ? 1 : this.props.activeOpacity,
       duration: ANIMATED_TIMING_OFF
     });
   };
@@ -273,11 +287,21 @@ export default class Button extends React.Component {
         toValue: 0,
         callback
       });
+      animateTiming({
+        variable: this.animatedOpacity,
+        toValue: 1,
+        duration: ANIMATED_TIMING_OFF
+      });
       return;
     }
     animateTiming({
       variable: this.animatedActive,
       toValue: 0,
+      duration: ANIMATED_TIMING_OFF
+    });
+    animateTiming({
+      variable: this.animatedOpacity,
+      toValue: 1,
       duration: ANIMATED_TIMING_OFF
     });
     animateTiming({
@@ -293,21 +317,27 @@ export default class Button extends React.Component {
     animateTiming({
       variable: this.animatedLoading,
       toValue: 1,
-      duration: ANIMATED_TIMING_LOADING
+      duration: this.props.progressLoadingTime
     });
   }
 
   textLayout = event => {
     this.containerWidth = event.nativeEvent.layout.width;
     if (this.props.width === null && !this.props.stretch == true) {
-      this.setState({
-        width: event.nativeEvent.layout.width,
-        containerOpacity: 1
-      });
+      if (
+        this.state.width !== event.nativeEvent.layout.width &&
+        this.state.width < event.nativeEvent.layout.width
+      ) {
+        this.setState({
+          width: event.nativeEvent.layout.width
+        });
+      }
+      this.animatedOpacity.setValue(1);
     }
   };
 
   renderContent(dynamicStyles) {
+    const { children } = this.props;
     const animatedStyles = {
       opacity: this.textOpacity,
       transform: [
@@ -316,7 +346,7 @@ export default class Button extends React.Component {
         }
       ]
     };
-    const { children } = this.props;
+
     if (!children) {
       return (
         <Animated.View
@@ -358,7 +388,10 @@ export default class Button extends React.Component {
 
   render() {
     const animatedValues = this.getAnimatedValues();
-    const dynamicStyles = getStyles(this.props, this.state);
+    const dynamicStyles = getStyles({
+      ...this.props,
+      stateWidth: this.state.width
+    });
     const { ExtraContent, style, activityColor } = this.props;
 
     return (
@@ -368,13 +401,12 @@ export default class Button extends React.Component {
         onPressOut={this.pressOut}
         onPress={this.press}
       >
-        <View
+        <Animated.View
+          testID="aws-btn-content-2"
           style={[
             styles.container,
             dynamicStyles.container,
-            {
-              opacity: this.state.containerOpacity
-            },
+            animatedValues.animatedContainer,
             style
           ]}
         >
@@ -436,7 +468,7 @@ export default class Button extends React.Component {
               {this.renderContent(dynamicStyles)}
             </View>
           </Animated.View>
-        </View>
+        </Animated.View>
       </TouchableWithoutFeedback>
     );
   }

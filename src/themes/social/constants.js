@@ -14,8 +14,8 @@ export const FACEBOOK = {
 };
 
 export const GITHUB = {
-  backgroundColor: "#25292e",
-  backgroundDarker: "#111315"
+  backgroundColor: "#2c3036",
+  backgroundDarker: "#060708"
 };
 
 export const LINKEDIN = {

@@ -5,7 +5,7 @@ import SocialTypes from "./social";
 
 const COMMON = {
   borderRadius: 8,
-  height: 55,
+  height: 60,
   raiseLevel: 10
 };
 

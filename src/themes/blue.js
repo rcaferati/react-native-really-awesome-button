@@ -6,7 +6,7 @@ import SocialTypes from "./social";
 const COMMON = {
   borderRadius: 4,
   height: 55,
-  raiseLevel: 5
+  raiseLevel: 6
 };
 
 const SOCIAL_TYPES = SocialTypes(COMMON);

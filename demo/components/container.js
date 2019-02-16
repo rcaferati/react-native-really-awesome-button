@@ -13,7 +13,8 @@ export default function container({ children }) {
 
 const style = StyleSheet.create({
   container: {
-    flex: 1
+    flex: 1,
+    backgroundColor: "#FFF"
   },
   scrollView: {
     paddingTop: 30,
