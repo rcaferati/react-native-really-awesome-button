@@ -3,7 +3,7 @@
   "expoServerPort": null,
   "packagerPort": null,
   "packagerPid": null,
-  "expoServerNgrokUrl": null,
-  "packagerNgrokUrl": null,
-  "ngrokPid": null
+  "expoServerNgrokUrl": "https://in-qqr.rcaferati.demo.exp.direct",
+  "packagerNgrokUrl": "https://packager.in-qqr.rcaferati.demo.exp.direct",
+  "ngrokPid": 4172
 }
