@@ -3,6 +3,7 @@ import {
   createStackNavigator,
   createBottomTabNavigator
 } from "react-navigation";
+import Theme0 from "./scenes/theme-0";
 import Theme1 from "./scenes/theme-1";
 import Theme2 from "./scenes/theme-2";
 import Theme3 from "./scenes/theme-3";
@@ -19,6 +20,9 @@ import {
 
 const ThemeStack = createStackNavigator(
   {
+    Theme0: {
+      screen: Theme0
+    },
     Theme1: {
       screen: Theme1
     },
@@ -39,7 +43,7 @@ const ThemeStack = createStackNavigator(
     }
   },
   {
-    initialRouteName: "Theme1"
+    initialRouteName: "Theme0"
   }
 );
 

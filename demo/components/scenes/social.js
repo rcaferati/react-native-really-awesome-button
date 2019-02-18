@@ -24,7 +24,7 @@ export default function social({ ButtonComponent }) {
             }, 1000);
           }}
           type="facebook"
-          width={160}
+          width={180}
           borderRadius={50}
           raiseLevel={8}
         >
@@ -45,7 +45,7 @@ export default function social({ ButtonComponent }) {
             }, 1000);
           }}
           type="twitter"
-          width={160}
+          width={180}
           borderRadius={8}
           raiseLevel={8}
         >
@@ -66,7 +66,7 @@ export default function social({ ButtonComponent }) {
             }, 1000);
           }}
           type="messenger"
-          width={160}
+          width={180}
           borderRadius={0}
           raiseLevel={6}
         >
@@ -94,7 +94,7 @@ export default function social({ ButtonComponent }) {
             />
           }
           style={styles.button}
-          width={160}
+          width={180}
         >
           <FontAwesome
             style={[styles.iconLeft, { marginTop: -2, marginRight: 7 }]}
