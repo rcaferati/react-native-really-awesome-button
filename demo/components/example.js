@@ -39,7 +39,7 @@ export default function example({ ButtonComponent }) {
           type="primary"
           size="medium"
         >
-          Progress
+          Primary
         </ButtonComponent>
         <ButtonComponent
           progress
@@ -52,7 +52,7 @@ export default function example({ ButtonComponent }) {
           type="secondary"
           size="medium"
         >
-          Progress
+          Secondary
         </ButtonComponent>
       </Section>
       <Section title="Empty Placeholder">
@@ -62,6 +62,7 @@ export default function example({ ButtonComponent }) {
       <Section title="Flat Buttons">
         <ButtonComponent
           raiseLevel={0}
+          activeOpacity={0.75}
           style={styles.button}
           type="primary"
           size="medium"
@@ -70,6 +71,7 @@ export default function example({ ButtonComponent }) {
         </ButtonComponent>
         <ButtonComponent
           raiseLevel={0}
+          activeOpacity={0.75}
           style={styles.button}
           type="secondary"
           size="medium"
@@ -78,6 +80,7 @@ export default function example({ ButtonComponent }) {
         </ButtonComponent>
         <ButtonComponent
           raiseLevel={0}
+          activeOpacity={0.75}
           style={styles.button}
           type="anchor"
           size="medium"

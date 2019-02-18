@@ -40,7 +40,69 @@ export default function progress({ ButtonComponent }) {
           width={200}
           progressLoadingTime={6000}
         >
-          Slower Progress
+          Slower
+        </AwesomeButton>
+        <AwesomeButton
+          style={styles.button}
+          progress
+          onPress={next => {
+            setTimeout(() => {
+              next();
+            }, 1000);
+          }}
+          type="primary"
+          width={200}
+          backgroundActive="rgba(0,0,0,0)"
+          backgroundProgress="rgba(0,0,0,0)"
+        >
+          No Bar
+        </AwesomeButton>
+        <AwesomeButton
+          style={styles.button}
+          progress
+          onPress={next => {
+            setTimeout(() => {
+              next();
+            }, 1000);
+          }}
+          type="primary"
+          raiseLevel={0}
+          borderRadius={0}
+          width={200}
+        >
+          Flat Progress
+        </AwesomeButton>
+        <AwesomeButton
+          style={styles.button}
+          progress
+          onPress={next => {
+            setTimeout(() => {
+              next();
+            }, 500);
+          }}
+          type="primary"
+          raiseLevel={6}
+          borderRadius={60}
+          width={58}
+          height={60}
+        >
+          <MaterialCommunityIcons name="send" size={24} color="#FFFFFF" />
+        </AwesomeButton>
+        <AwesomeButton
+          style={styles.button}
+          progress
+          onPress={next => {
+            setTimeout(() => {
+              next();
+            }, 500);
+          }}
+          type="primary"
+          raiseLevel={0}
+          borderRadius={60}
+          width={58}
+          height={60}
+        >
+          <MaterialCommunityIcons name="facebook" size={24} color="#FFFFFF" />
         </AwesomeButton>
       </Section>
     </Container>
