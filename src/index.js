@@ -26,7 +26,8 @@ import {
   DEFAULT_RAISE_LEVEL,
   DEFAULT_TEXT_COLOR,
   DEFAULT_TEXT_SIZE,
-  DEFAULT_WIDTH
+  DEFAULT_WIDTH,
+  DEFAULT_RELEASE_DELAY
 } from "./constants";
 
 export default class Button extends React.Component {
@@ -108,6 +109,7 @@ export default class Button extends React.Component {
     this.layouted = null;
     this.animating = false;
     this.timeout = null;
+    this.pressing = false;
     this.containerWidth = null;
 
     this.state = {
@@ -176,6 +178,10 @@ export default class Button extends React.Component {
     ) {
       return false;
     }
+    this.pressing = true;
+    if (this.props.progress) {
+      this.animating = true;
+    }
     animateTiming({
       variable: this.animatedValue,
       toValue: 1,
@@ -189,7 +195,11 @@ export default class Button extends React.Component {
     animateTiming({
       variable: this.animatedOpacity,
       toValue: this.props.progress ? 1 : this.props.activeOpacity,
-      duration: ANIMATED_TIMING_OFF
+      duration: ANIMATED_TIMING_OFF,
+      callback: () => {
+        this.pressing = false;
+        this.press();
+      }
     });
   };
 
@@ -201,22 +211,16 @@ export default class Button extends React.Component {
     ) {
       return false;
     }
+    if (this.pressing === false) {
+      this.release();
+      return;
+    }
     this.timeout = setTimeout(() => {
       this.release();
-    }, 100);
+    }, ANIMATED_TIMING_OFF / 2.5);
   };
 
   press = () => {
-    if (
-      this.props.disabled === true ||
-      !this.props.children ||
-      this.animating === true
-    ) {
-      return false;
-    }
-    if (this.timeout) {
-      clearTimeout(this.timeout);
-    }
     if (this.props.progress === true) {
       this.animating = true;
       this.setState(
@@ -239,8 +243,6 @@ export default class Button extends React.Component {
           });
         }
       );
-    } else {
-      this.release();
     }
     if (this.props.onPress) {
       this.props.onPress(this.end);
@@ -248,31 +250,36 @@ export default class Button extends React.Component {
   };
 
   end = () => {
-    if (this.props.progress) {
-      animateTiming({
-        variable: this.animatedLoading,
-        toValue: 1,
-        callback: () => {
-          animateElastic({
-            variable: this.textOpacity,
-            toValue: 1
-          });
-          animateElastic({
-            variable: this.activityOpacity,
-            toValue: 0
-          });
-          animateTiming({
-            variable: this.loadingOpacity,
-            toValue: 0,
-            delay: 100,
-            callback: () => {
-              this.release(() => {
-                this.animating = false;
-              });
-            }
-          });
-        }
-      });
+    if (this.props.progress === true) {
+      if (this.timeout) {
+        clearTimeout(this.timeout);
+      }
+      this.timeout = setTimeout(() => {
+        animateTiming({
+          variable: this.animatedLoading,
+          toValue: 1,
+          callback: () => {
+            animateElastic({
+              variable: this.textOpacity,
+              toValue: 1
+            });
+            animateElastic({
+              variable: this.activityOpacity,
+              toValue: 0
+            });
+            animateTiming({
+              variable: this.loadingOpacity,
+              toValue: 0,
+              delay: 100,
+              callback: () => {
+                this.release(() => {
+                  this.animating = false;
+                });
+              }
+            });
+          }
+        });
+      }, 50);
     }
   };
 
@@ -399,7 +406,6 @@ export default class Button extends React.Component {
         testID="aws-btn-content-view"
         onPressIn={this.pressIn}
         onPressOut={this.pressOut}
-        onPress={this.press}
       >
         <Animated.View
           testID="aws-btn-content-2"
