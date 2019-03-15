@@ -249,7 +249,7 @@ export default class Button extends React.Component {
     }
   };
 
-  end = () => {
+  end = callback => {
     if (this.props.progress === true) {
       if (this.timeout) {
         clearTimeout(this.timeout);
@@ -265,7 +265,10 @@ export default class Button extends React.Component {
             });
             animateElastic({
               variable: this.activityOpacity,
-              toValue: 0
+              toValue: 0,
+              callback: () => {
+                callback && callback();
+              }
             });
             animateTiming({
               variable: this.loadingOpacity,
