@@ -130,7 +130,7 @@ function Button() {
 | textFamily            | `Number`      | `null`    | Button default label text font family                     |
 | style                 | `Style`       | `null`    | Button container custom styles                            |
 
-## React web version
+## Web version
 Checkout the web version of the Awesome Button UI component at [rcaferati/react-awesome-button](https://github.com/rcaferati/react-awesome-button)
 
 [<img src="https://github.com/rcaferati/react-awesome-button/blob/master/demo/public/images/react-awesome-button-customizer.png?raw=true" width="800" />](https://caferati.me/demo/react-awesome-button)
