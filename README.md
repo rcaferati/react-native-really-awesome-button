@@ -130,6 +130,9 @@ function Button() {
 | textFamily            | `Number`      | `null`    | Button default label text font family                     |
 | style                 | `Style`       | `null`    | Button container custom styles                            |
 
+## React web version
+Checkout the web version of the Awesome Button UI component at [rcaferati/react-awesome-button](https://github.com/rcaferati/react-awesome-button)
+
 ## About the Author
 
 #### Rafael Caferati
