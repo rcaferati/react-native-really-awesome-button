@@ -198,24 +198,25 @@ export default class Button extends React.Component {
       duration: ANIMATED_TIMING_OFF,
       callback: () => {
         this.pressing = false;
-        this.press();
       }
     });
   };
 
   pressOut = () => {
-    if (
-      this.props.disabled === true ||
-      !this.props.children ||
-      this.animating === true
-    ) {
+    if (this.props.disabled === true || !this.props.children) {
       return false;
     }
+    if (this.animating === true) {
+      this.press();
+      return;
+    }
     if (this.pressing === false) {
+      this.press();
       this.release();
       return;
     }
     this.timeout = setTimeout(() => {
+      this.press();
       this.release();
     }, ANIMATED_TIMING_OFF / 2.5);
   };
