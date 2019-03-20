@@ -15,11 +15,10 @@ export function memoize(fn) {
     if (memoize.cache[key]) {
       return memoize.cache[key];
     }
-    if(memoize.size > 1000) {
-      memoize.size = 0;
-      memoize.cache = {};
-    }
     const value = fn.apply(this, args);
+    if(memoize.size > 1000) {
+      return value;
+    }
     memoize.size += 1;
     memoize.cache[key] = value;
     return value;
