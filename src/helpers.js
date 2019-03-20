@@ -9,12 +9,18 @@ import {
 
 export function memoize(fn) {
   memoize.cache = {};
+  memoize.size = 0;
   return (...args) => {
     const key = JSON.stringify(args);
     if (memoize.cache[key]) {
       return memoize.cache[key];
     }
+    if(memoize.size > 1000) {
+      memoize.size = 0;
+      memoize.cache = {};
+    }
     const value = fn.apply(this, args);
+    memoize.size += 1;
     memoize.cache[key] = value;
     return value;
   };
