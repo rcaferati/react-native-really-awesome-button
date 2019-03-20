@@ -17,7 +17,8 @@ export function memoize(fn) {
     }
     const value = fn.apply(this, args);
     if(memoize.size > 1000) {
-      return value;
+      memoize.size = 0;
+      memoize.cache = {};
     }
     memoize.size += 1;
     memoize.cache[key] = value;
