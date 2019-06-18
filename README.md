@@ -127,7 +127,7 @@ function Button() {
 | textColor             | `String`      | `#FFFFFF` | Button default label text color                           |
 | textLineHeight        | `Number`      | `20`      | Button default label text line height                     |
 | textSize              | `Number`      | `16`      | Button default label text font size                       |
-| textFamily            | `Number`      | `null`    | Button default label text font family                     |
+| textFontFamily        | `String`      | `null`    | Button default label text font family                     |
 | style                 | `Style`       | `null`    | Button container custom styles                            |
 
 ## Web version
