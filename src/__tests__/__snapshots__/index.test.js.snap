@@ -261,6 +261,7 @@ exports[`AwesomeButton should render a default text children 1`] = `
                 "scale": 1,
               },
             ],
+            "width": "100%",
             "zIndex": 10,
           }
         }
