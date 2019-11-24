@@ -11,6 +11,10 @@ const memoized = memoize(
     backgroundShadow,
     borderColor,
     borderRadius,
+    borderBottomLeftRadius,
+    borderBottomRightRadius,
+    borderTopLeftRadius,
+    borderTopRightRadius,
     borderWidth,
     height,
     paddingBottom,
@@ -27,6 +31,13 @@ const memoized = memoize(
   }) => {
     const calcHeight = height + paddingBottom + paddingTop;
     const calcWidth = stretch ? "100%" : width || stateWidth || null;
+    const borderRadiusObject = {};
+
+    borderRadiusObject.borderRadius = borderRadius;
+    borderRadiusObject.borderBottomLeftRadius = borderBottomLeftRadius;
+    borderRadiusObject.borderBottomRightRadius = borderBottomRightRadius;
+    borderRadiusObject.borderTopLeftRadius = borderTopLeftRadius;
+    borderRadiusObject.borderTopRightRadius = borderTopRightRadius;
 
     const dimensionsDiff = {
       width: calcWidth,
@@ -53,11 +64,11 @@ const memoized = memoize(
       shadow: {
         bottom: -raiseLevel / 2,
         height: height - raiseLevel,
-        borderRadius,
+        ...borderRadiusObject,
         backgroundColor: backgroundShadow
       },
       bottom: {
-        borderRadius,
+        ...borderRadiusObject,
         backgroundColor: backgroundDarker,
         ...dimensionsDiff
       },
@@ -67,7 +78,7 @@ const memoized = memoize(
       },
       content: {
         ...dimensionsDiff,
-        borderRadius
+        ...borderRadiusObject
       },
       activeBackground: {
         ...dimensionsDiff,
@@ -76,7 +87,7 @@ const memoized = memoize(
       text: {
         borderColor,
         borderWidth,
-        borderRadius,
+        ...borderRadiusObject,
         backgroundColor
       }
     });
@@ -92,6 +103,10 @@ export const getStyles = ({
   backgroundShadow,
   borderColor,
   borderRadius,
+  borderBottomLeftRadius,
+  borderBottomRightRadius,
+  borderTopLeftRadius,
+  borderTopRightRadius,
   borderWidth,
   height,
   paddingBottom,
@@ -115,6 +130,10 @@ export const getStyles = ({
     backgroundShadow,
     borderColor,
     borderRadius,
+    borderBottomLeftRadius,
+    borderBottomRightRadius,
+    borderTopLeftRadius,
+    borderTopRightRadius,
     borderWidth,
     height,
     paddingBottom,
@@ -137,7 +156,7 @@ export const styles = StyleSheet.create({
     zIndex: 10
   },
   container__text: {
-    width: '100%',
+    width: "100%",
     fontWeight: "bold",
     zIndex: 10,
     textAlign: "center"
