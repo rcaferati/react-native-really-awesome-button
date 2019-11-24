@@ -24,7 +24,11 @@ exports[`AwesomeButton should render 1`] = `
     style={
       Object {
         "backgroundColor": "rgba(0, 0, 0, 0.15)",
+        "borderBottomLeftRadius": null,
+        "borderBottomRightRadius": null,
         "borderRadius": 4,
+        "borderTopLeftRadius": null,
+        "borderTopRightRadius": null,
         "bottom": -2,
         "height": 56,
         "left": "1%",
@@ -49,7 +53,11 @@ exports[`AwesomeButton should render 1`] = `
         },
         Object {
           "backgroundColor": "#9f9f9f",
+          "borderBottomLeftRadius": null,
+          "borderBottomRightRadius": null,
           "borderRadius": 4,
+          "borderTopLeftRadius": null,
+          "borderTopRightRadius": null,
           "height": 56,
           "width": null,
         },
@@ -60,7 +68,11 @@ exports[`AwesomeButton should render 1`] = `
   <View
     style={
       Object {
+        "borderBottomLeftRadius": null,
+        "borderBottomRightRadius": null,
         "borderRadius": 4,
+        "borderTopLeftRadius": null,
+        "borderTopRightRadius": null,
         "height": 56,
         "left": 0,
         "position": "absolute",
@@ -88,8 +100,12 @@ exports[`AwesomeButton should render 1`] = `
           },
           Object {
             "backgroundColor": "#c0c0c0",
+            "borderBottomLeftRadius": null,
+            "borderBottomRightRadius": null,
             "borderColor": null,
             "borderRadius": 4,
+            "borderTopLeftRadius": null,
+            "borderTopRightRadius": null,
             "borderWidth": 0,
           },
         ]
@@ -155,7 +171,11 @@ exports[`AwesomeButton should render a default text children 1`] = `
     style={
       Object {
         "backgroundColor": "rgba(0, 0, 0, 0.15)",
+        "borderBottomLeftRadius": null,
+        "borderBottomRightRadius": null,
         "borderRadius": 4,
+        "borderTopLeftRadius": null,
+        "borderTopRightRadius": null,
         "bottom": -2,
         "height": 56,
         "left": "1%",
@@ -180,7 +200,11 @@ exports[`AwesomeButton should render a default text children 1`] = `
         },
         Object {
           "backgroundColor": "#9f9f9f",
+          "borderBottomLeftRadius": null,
+          "borderBottomRightRadius": null,
           "borderRadius": 4,
+          "borderTopLeftRadius": null,
+          "borderTopRightRadius": null,
           "height": 56,
           "width": null,
         },
@@ -191,7 +215,11 @@ exports[`AwesomeButton should render a default text children 1`] = `
   <View
     style={
       Object {
+        "borderBottomLeftRadius": null,
+        "borderBottomRightRadius": null,
         "borderRadius": 4,
+        "borderTopLeftRadius": null,
+        "borderTopRightRadius": null,
         "height": 56,
         "left": 0,
         "position": "absolute",
@@ -219,8 +247,12 @@ exports[`AwesomeButton should render a default text children 1`] = `
           },
           Object {
             "backgroundColor": "#c0c0c0",
+            "borderBottomLeftRadius": null,
+            "borderBottomRightRadius": null,
             "borderColor": null,
             "borderRadius": 4,
+            "borderTopLeftRadius": null,
+            "borderTopRightRadius": null,
             "borderWidth": 0,
           },
         ]
