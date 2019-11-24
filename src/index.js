@@ -211,9 +211,13 @@ export default class Button extends React.Component {
     });
   };
 
-  pressOut = () => {
+  pressOut = event => {
     if (this.props.disabled === true || !this.props.children) {
       return false;
+    }
+    if (event.nativeEvent && event.nativeEvent.contentOffset) {
+      this.release();
+      return;
     }
     if (this.animating === true) {
       this.press();
