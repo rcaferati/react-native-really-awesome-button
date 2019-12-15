@@ -119,6 +119,7 @@ export default class Button extends React.Component {
     this.animating = false;
     this.timeout = null;
     this.pressing = false;
+    this.progressing = false;
     this.containerWidth = null;
 
     this.state = {
@@ -212,7 +213,11 @@ export default class Button extends React.Component {
   };
 
   pressOut = event => {
-    if (this.props.disabled === true || !this.props.children) {
+    if (
+      this.props.disabled === true ||
+      !this.props.children ||
+      this.progressing === true
+    ) {
       return false;
     }
     if (event.nativeEvent && event.nativeEvent.contentOffset) {
@@ -220,6 +225,7 @@ export default class Button extends React.Component {
       return;
     }
     if (this.animating === true) {
+      this.progressing = true;
       this.press();
       return;
     }
@@ -236,7 +242,7 @@ export default class Button extends React.Component {
 
   press = () => {
     if (this.props.progress === true) {
-      this.animating = true;
+      // this.animating = true;
       this.setState(
         {
           activity: true
@@ -264,40 +270,42 @@ export default class Button extends React.Component {
   };
 
   end = callback => {
-    if (this.props.progress === true) {
-      if (this.timeout) {
-        clearTimeout(this.timeout);
-      }
-      this.timeout = setTimeout(() => {
-        animateTiming({
-          variable: this.animatedLoading,
-          toValue: 1,
-          callback: () => {
-            animateElastic({
-              variable: this.textOpacity,
-              toValue: 1
-            });
-            animateElastic({
-              variable: this.activityOpacity,
-              toValue: 0,
-              callback: () => {
-                callback && callback();
-              }
-            });
-            animateTiming({
-              variable: this.loadingOpacity,
-              toValue: 0,
-              delay: 100,
-              callback: () => {
-                this.release(() => {
-                  this.animating = false;
-                });
-              }
-            });
-          }
-        });
-      }, 50);
+    if (this.props.progress !== true) {
+      return;
     }
+    if (this.timeout) {
+      clearTimeout(this.timeout);
+    }
+    this.timeout = setTimeout(() => {
+      animateTiming({
+        variable: this.animatedLoading,
+        toValue: 1,
+        callback: () => {
+          animateElastic({
+            variable: this.textOpacity,
+            toValue: 1
+          });
+          animateElastic({
+            variable: this.activityOpacity,
+            toValue: 0,
+            callback: () => {
+              callback && callback();
+            }
+          });
+          animateTiming({
+            variable: this.loadingOpacity,
+            toValue: 0,
+            delay: 100,
+            callback: () => {
+              this.release(() => {
+                this.animating = false;
+                this.progressing = false;
+              });
+            }
+          });
+        }
+      });
+    }, 50);
   };
 
   release(callback) {
