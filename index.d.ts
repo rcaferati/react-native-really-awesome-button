@@ -1,7 +1,7 @@
-// Type definitions for react-native-svg-uri 1.1.2
-// Project: https://github.com/matc4/react-native-svg-uri
-// Definitions by: Kyle Roach <https://github.com/iRoachie>
-// TypeScript Version: 2.2.2
+// Type definitions for react-native-really-awesome-button
+// Project: https://github.com/rcaferati/react-native-really-awesome-button
+// Definitions by: Rafael Caferati <https://github.com/rcaferati>
+// TypeScript Version: 3.0.0
 
 declare module "react-native-really-awesome-button" {
   import React, { Component } from "react";
@@ -28,17 +28,17 @@ declare module "react-native-really-awesome-button" {
     disabled?: boolean;
     height?: number;
     paddingHorizontal?: number;
-    progress: boolean;
-    paddingBottom: number;
-    raiseLevel: number;
-    springRelease: boolean;
-    stretch: boolean;
-    style: ViewStyle;
-    textColor: string;
-    textLineHeight: number;
-    textSize: number;
-    textFamily: string;
-    width: number;
+    progress?: boolean;
+    paddingBottom?: number;
+    raiseLevel?: number;
+    springRelease?: boolean;
+    stretch?: boolean;
+    style?: ViewStyle;
+    textColor?: string;
+    textLineHeight?: number;
+    textSize?: number;
+    textFamily?: string;
+    width?: number;
     onPress?(): void;
   }
 
@@ -47,5 +47,3 @@ declare module "react-native-really-awesome-button" {
     {}
   > {}
 }
-
-// export class AwesomeButton extends React.Component<AwesomeButtonProps, any> {}
