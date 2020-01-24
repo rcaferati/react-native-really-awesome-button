@@ -3,6 +3,7 @@
   "version": "1.5.1",
   "description": "ReactNative performant component that renders an 60fps animated set of progress enabled 3D UI buttons.",
   "main": "src/index.js",
+  "typings": "./index.d.ts",
   "author": "Rafael Caferati",
   "license": "MIT",
   "homepage": "https://github.com/rcaferati/react-native-really-awesome-button",
