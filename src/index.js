@@ -63,7 +63,7 @@ export default class Button extends React.Component {
     textColor: PropTypes.string,
     textLineHeight: PropTypes.number,
     textSize: PropTypes.number,
-    textFamily: PropTypes.string,
+    textFontFamily: PropTypes.string,
     width: PropTypes.number
   };
 
