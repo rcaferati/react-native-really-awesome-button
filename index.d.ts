@@ -38,7 +38,7 @@ declare module "react-native-really-awesome-button" {
     textLineHeight?: number;
     textSize?: number;
     textFontFamily?: string;
-    width?: number;
+    width?: number | string;
     onPress?(): void;
   }
 
