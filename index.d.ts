@@ -7,6 +7,8 @@ declare module "react-native-really-awesome-button" {
   import React, { Component } from "react";
   import { ViewStyle } from "react-native";
 
+  type AfterPressFn = (callback: () => void) => void;
+
   export interface AwesomeButtonProps {
     activityColor?: string;
     backgroundActive?: string;
@@ -39,7 +41,7 @@ declare module "react-native-really-awesome-button" {
     textSize?: number;
     textFamily?: string;
     width?: number;
-    onPress?(): void;
+    onPress?: (afterPressFn?: AfterPressFn) => void;
   }
 
   export default class AwesomeButton extends Component<
