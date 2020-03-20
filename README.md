@@ -130,6 +130,7 @@ function Button() {
 | onPress               | `Function`    | `null`    | Button onPress function. It receives a `next` argument when the `progress` prop is set to `true` |
 | progress              | `Boolean`     | `false`   | When set to `true` enables progress animation             |
 | progressLoadingTime   | `Number`      | `3000`    | Number in `ms` for the maximum progress bar animation time |
+| size                  | `String`      | `medium`  | Button default size                                       |
 | textColor             | `String`      | `#FFFFFF` | Button default label text color                           |
 | textLineHeight        | `Number`      | `20`      | Button default label text line height                     |
 | textSize              | `Number`      | `16`      | Button default label text font size                       |
