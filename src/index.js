@@ -64,7 +64,7 @@ export default class Button extends React.Component {
     textLineHeight: PropTypes.number,
     textSize: PropTypes.number,
     textFamily: PropTypes.string,
-    width: PropTypes.number
+    width: PropTypes.oneOfType([ PropTypes.string, PropTypes.number ])
   };
 
   static defaultProps = {
