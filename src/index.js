@@ -121,6 +121,8 @@ export default class Button extends React.Component {
     this.pressing = false;
     this.progressing = false;
     this.containerWidth = null;
+    this.pageX = null;
+    this.pageY = null;
 
     this.state = {
       activity: false,
@@ -180,7 +182,11 @@ export default class Button extends React.Component {
     };
   }
 
-  pressIn = () => {
+  pressIn = event => {
+    if (event && event.nativeEvent) {
+      this.pageX = event.nativeEvent.pageX;
+      this.pageY = event.nativeEvent.pageY;
+    }
     if (
       this.props.disabled === true ||
       !this.props.children ||
@@ -220,7 +226,7 @@ export default class Button extends React.Component {
     ) {
       return false;
     }
-    if (event.nativeEvent && event.nativeEvent.contentOffset) {
+    if (event.nativeEvent && this.isScrolling(event)) {
       this.release();
       return;
     }
@@ -306,6 +312,18 @@ export default class Button extends React.Component {
         }
       });
     }, 50);
+  };
+
+  isScrolling = event => {
+    if (!event) return false;
+    const { nativeEvent } = event;
+    if (!nativeEvent || this.pageX === null || this.pageY === null) return false;
+    if (nativeEvent.contentOffset) return true; // FOR IOS
+    const pageXOffset = Math.abs(nativeEvent.pageX - this.pageX);
+    const pageYOffset = Math.abs(nativeEvent.pageY - this.pageY);
+    const offsetBounds = 1;
+    if (pageXOffset > offsetBounds || pageYOffset > offsetBounds) return true;
+    return false;
   };
 
   release(callback) {
