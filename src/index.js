@@ -5,7 +5,7 @@ import {
   TouchableWithoutFeedback,
   View,
   Animated,
-  ViewPropTypes,
+  ViewPropTypes
 } from "react-native";
 import { animateTiming, animateElastic, animateSpring } from "./helpers";
 import { styles, getStyles } from "./styles";
