@@ -5,7 +5,7 @@ import {
   TouchableWithoutFeedback,
   View,
   Animated,
-  ViewPropTypes
+  ViewPropTypes,
 } from "react-native";
 import { animateTiming, animateElastic, animateSpring } from "./helpers";
 import { styles, getStyles } from "./styles";
@@ -52,6 +52,10 @@ export default class Button extends React.Component {
     ExtraContent: PropTypes.node,
     disabled: PropTypes.bool,
     height: PropTypes.number,
+    hitSlop: PropTypes.oneOf(
+      PropTypes.shape({ left: PropTypes.number, right: PropTypes.number, top: PropTypes.number, bottom: PropTypes.number }),
+      PropTypes.number
+    )
     paddingHorizontal: PropTypes.number,
     onPress: PropTypes.func,
     progress: PropTypes.bool,
@@ -87,6 +91,7 @@ export default class Button extends React.Component {
     children: null,
     disabled: false,
     height: DEFAULT_HEIGHT,
+    hitSlop: null,
     paddingHorizontal: DEFAULT_HORIZONTAL_PADDING,
     onPress: null,
     progress: false,
@@ -431,6 +436,7 @@ export default class Button extends React.Component {
         testID="aws-btn-content-view"
         onPressIn={this.pressIn}
         onPressOut={this.pressOut}
+        hitSlop={this.props.hitSlop}
       >
         <Animated.View
           testID="aws-btn-content-2"
