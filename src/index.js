@@ -321,7 +321,7 @@ export default class Button extends React.Component {
     if (nativeEvent.contentOffset) return true; // FOR IOS
     const pageXOffset = Math.abs(nativeEvent.pageX - this.pageX);
     const pageYOffset = Math.abs(nativeEvent.pageY - this.pageY);
-    const offsetBounds = 1;
+    const offsetBounds = 10;
     if (pageXOffset > offsetBounds || pageYOffset > offsetBounds) return true;
     return false;
   };
