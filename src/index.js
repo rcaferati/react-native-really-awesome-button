@@ -4,8 +4,7 @@ import {
   ActivityIndicator,
   TouchableWithoutFeedback,
   View,
-  Animated,
-  ViewPropTypes
+  Animated
 } from "react-native";
 import { animateTiming, animateElastic, animateSpring } from "./helpers";
 import { styles, getStyles } from "./styles";
@@ -59,7 +58,7 @@ export default class Button extends React.Component {
     raiseLevel: PropTypes.number,
     springRelease: PropTypes.bool,
     stretch: PropTypes.bool,
-    style: ViewPropTypes.style,
+    style: PropTypes.shape({ style: PropTypes.any, }),
     textColor: PropTypes.string,
     textLineHeight: PropTypes.number,
     textSize: PropTypes.number,
