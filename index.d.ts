@@ -29,6 +29,7 @@ declare module "react-native-really-awesome-button" {
     height?: number;
     paddingHorizontal?: number;
     progress?: boolean;
+    progressLoadingTime?: number;
     paddingBottom?: number;
     raiseLevel?: number;
     springRelease?: boolean;
