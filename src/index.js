@@ -5,7 +5,6 @@ import {
   TouchableWithoutFeedback,
   View,
   Animated,
-  ViewPropTypes
 } from "react-native";
 import { animateTiming, animateElastic, animateSpring } from "./helpers";
 import { styles, getStyles } from "./styles";
@@ -29,6 +28,7 @@ import {
   DEFAULT_WIDTH,
   DEFAULT_RELEASE_DELAY
 } from "./constants";
+import { ViewPropTypes } from 'deprecated-react-native-prop-types';
 
 export default class Button extends React.Component {
   static propTypes = {
