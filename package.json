@@ -60,6 +60,7 @@
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-prettier": "^4.0.0",
     "jest": "^28.1.1",
+    "lodash.debounce": "^4.0.8",
     "pod-install": "^0.1.0",
     "prettier": "^2.0.5",
     "react": "17.0.2",
@@ -150,8 +151,5 @@
         }
       ]
     ]
-  },
-  "dependencies": {
-    "lodash.debounce": "^4.0.8"
   }
 }

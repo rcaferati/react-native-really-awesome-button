@@ -80,7 +80,7 @@ export default function Social({ navigation }: any) {
           progress
           backgroundProgress="rgba(0,0,0,0.15)"
           onPress={handleTimeout}
-          ExtraContent={
+          extra={
             <LinearGradient
               colors={['#4C63D2', '#BC3081', '#F47133', '#FED576']}
               style={{ ...StyleSheet.absoluteFillObject }}

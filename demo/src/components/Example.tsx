@@ -261,23 +261,6 @@ export default function Example({ index }: any) {
               />
             </ThemedButton>
           </Section>
-          {/* <Section title="Linear Gradient Overwrite">
-            <Themed
-              config={theme}
-              backgroundDarker="#EAAC1E"
-              backgroundActive="rgba(0,0,0,0.1)"
-              ExtraContent={
-                <LinearGradient
-                  colors={['#4C63D2', '#BC3081', '#F47133', '#FED576']}
-                  style={styles.gradient}
-                />
-              }
-              style={styles.button}
-              type="primary"
-              size="medium">
-              Gradient Overwrite
-            </ThemedButton>
-          </Section> */}
           <Section title="With auto and stretch">
             <ThemedButton
               config={theme}

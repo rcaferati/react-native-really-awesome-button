@@ -4,7 +4,6 @@ import React, {
   useRef,
   useState,
   ReactNode,
-  useEffect,
 } from 'react';
 import {
   ActivityIndicator,
@@ -13,13 +12,10 @@ import {
   Animated,
   Text,
   LayoutChangeEvent,
+  GestureResponderEvent,
+  PressableProps,
 } from 'react-native';
-import {
-  animateTiming,
-  animateElastic,
-  animateSpring,
-  animateLoop,
-} from './helpers';
+import { animateTiming, animateElastic, animateSpring } from './helpers';
 import debounce from 'lodash.debounce';
 import { styles, getStyles } from './styles';
 import {
@@ -42,12 +38,12 @@ import {
   DEFAULT_TEXT_SIZE,
   DEFAULT_WIDTH,
 } from './constants';
-
-type AfterPressFn = (callback: () => void) => void;
+import Placeholder from './Placeholder';
 
 export type ButtonTypes = {
   activityColor?: string;
   activeOpacity?: number;
+  animatedPlaceholder?: boolean;
   backgroundActive?: string;
   backgroundColor?: string;
   backgroundDarker?: string;
@@ -64,13 +60,15 @@ export type ButtonTypes = {
   borderLeftBottomRadius?: number;
   borderWidth?: number;
   progressLoadingTime?: number;
-  ExtraContent?: any;
+  extra?: any;
   disabled?: boolean;
   height?: number;
+  hitSlop?: PressableProps['hitSlop'];
   paddingHorizontal?: number;
   paddingTop?: number;
   progress?: boolean;
   before?: ReactNode;
+  dangerouslySetPressableProps?: PressableProps;
   after?: ReactNode;
   paddingBottom?: number;
   raiseLevel?: number;
@@ -84,61 +82,20 @@ export type ButtonTypes = {
   textFamily?: string;
   width?: number | null;
   children?: string | ReactNode;
-  onPress?: (afterPressFn?: AfterPressFn) => void;
-};
-
-const Placeholder = ({ style }: any) => {
-  const animating = useRef(false);
-  const [width, setWidth] = useState(0);
-  const animatedValue = useRef(new Animated.Value(0)).current;
-
-  useEffect(() => {
-    if (width > 0 && animating.current === false) {
-      animating.current = true;
-      animateLoop({
-        variable: animatedValue,
-        toValue: 1,
-      });
-    }
-  }, [width]);
-
-  return (
-    <View
-      style={[styles.container__placeholder, ...style]}
-      onLayout={(event) => {
-        setWidth(event.nativeEvent.layout.width);
-      }}
-    >
-      <Animated.View
-        testID="aws-btn-content-placeholder"
-        style={[
-          ...style,
-          styles.container__placeholder__bar,
-          {
-            transform: [
-              {
-                translateX: animatedValue.interpolate({
-                  inputRange: [0, 0.2, 0.5, 0.7, 1],
-                  outputRange: [
-                    width * -1,
-                    width * -1,
-                    width,
-                    width,
-                    width * -1,
-                  ],
-                }),
-              },
-            ],
-          },
-        ]}
-      />
-    </View>
-  );
+  onPress?: (callback?: () => void) => void;
+  onLongPress?: PressableProps['onLongPress'];
+  onPressIn?: (event: GestureResponderEvent) => void;
+  onPressOut?: (event: GestureResponderEvent) => void;
+  onPressedIn?: () => void;
+  onPressedOut?: () => void;
+  onProgressStart?: () => void;
+  onProgressEnd?: () => void;
 };
 
 const AwesomeButton = ({
   activityColor = DEFAULT_ACTIVITY_COLOR,
   activeOpacity = DEFAULT_ACTIVE_OPACITY,
+  animatedPlaceholder = true,
   backgroundActive = DEFAULT_BACKGROUND_ACTIVE,
   backgroundColor = DEFAULT_BACKGROUND_COLOR,
   backgroundDarker = DEFAULT_BACKGROUND_DARKER,
@@ -157,9 +114,18 @@ const AwesomeButton = ({
   after = null,
   disabled = false,
   height = DEFAULT_HEIGHT,
+  hitSlop = null,
   debouncedPressTime = DEFAULT_DEBOUNCED_PRESS_TIME,
   paddingHorizontal = DEFAULT_HORIZONTAL_PADDING,
   onPress = () => null,
+  onPressIn = () => null,
+  onPressedIn = () => null,
+  onPressOut = () => null,
+  onPressedOut = () => null,
+  onProgressStart = () => null,
+  onProgressEnd = () => null,
+  onLongPress = null,
+  dangerouslySetPressableProps = {},
   progress = false,
   paddingBottom = 0,
   paddingTop = 0,
@@ -173,7 +139,7 @@ const AwesomeButton = ({
   textSize = DEFAULT_TEXT_SIZE,
   textFontFamily,
   width = DEFAULT_WIDTH,
-  ExtraContent = null,
+  extra = null,
 }: ButtonTypes) => {
   const loadingOpacity = useRef(new Animated.Value(1)).current;
   const textOpacity = useRef(new Animated.Value(1)).current;
@@ -196,7 +162,8 @@ const AwesomeButton = ({
   const debouncedPress = useRef(
     debouncedPressTime
       ? debounce(
-          (animateProgressEnd: any = null) => onPress(animateProgressEnd),
+          (animateProgressEnd: (callback?: any) => void) =>
+            onPress(animateProgressEnd),
           debouncedPressTime,
           {
             trailing: false,
@@ -356,6 +323,8 @@ const AwesomeButton = ({
     pressAnimation.current.start(() => {
       pressed.current = true;
       pressing.current = false;
+
+      onPressedIn && onPressedIn();
     });
   }, []);
 
@@ -389,6 +358,7 @@ const AwesomeButton = ({
     if (progress !== true) {
       return;
     }
+
     if (timeout?.current) {
       clearTimeout(timeout.current);
     }
@@ -416,6 +386,7 @@ const AwesomeButton = ({
           animateRelease(() => {
             progressing.current = false;
             callback && callback();
+            onProgressEnd && onProgressEnd();
           });
         });
       });
@@ -429,6 +400,13 @@ const AwesomeButton = ({
 
     pressed.current = false;
     pressing.current = false;
+
+    const end = () => {
+      pressed.current = false;
+      pressing.current = false;
+      callback && callback();
+      onPressedOut && onPressedOut();
+    };
 
     if (springRelease === true) {
       Animated.parallel([
@@ -444,11 +422,7 @@ const AwesomeButton = ({
           variable: animatedOpacity,
           toValue: 1,
         }),
-      ]).start(() => {
-        pressed.current = false;
-        pressing.current = false;
-        callback && callback();
-      });
+      ]).start(end);
       return;
     }
 
@@ -467,13 +441,12 @@ const AwesomeButton = ({
         variable: animatedOpacity,
         toValue: 1,
       }),
-    ]).start(() => {
-      callback && callback();
-    });
+    ]).start(end);
   };
 
   const startProgress = () => {
     progressing.current = true;
+    onProgressStart && onProgressStart();
     setActivity(true);
     animateLoadingStart();
     animateContentOut();
@@ -492,26 +465,33 @@ const AwesomeButton = ({
     debouncedPress.current(animateProgressEnd);
   };
 
-  const handlePressIn = useCallback(() => {
-    if (
-      disabled === true ||
-      !children ||
-      progressing.current === true ||
-      pressed.current === true
-    ) {
-      return;
-    }
+  const handlePressIn = useCallback(
+    (event: GestureResponderEvent) => {
+      if (
+        disabled === true ||
+        !children ||
+        progressing.current === true ||
+        pressed.current === true
+      ) {
+        return;
+      }
 
-    animatePressIn();
-  }, [disabled, children]);
+      onPressIn && onPressIn(event);
+      animatePressIn();
+    },
+    [disabled, children, onPressIn]
+  );
 
   const handlePressOut = useCallback(
-    (event) => {
+    (event: GestureResponderEvent) => {
       if (disabled === true || !children || progressing.current === true) {
         return;
       }
 
-      if (event.nativeEvent && event.nativeEvent.contentOffset) {
+      onPressOut && onPressOut(event);
+
+      // @ts-ignore
+      if (event?.nativeEvent?.contentOffset) {
         animateRelease();
         return;
       }
@@ -567,7 +547,12 @@ const AwesomeButton = ({
     };
 
     if (!children) {
-      return <Placeholder style={[dynamicStyles.container__placeholder]} />;
+      return (
+        <Placeholder
+          animated={animatedPlaceholder}
+          style={[dynamicStyles.container__placeholder]}
+        />
+      );
     }
 
     let content = children;
@@ -591,9 +576,9 @@ const AwesomeButton = ({
           animatedStyles,
         ]}
       >
-        {before && before}
+        {before}
         {content}
-        {after && after}
+        {after}
       </Animated.View>
     );
   }, [children, before, after, textColor]);
@@ -601,6 +586,9 @@ const AwesomeButton = ({
   return (
     <Pressable
       testID="aws-btn-content-view"
+      hitSlop={hitSlop}
+      onLongPress={onLongPress}
+      {...dangerouslySetPressableProps}
       onPressIn={handlePressIn}
       onPressOut={handlePressOut}
     >
@@ -638,7 +626,7 @@ const AwesomeButton = ({
             style={[styles.text, dynamicStyles.text]}
             onLayout={onTextLayout}
           >
-            {ExtraContent}
+            {extra}
             <Animated.View
               testID="aws-btn-active-background"
               style={[
