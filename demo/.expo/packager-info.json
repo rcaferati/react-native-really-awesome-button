@@ -1,9 +1,9 @@
 {
-  "devToolsPort": 19002,
   "expoServerPort": null,
-  "packagerPort": null,
+  "packagerPort": 19000,
   "packagerPid": null,
-  "expoServerNgrokUrl": null,
-  "packagerNgrokUrl": null,
-  "ngrokPid": null
+  "expoServerNgrokUrl": "https://qq-wep.rcaferati.demo.exp.direct",
+  "packagerNgrokUrl": "https://qq-wep.rcaferati.demo.exp.direct",
+  "ngrokPid": 96142,
+  "webpackServerPort": null
 }

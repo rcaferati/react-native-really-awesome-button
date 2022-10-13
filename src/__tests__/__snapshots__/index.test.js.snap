@@ -3,145 +3,174 @@
 exports[`AwesomeButton should render 1`] = `
 <View
   accessible={true}
+  collapsable={false}
+  focusable={true}
+  onBlur={[Function]}
+  onClick={[Function]}
+  onFocus={[Function]}
   onResponderGrant={[Function]}
   onResponderMove={[Function]}
   onResponderRelease={[Function]}
   onResponderTerminate={[Function]}
   onResponderTerminationRequest={[Function]}
   onStartShouldSetResponder={[Function]}
-  style={
-    Object {
-      "backgroundColor": "transparent",
-      "height": 60,
-      "opacity": 0,
-      "width": null,
-      "zIndex": 10,
-    }
-  }
   testID="aws-btn-content-view"
 >
   <View
+    collapsable={false}
     style={
       Object {
-        "backgroundColor": "rgba(0, 0, 0, 0.15)",
-        "borderBottomLeftRadius": null,
-        "borderBottomRightRadius": null,
-        "borderRadius": 4,
-        "borderTopLeftRadius": null,
-        "borderTopRightRadius": null,
-        "bottom": -2,
-        "height": 56,
-        "left": "1%",
-        "position": "absolute",
-        "transform": Array [
-          Object {
-            "translateY": 0,
-          },
-        ],
-        "width": "98%",
-      }
-    }
-    testID="aws-btn-shadow"
-  />
-  <View
-    style={
-      Array [
-        Object {
-          "bottom": 0,
-          "left": 0,
-          "position": "absolute",
-        },
-        Object {
-          "backgroundColor": "#9f9f9f",
-          "borderBottomLeftRadius": null,
-          "borderBottomRightRadius": null,
-          "borderRadius": 4,
-          "borderTopLeftRadius": null,
-          "borderTopRightRadius": null,
-          "height": 56,
-          "width": null,
-        },
-      ]
-    }
-    testID="aws-btn-bottom"
-  />
-  <View
-    style={
-      Object {
-        "borderBottomLeftRadius": null,
-        "borderBottomRightRadius": null,
-        "borderRadius": 4,
-        "borderTopLeftRadius": null,
-        "borderTopRightRadius": null,
-        "height": 56,
-        "left": 0,
-        "position": "absolute",
-        "top": 0,
-        "transform": Array [
-          Object {
-            "translateY": 0,
-          },
-        ],
+        "backgroundColor": "transparent",
+        "height": 60,
+        "opacity": 0,
         "width": null,
+        "zIndex": 10,
       }
     }
-    testID="aws-btn-content"
+    testID="aws-btn-content-2"
   >
     <View
-      onLayout={[Function]}
+      collapsable={false}
+      style={
+        Object {
+          "backgroundColor": "rgba(0, 0, 0, 0.15)",
+          "borderBottomLeftRadius": undefined,
+          "borderBottomRightRadius": undefined,
+          "borderRadius": 4,
+          "borderTopLeftRadius": undefined,
+          "borderTopRightRadius": undefined,
+          "bottom": -2,
+          "height": 56,
+          "left": "1%",
+          "position": "absolute",
+          "transform": Array [
+            Object {
+              "translateY": 0,
+            },
+          ],
+          "width": "98%",
+        }
+      }
+      testID="aws-btn-shadow"
+    />
+    <View
       style={
         Array [
           Object {
-            "alignItems": "center",
-            "flex": 1,
-            "justifyContent": "center",
-            "overflow": "hidden",
-            "zIndex": 3,
+            "bottom": 0,
+            "left": 0,
+            "position": "absolute",
           },
           Object {
-            "backgroundColor": "#c0c0c0",
-            "borderBottomLeftRadius": null,
-            "borderBottomRightRadius": null,
-            "borderColor": null,
+            "backgroundColor": "#9f9f9f",
+            "borderBottomLeftRadius": undefined,
+            "borderBottomRightRadius": undefined,
             "borderRadius": 4,
-            "borderTopLeftRadius": null,
-            "borderTopRightRadius": null,
-            "borderWidth": 0,
+            "borderTopLeftRadius": undefined,
+            "borderTopRightRadius": undefined,
+            "height": 56,
+            "width": null,
           },
         ]
       }
-      testID="aws-btn-text"
+      testID="aws-btn-bottom"
+    />
+    <View
+      collapsable={false}
+      style={
+        Object {
+          "borderBottomLeftRadius": undefined,
+          "borderBottomRightRadius": undefined,
+          "borderRadius": 4,
+          "borderTopLeftRadius": undefined,
+          "borderTopRightRadius": undefined,
+          "height": 56,
+          "left": 0,
+          "position": "absolute",
+          "top": 0,
+          "transform": Array [
+            Object {
+              "translateY": 0,
+            },
+          ],
+          "width": null,
+        }
+      }
+      testID="aws-btn-content"
     >
       <View
+        onLayout={[Function]}
         style={
-          Object {
-            "backgroundColor": "rgba(0, 0, 0, 0.15)",
-            "height": 56,
-            "left": 0,
-            "opacity": 0,
-            "position": "absolute",
-            "top": 0,
-            "width": null,
-          }
+          Array [
+            Object {
+              "alignItems": "center",
+              "flex": 1,
+              "justifyContent": "center",
+              "overflow": "hidden",
+              "zIndex": 3,
+            },
+            Object {
+              "backgroundColor": "#c0c0c0",
+              "borderBottomLeftRadius": undefined,
+              "borderBottomRightRadius": undefined,
+              "borderColor": undefined,
+              "borderRadius": 4,
+              "borderTopLeftRadius": undefined,
+              "borderTopRightRadius": undefined,
+              "borderWidth": 0,
+            },
+          ]
         }
-        testID="aws-btn-active-background"
-      />
-      <View
-        style={
-          Object {
-            "backgroundColor": "rgba(0, 0, 0, 0.15)",
-            "height": 20,
-            "opacity": 1,
-            "transform": Array [
+        testID="aws-btn-text"
+      >
+        <View
+          collapsable={false}
+          style={
+            Object {
+              "backgroundColor": "rgba(0, 0, 0, 0.15)",
+              "height": 56,
+              "left": 0,
+              "opacity": 0,
+              "position": "absolute",
+              "top": 0,
+              "width": null,
+            }
+          }
+          testID="aws-btn-active-background"
+        />
+        <View
+          onLayout={[Function]}
+          style={
+            Array [
               Object {
-                "scale": 1,
+                "overflow": "hidden",
+                "width": "55%",
               },
-            ],
-            "width": "55%",
+              Object {
+                "backgroundColor": "rgba(0, 0, 0, 0.15)",
+                "height": 20,
+              },
+            ]
           }
-        }
-        testID="aws-btn-content-placeholder"
-      />
+        >
+          <View
+            collapsable={false}
+            style={
+              Object {
+                "backgroundColor": "rgba(0,0,0,0.15)",
+                "height": 20,
+                "transform": Array [
+                  Object {
+                    "translateX": -0,
+                  },
+                ],
+                "width": "100%",
+              }
+            }
+            testID="aws-btn-content-placeholder"
+          />
+        </View>
+      </View>
     </View>
   </View>
 </View>
@@ -150,157 +179,182 @@ exports[`AwesomeButton should render 1`] = `
 exports[`AwesomeButton should render a default text children 1`] = `
 <View
   accessible={true}
+  collapsable={false}
+  focusable={true}
+  onBlur={[Function]}
+  onClick={[Function]}
+  onFocus={[Function]}
   onResponderGrant={[Function]}
   onResponderMove={[Function]}
   onResponderRelease={[Function]}
   onResponderTerminate={[Function]}
   onResponderTerminationRequest={[Function]}
   onStartShouldSetResponder={[Function]}
-  style={
-    Object {
-      "backgroundColor": "transparent",
-      "height": 60,
-      "opacity": 0,
-      "width": null,
-      "zIndex": 10,
-    }
-  }
   testID="aws-btn-content-view"
 >
   <View
+    collapsable={false}
     style={
       Object {
-        "backgroundColor": "rgba(0, 0, 0, 0.15)",
-        "borderBottomLeftRadius": null,
-        "borderBottomRightRadius": null,
-        "borderRadius": 4,
-        "borderTopLeftRadius": null,
-        "borderTopRightRadius": null,
-        "bottom": -2,
-        "height": 56,
-        "left": "1%",
-        "position": "absolute",
-        "transform": Array [
-          Object {
-            "translateY": 0,
-          },
-        ],
-        "width": "98%",
-      }
-    }
-    testID="aws-btn-shadow"
-  />
-  <View
-    style={
-      Array [
-        Object {
-          "bottom": 0,
-          "left": 0,
-          "position": "absolute",
-        },
-        Object {
-          "backgroundColor": "#9f9f9f",
-          "borderBottomLeftRadius": null,
-          "borderBottomRightRadius": null,
-          "borderRadius": 4,
-          "borderTopLeftRadius": null,
-          "borderTopRightRadius": null,
-          "height": 56,
-          "width": null,
-        },
-      ]
-    }
-    testID="aws-btn-bottom"
-  />
-  <View
-    style={
-      Object {
-        "borderBottomLeftRadius": null,
-        "borderBottomRightRadius": null,
-        "borderRadius": 4,
-        "borderTopLeftRadius": null,
-        "borderTopRightRadius": null,
-        "height": 56,
-        "left": 0,
-        "position": "absolute",
-        "top": 0,
-        "transform": Array [
-          Object {
-            "translateY": 0,
-          },
-        ],
+        "backgroundColor": "transparent",
+        "height": 60,
+        "opacity": 0,
         "width": null,
+        "zIndex": 10,
       }
     }
-    testID="aws-btn-content"
+    testID="aws-btn-content-2"
   >
     <View
-      onLayout={[Function]}
+      collapsable={false}
+      style={
+        Object {
+          "backgroundColor": "rgba(0, 0, 0, 0.15)",
+          "borderBottomLeftRadius": undefined,
+          "borderBottomRightRadius": undefined,
+          "borderRadius": 4,
+          "borderTopLeftRadius": undefined,
+          "borderTopRightRadius": undefined,
+          "bottom": -2,
+          "height": 56,
+          "left": "1%",
+          "position": "absolute",
+          "transform": Array [
+            Object {
+              "translateY": 0,
+            },
+          ],
+          "width": "98%",
+        }
+      }
+      testID="aws-btn-shadow"
+    />
+    <View
       style={
         Array [
           Object {
-            "alignItems": "center",
-            "flex": 1,
-            "justifyContent": "center",
-            "overflow": "hidden",
-            "zIndex": 3,
+            "bottom": 0,
+            "left": 0,
+            "position": "absolute",
           },
           Object {
-            "backgroundColor": "#c0c0c0",
-            "borderBottomLeftRadius": null,
-            "borderBottomRightRadius": null,
-            "borderColor": null,
+            "backgroundColor": "#9f9f9f",
+            "borderBottomLeftRadius": undefined,
+            "borderBottomRightRadius": undefined,
             "borderRadius": 4,
-            "borderTopLeftRadius": null,
-            "borderTopRightRadius": null,
-            "borderWidth": 0,
+            "borderTopLeftRadius": undefined,
+            "borderTopRightRadius": undefined,
+            "height": 56,
+            "width": null,
           },
         ]
       }
-      testID="aws-btn-text"
+      testID="aws-btn-bottom"
+    />
+    <View
+      collapsable={false}
+      style={
+        Object {
+          "borderBottomLeftRadius": undefined,
+          "borderBottomRightRadius": undefined,
+          "borderRadius": 4,
+          "borderTopLeftRadius": undefined,
+          "borderTopRightRadius": undefined,
+          "height": 56,
+          "left": 0,
+          "position": "absolute",
+          "top": 0,
+          "transform": Array [
+            Object {
+              "translateY": 0,
+            },
+          ],
+          "width": null,
+        }
+      }
+      testID="aws-btn-content"
     >
       <View
+        onLayout={[Function]}
         style={
-          Object {
-            "backgroundColor": "rgba(0, 0, 0, 0.15)",
-            "height": 56,
-            "left": 0,
-            "opacity": 0,
-            "position": "absolute",
-            "top": 0,
-            "width": null,
-          }
+          Array [
+            Object {
+              "alignItems": "center",
+              "flex": 1,
+              "justifyContent": "center",
+              "overflow": "hidden",
+              "zIndex": 3,
+            },
+            Object {
+              "backgroundColor": "#c0c0c0",
+              "borderBottomLeftRadius": undefined,
+              "borderBottomRightRadius": undefined,
+              "borderColor": undefined,
+              "borderRadius": 4,
+              "borderTopLeftRadius": undefined,
+              "borderTopRightRadius": undefined,
+              "borderWidth": 0,
+            },
+          ]
         }
-        testID="aws-btn-active-background"
-      />
-      <Text
-        accessible={true}
-        allowFontScaling={true}
-        ellipsizeMode="tail"
-        style={
-          Object {
-            "color": "#FFFFFF",
-            "fontFamily": null,
-            "fontSize": 14,
-            "fontWeight": "bold",
-            "opacity": 1,
-            "paddingBottom": 0,
-            "paddingHorizontal": 12,
-            "paddingTop": 0,
-            "textAlign": "center",
-            "transform": Array [
-              Object {
-                "scale": 1,
-              },
-            ],
-            "width": "100%",
-            "zIndex": 10,
-          }
-        }
-        testID="aws-btn-content-text"
+        testID="aws-btn-text"
       >
-        Default
-      </Text>
+        <View
+          collapsable={false}
+          style={
+            Object {
+              "backgroundColor": "rgba(0, 0, 0, 0.15)",
+              "height": 56,
+              "left": 0,
+              "opacity": 0,
+              "position": "absolute",
+              "top": 0,
+              "width": null,
+            }
+          }
+          testID="aws-btn-active-background"
+        />
+        <View
+          collapsable={false}
+          style={
+            Object {
+              "alignItems": "center",
+              "flex": 1,
+              "flexDirection": "row",
+              "justifyContent": "center",
+              "opacity": 1,
+              "paddingBottom": 0,
+              "paddingHorizontal": 16,
+              "paddingTop": 0,
+              "transform": Array [
+                Object {
+                  "scale": 1,
+                },
+              ],
+            }
+          }
+        >
+          <Text
+            style={
+              Array [
+                Object {
+                  "fontWeight": "bold",
+                  "textAlign": "center",
+                  "zIndex": 10,
+                },
+                Object {
+                  "color": "#FFFFFF",
+                  "fontFamily": undefined,
+                  "fontSize": 14,
+                },
+              ]
+            }
+            testID="aws-btn-content-text"
+          >
+            Default
+          </Text>
+        </View>
+      </View>
     </View>
   </View>
 </View>
