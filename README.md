@@ -204,7 +204,7 @@ function ButtonWithExtraEvents() {
 ## Web version
 Checkout the web version of the `Awesome Button UI Component` at [rcaferati/react-awesome-button](https://github.com/rcaferati/react-awesome-button)
 
-[<img src="https://github.com/rcaferati/react-awesome-button/blob/master/assets/public/images/react-awesome-button-customizer.png?raw=true" width="800" />](https://caferati.me/demo/react-awesome-button)
+[<img src="https://github.com/rcaferati/react-awesome-button/blob/master/demo/public/images/react-awesome-button-customizer.png?raw=true" width="800" />](https://caferati.me/demo/react-awesome-button)
 
 ## About the Author
 
