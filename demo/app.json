@@ -1,26 +1,25 @@
 {
+  "name": "react-native-really-awesome-button-demo",
+  "displayName": "ReallyAwesomeButton",
   "expo": {
-    "name": "React Native Awesome Button Component",
+    "name": "react-native-really-awesome-button",
     "slug": "react-native-really-awesome-button",
+    "description": "Example app for react-native-really-awesome-button",
     "privacy": "public",
-    "sdkVersion": "33.0.0",
-    "platforms": ["ios", "android"],
     "version": "1.0.0",
-    "orientation": "portrait",
-    "icon": "./assets/images/icon.png",
-    "splash": {
-      "image": "./assets/images/splash.png",
-      "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
-    },
-    "updates": {
-      "fallbackToCacheTimeout": 0
-    },
-    "assetBundlePatterns": ["**/*"],
+    "platforms": ["ios", "android", "web"],
     "ios": {
-      "supportsTablet": false
+      "supportsTablet": true,
+      "bundleIdentifier": "com.rcaferati.reactnativereallyawesomebutton"
     },
-    "description": "React Native button component. 3D at 60fps, progress enabled, social ready, extendable, production ready component that renders an awesome animated set of UI buttons. Source @ https://github.com/rcaferati/react-native-really-awesome-button Author @ https://caferati.me",
-    "githubUrl": "https://github.com/rcaferati/react-native-really-awesome-button"
+    "jsEngine": "hermes",
+    "assetBundlePatterns": ["**/*"],
+    "runtimeVersion": {
+      "policy": "sdkVersion"
+    },
+    "android": {},
+    "updates": {
+      "url": "https://u.expo.dev/f155b7a0-2b1e-11e8-983b-eb3551ff83d2"
+    }
   }
 }

@@ -1,7 +1,10 @@
 {
   "hostType": "lan",
   "lanType": "ip",
-  "dev": false,
-  "minify": true,
-  "urlRandomness": "6z-ap6"
+  "dev": true,
+  "minify": false,
+  "urlRandomness": "qq-wep",
+  "https": false,
+  "scheme": null,
+  "devClient": false
 }

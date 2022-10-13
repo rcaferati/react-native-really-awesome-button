@@ -6,16 +6,14 @@
 
 Run the <a target="_blank" title="Live Demo" href="https://expo.io/@rcaferati/react-native-really-awesome-button">live demo</a> @ expo.io.
 
-| <img width="240" src='https://raw.githubusercontent.com/rcaferati/react-native-really-awesome-button/master/demo/demo-button-blue-new.gif?raw=true' />  | <img width="240" src='https://raw.githubusercontent.com/rcaferati/react-native-really-awesome-button/master/demo/demo-button-rick.gif?raw=true' />  | <img width="240" src='https://raw.githubusercontent.com/rcaferati/react-native-really-awesome-button/master/demo/demo-button-cartman.gif?raw=true' />  |
+| <img width="240" src='https://raw.githubusercontent.com/rcaferati/react-native-really-awesome-button/master/assets/demo-button-blue-new.gif?raw=true' />  | <img width="240" src='https://raw.githubusercontent.com/rcaferati/react-native-really-awesome-button/master/assets/demo-button-rick.gif?raw=true' />  | <img width="240" src='https://raw.githubusercontent.com/rcaferati/react-native-really-awesome-button/master/assets/demo-button-cartman.gif?raw=true' />  |
 |---|---|---|
-
-
 
 ## Figma File
 
 Import it directly into your [Figma](https://www.figma.com/file/Ug8sNPzmevU3ZQus9Klu5aHq/react-awesome-button-theme-blue) project.
 
-[<img src="https://github.com/rcaferati/react-native-really-awesome-button/blob/master/demo/figma.png?raw=true" width="800" />](https://www.figma.com/file/Ug8sNPzmevU3ZQus9Klu5aHq/react-awesome-button-theme-blue)
+[<img src="https://github.com/rcaferati/react-native-really-awesome-button/blob/master/assets/figma.png?raw=true" width="800" />](https://www.figma.com/file/Ug8sNPzmevU3ZQus9Klu5aHq/react-awesome-button-theme-blue)
 
 ### Installation
 
@@ -142,7 +140,7 @@ function Button() {
 ## Web version
 Checkout the web version of the Awesome Button UI component at [rcaferati/react-awesome-button](https://github.com/rcaferati/react-awesome-button)
 
-[<img src="https://github.com/rcaferati/react-awesome-button/blob/master/demo/public/images/react-awesome-button-customizer.png?raw=true" width="800" />](https://caferati.me/demo/react-awesome-button)
+[<img src="https://github.com/rcaferati/react-awesome-button/blob/master/assets/public/images/react-awesome-button-customizer.png?raw=true" width="800" />](https://caferati.me/demo/react-awesome-button)
 
 ## About the Author
 
