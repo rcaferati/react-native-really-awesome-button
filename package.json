@@ -1,7 +1,7 @@
 {
   "name": "react-native-really-awesome-button",
-  "version": "0.1.0",
-  "description": "test",
+  "version": "2.0.0",
+  "description": "ReactNative performant component that renders an 60fps animated set of progress enabled 3D UI buttons.",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
   "types": "lib/typescript/index.d.ts",
@@ -31,7 +31,13 @@
     "bootstrap": "yarn example && yarn && yarn example pods"
   },
   "keywords": [
+    "button",
     "react-native",
+    "animated button",
+    "awesome button",
+    "really awesome button",
+    "3d button",
+    "react-component",
     "ios",
     "android"
   ],
@@ -75,8 +81,8 @@
     "@types/react": "17.0.21"
   },
   "peerDependencies": {
-    "react": "*",
-    "react-native": "*"
+    "react": ">17.0.0",
+    "react-native": ">0.60.0"
   },
   "jest": {
     "preset": "react-native",
