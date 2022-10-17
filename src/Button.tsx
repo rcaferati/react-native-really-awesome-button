@@ -79,7 +79,6 @@ export type ButtonTypes = {
   textColor?: string;
   textLineHeight?: number;
   textSize?: number;
-  textFamily?: string;
   width?: number | null;
   children?: string | ReactNode;
   onPress?: (callback?: () => void) => void;
