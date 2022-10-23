@@ -7,6 +7,13 @@
 | <img width="240" src='https://raw.githubusercontent.com/rcaferati/react-native-really-awesome-button/master/assets/demo-button-blue-new.gif?raw=true' />  | <img width="240" src='https://raw.githubusercontent.com/rcaferati/react-native-really-awesome-button/master/assets/demo-button-rick.gif?raw=true' />  | <img width="240" src='https://raw.githubusercontent.com/rcaferati/react-native-really-awesome-button/master/assets/demo-button-cartman.gif?raw=true' />  |
 |---|---|---|
 
+## Snack on Expo
+
+Access the snack at [expo.dev](https://snack.expo.dev/@rcaferati/react-native-awesome-button).
+
+[<img src="https://caferati.me/images/github/expo-snack.png" width="800" />](https://snack.expo.dev/@rcaferati/react-native-awesome-button)
+
+
 ## Figma File
 
 Import it directly into your [Figma](https://www.figma.com/file/Ug8sNPzmevU3ZQus9Klu5aHq/react-awesome-button-theme-blue) project.
