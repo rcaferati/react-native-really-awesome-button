@@ -1,6 +1,6 @@
 {
   "name": "react-native-really-awesome-button",
-  "version": "2.0.2",
+  "version": "2.0.3",
   "description": "React Native Button UI component that renders an 60fps animated set of progress enabled 3D performant buttons.",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
