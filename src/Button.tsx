@@ -321,7 +321,6 @@ const AwesomeButton = ({
 
     pressAnimation.current.start(() => {
       pressed.current = true;
-      pressing.current = false;
 
       onPressedIn && onPressedIn();
     });
@@ -495,7 +494,7 @@ const AwesomeButton = ({
         return;
       }
 
-      if (pressed.current === true || raiseLevel === 0) {
+      if (pressing.current === true || raiseLevel === 0) {
         press();
 
         if (progress === true) {
