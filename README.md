@@ -18,7 +18,7 @@ Access the snack at [expo.dev](https://snack.expo.dev/@rcaferati/react-native-aw
 
 Import it directly into your [Figma](https://www.figma.com/file/Ug8sNPzmevU3ZQus9Klu5aHq/react-awesome-button-theme-blue) project.
 
-[<img src="https://github.com/rcaferati/react-native-really-awesome-button/blob/master/assets/figma.png?raw=true" width="800" />](https://www.figma.com/file/Ug8sNPzmevU3ZQus9Klu5aHq/react-awesome-button-theme-blue)
+[<img src="https://caferati.me/images/github/figma-awesome-button.png" width="800" />](https://www.figma.com/file/Ug8sNPzmevU3ZQus9Klu5aHq/react-awesome-button-theme-blue)
 
 ### Installation
 
@@ -211,7 +211,7 @@ function ButtonWithExtraEvents() {
 ## Web version
 Checkout the web version of the `Awesome Button UI Component` at [rcaferati/react-awesome-button](https://github.com/rcaferati/react-awesome-button)
 
-[<img src="https://github.com/rcaferati/react-awesome-button/blob/master/demo/public/images/react-awesome-button-customizer.png?raw=true" width="800" />](https://caferati.me/demo/react-awesome-button)
+[<img src="https://caferati.me/images/github/awesome-button-web.png" width="800" />](https://awesome-button.caferati.me)
 
 ## About the Author
 
