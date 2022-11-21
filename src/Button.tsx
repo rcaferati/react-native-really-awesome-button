@@ -158,19 +158,23 @@ const AwesomeButton = ({
   const pressAnimation = useRef<Animated.CompositeAnimation | null>(null);
   const [activity, setActivity] = useState(false);
   const [stateWidth, setStateWidth] = useState<number | null>(null);
-  const debouncedPress = useRef(
-    debouncedPressTime
-      ? debounce(
-          (animateProgressEnd: (callback?: any) => void) =>
-            onPress(animateProgressEnd),
-          debouncedPressTime,
-          {
-            trailing: false,
-            leading: true,
-          }
-        )
-      : onPress
-  );
+
+  let debouncedPress = useRef( ); 
+  React.useEffect(() => { // update the onPress props when it has changed from parent component
+   
+    debouncedPress.current = debouncedPressTime
+    ? debounce(
+        (animateProgressEnd: (callback?: any) => void) =>
+        onPress(animateProgressEnd),
+        debouncedPressTime,
+        {
+          trailing: false,
+          leading: true,
+        }
+      )
+    : onPress
+
+   }, [ onPress  ]); 
 
   const layout = {
     backgroundActive,
