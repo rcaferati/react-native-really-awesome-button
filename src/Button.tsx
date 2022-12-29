@@ -158,19 +158,17 @@ const AwesomeButton = ({
   const pressAnimation = useRef<Animated.CompositeAnimation | null>(null);
   const [activity, setActivity] = useState(false);
   const [stateWidth, setStateWidth] = useState<number | null>(null);
-  const debouncedPress = useRef(
-    debouncedPressTime
-      ? debounce(
-          (animateProgressEnd: (callback?: any) => void) =>
-            onPress(animateProgressEnd),
-          debouncedPressTime,
-          {
-            trailing: false,
-            leading: true,
-          }
-        )
-      : onPress
-  );
+  const debouncedPress = debouncedPressTime
+    ? debounce(
+        (animateProgressEnd: (callback?: any) => void) =>
+          onPress(animateProgressEnd),
+        debouncedPressTime,
+        {
+          trailing: false,
+          leading: true,
+        }
+      )
+    : onPress;
 
   const layout = {
     backgroundActive,
@@ -460,7 +458,7 @@ const AwesomeButton = ({
       requestAnimationFrame(startProgress);
     }
 
-    debouncedPress.current(animateProgressEnd);
+    debouncedPress(animateProgressEnd);
   };
 
   const handlePressIn = useCallback(
