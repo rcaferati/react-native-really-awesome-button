@@ -40,6 +40,8 @@ import {
 } from './constants';
 import Placeholder from './Placeholder';
 
+type Percentage = `${number}%`;
+
 export type ButtonTypes = {
   activityColor?: string;
   activeOpacity?: number;
@@ -79,7 +81,7 @@ export type ButtonTypes = {
   textColor?: string;
   textLineHeight?: number;
   textSize?: number;
-  width?: number | null;
+  width?: number | 'auto' | Percentage | null;
   children?: string | ReactNode;
   onPress?: (callback?: () => void) => void;
   onLongPress?: PressableProps['onLongPress'];
