@@ -79,7 +79,7 @@ export type ButtonTypes = {
   textColor?: string;
   textLineHeight?: number;
   textSize?: number;
-  width?: number | null;
+  width?: number | string | null;
   children?: string | ReactNode;
   onPress?: (callback?: () => void) => void;
   onLongPress?: PressableProps['onLongPress'];
